@@ -7,6 +7,7 @@
 //
 
 #import "magicappAppDelegate.h"
+#import "MaRootViewController.h"
 
 @implementation magicappAppDelegate
 
@@ -14,6 +15,15 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+	
+	MaRootViewController* controller =[[MaRootViewController alloc] init];
+    
+	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
+	controller.navigationItem.title = @"Café";
+
+	self.window.rootViewController = theController;
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
