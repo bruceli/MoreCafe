@@ -33,9 +33,11 @@
 
 	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - MA_TOOLBAR_HEIGHT);
 	_scrollView = [[UIScrollView alloc ] initWithFrame:frame ];
-	_scrollView.alwaysBounceHorizontal=YES;
+	_scrollView.showsHorizontalScrollIndicator=NO;
+	_scrollView.showsVerticalScrollIndicator=NO;
+
 	_scrollView.delegate = self;
-	_scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"setting_bkg.png"]];
+	_scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rootbackground"]];
 	_currentIndex = 0;
 	NSArray* itemArray = [[NSArray alloc] initWithObjects:@"test", @"test",@"test",@"test",nil];
 	
@@ -77,7 +79,7 @@
 		[imgView setImageByString:path];
  */
 		
-		imgView.backgroundColor = [UIColor colorWithRed:(random()%100)/(float)100 green:(random()%100)/(float)100 blue:(random()%100)/(float)100 alpha:1];
+		imgView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 		[_scrollView addSubview:imgView];
 	}
 }

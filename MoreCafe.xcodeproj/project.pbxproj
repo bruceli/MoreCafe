@@ -23,6 +23,8 @@
 		599F3A04169006A3006397CB /* UIBarButtonItem+StyledButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 599F3A03169006A3006397CB /* UIBarButtonItem+StyledButton.m */; };
 		599F3A081690071D006397CB /* backButtom.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F3A061690071D006397CB /* backButtom.png */; };
 		599F3A091690071D006397CB /* backButtom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F3A071690071D006397CB /* backButtom@2x.png */; };
+		599F3A0C16900CBF006397CB /* rootbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F3A0A16900CBF006397CB /* rootbackground.png */; };
+		599F3A0D16900CBF006397CB /* rootbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F3A0B16900CBF006397CB /* rootbackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		599F3A03169006A3006397CB /* UIBarButtonItem+StyledButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+StyledButton.m"; path = "src/UIBarButtonItem+StyledButton.m"; sourceTree = "<group>"; };
 		599F3A061690071D006397CB /* backButtom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButtom.png; path = Resources/backButtom.png; sourceTree = "<group>"; };
 		599F3A071690071D006397CB /* backButtom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backButtom@2x.png"; path = "Resources/backButtom@2x.png"; sourceTree = "<group>"; };
+		599F3A0A16900CBF006397CB /* rootbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rootbackground.png; path = Resources/rootbackground.png; sourceTree = "<group>"; };
+		599F3A0B16900CBF006397CB /* rootbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rootbackground@2x.png"; path = "Resources/rootbackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 		599F3A01169005FC006397CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				599F3A0A16900CBF006397CB /* rootbackground.png */,
+				599F3A0B16900CBF006397CB /* rootbackground@2x.png */,
 				599F3A061690071D006397CB /* backButtom.png */,
 				599F3A071690071D006397CB /* backButtom@2x.png */,
 				599F39FD169005F8006397CB /* navbar.png */,
@@ -203,6 +209,8 @@
 				599F3A00169005F8006397CB /* navbar@2x.png in Resources */,
 				599F3A081690071D006397CB /* backButtom.png in Resources */,
 				599F3A091690071D006397CB /* backButtom@2x.png in Resources */,
+				599F3A0C16900CBF006397CB /* rootbackground.png in Resources */,
+				599F3A0D16900CBF006397CB /* rootbackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
