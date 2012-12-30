@@ -18,3 +18,5 @@ DerivedData
 .idea/
 
 .DS_Store
+
+*.xcuserstate
