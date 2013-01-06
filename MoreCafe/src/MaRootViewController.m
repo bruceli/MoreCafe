@@ -9,6 +9,7 @@
 
 #import "MaRootViewController.h"
 #import "MaSubItemController.h"
+#import "MaWeiboViewController.h"
 
 @interface MaRootViewController ()
 @end
@@ -91,10 +92,10 @@
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
 	
-    MaSubItemController* viewController = [[MaSubItemController alloc]init];
+//    MaSubItemController* viewController = [[MaSubItemController alloc]init];
 //    viewController.indexPath = indexPath;
 //    NSDictionary* dict = [_dataSourceMgr.dataSource objectAtIndex: indexPath.row];
-    viewController.navigationItem.title = @"Café";
+	MaWeiboViewController* viewController = [[MaWeiboViewController alloc]init];	
     
     [self.navigationController pushViewController: viewController animated:YES];
 }
