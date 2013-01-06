@@ -17,7 +17,8 @@
     // Override point for customization after application launch.
 	
 	MaRootViewController* controller =[[MaRootViewController alloc] init];
-    
+	_dataSourceController = [[MaDataSourceController alloc] init];
+
 	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
     [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
 	controller.navigationItem.title = @"Café";

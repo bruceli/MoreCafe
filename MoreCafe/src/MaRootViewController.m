@@ -11,12 +11,9 @@
 #import "MaSubItemController.h"
 
 @interface MaRootViewController ()
-
 @end
 
 @implementation MaRootViewController
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

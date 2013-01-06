@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MaDataSourceController.h"
 
 @interface magicappAppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+	MaDataSourceController* _dataSourceController;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @end
