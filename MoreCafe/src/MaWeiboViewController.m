@@ -8,6 +8,7 @@
 
 #import "MaWeiboViewController.h"
 #import "UIBarButtonItem+StyledButton.h"
+#import "MaWeiboCell.h"
 
 @interface MaWeiboViewController ()
 
@@ -31,6 +32,7 @@
 
 	[self initSubViews];
 	self.navigationItem.title = @"Weibo";
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
@@ -74,13 +76,19 @@
     return 15;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 250;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MaWeiboCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[MaWeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 	// Configure the cell.
 	

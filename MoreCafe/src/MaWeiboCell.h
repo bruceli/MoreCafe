@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MaWeiboCell : UITableViewCell
+@interface MaWeiboCell : UITableViewCell<DTAttributedTextContentViewDelegate>
 {
+	AsyncImageView* _userIconView;
+	UILabel* _userNameView;
+	DTAttributedTextView* _timeView;
+	DTAttributedTextView* _messageTextView;
+	AsyncImageView* _messagePictView;
 	
+	UILabel* _sourceView;
+	UILabel* _messageStatusView;
 	
+	NSDictionary* _message;
 }
 @end

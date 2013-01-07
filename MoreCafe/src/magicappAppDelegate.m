@@ -15,7 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	
+	[AsyncImageLoader sharedLoader];	
+
 	MaRootViewController* controller =[[MaRootViewController alloc] init];
 	_dataSourceController = [[MaDataSourceController alloc] init];
 
