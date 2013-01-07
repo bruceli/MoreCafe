@@ -84,7 +84,6 @@
 	[self fillText:@"<p>Surface weather analysis is a special type of weather map that provides a view of weather elements over a geographical area at a specified time </p>" to:_messageTextView];
 	_sourceView.text = @"MoreCafé";
 	_messageStatusView.text = @"Replay:10 | Comment:20";
-	
 }
 
 -(void)fillText:(NSString*)inString to:(DTAttributedTextView*)view
@@ -124,7 +123,10 @@
 
 - (void)drawBubble:(CGFloat)height
 {	
-	UIGraphicsBeginImageContext(CGSizeMake(MA_CELL_MESSAGE_WIDTH,height));
+	CGFloat scaleValue = [[UIScreen mainScreen] scale];
+
+	//UIGraphicsBeginImageContext(CGSizeMake(MA_CELL_MESSAGE_WIDTH,height));
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(MA_CELL_MESSAGE_WIDTH,height), NO, scaleValue);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	CGContextSetLineJoin(context, kCGLineJoinRound);
@@ -160,9 +162,9 @@
 */
 	CGContextClosePath(context);
 	CGContextDrawPath(context, kCGPathFillStroke);
-	
+
 	CGImageRef imgRef = CGBitmapContextCreateImage(context);
-    UIImage* img = [UIImage imageWithCGImage:imgRef];
+    UIImage* img = [UIImage imageWithCGImage:imgRef scale:scaleValue orientation:UIImageOrientationUp];
 	_messagePictView.image = img;
 
 }
