@@ -1,15 +1,20 @@
 //
-//  magicappAppDelegate.m
+//  MoreCafeAppDelegate.m
 //  MoreCafe
 //
 //  Created by Bruce Li on 12/25/12.
 //  Copyright (c) 2012 MagicApp. All rights reserved.
 //
 
-#import "magicappAppDelegate.h"
+#import "MoreCafeAppDelegate.h"
 #import "MaRootViewController.h"
+#import "MaDataSourceController.h"
+#import "MaWeiboViewController.h"
+#import "SinaWeibo.h"
 
-@implementation magicappAppDelegate
+@implementation MoreCafeAppDelegate
+@synthesize sinaweibo = _sinaweibo;
+@synthesize weiboViewController = _weiboViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,7 +33,25 @@
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+	
+	[self initSinaWeibo];
     return YES;
+}
+
+- (void) initSinaWeibo
+{
+	_weiboViewController = [[MaWeiboViewController alloc]init];	
+
+    _sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:_weiboViewController];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
+    if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] && [sinaweiboInfo objectForKey:@"UserIDKey"])
+    {
+        _sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
+        _sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
+        _sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
+		NSLog(@"%@",@"Weibo client is ready.");
+    }   
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -57,5 +80,21 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+	NSLog(@"%@",url.absoluteString);
+	
+    return [self.sinaweibo handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{	
+	NSLog(@"%@",url.absoluteString);
+	
+    return [self.sinaweibo handleOpenURL:url];
+}
+
+
 
 @end

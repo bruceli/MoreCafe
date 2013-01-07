@@ -9,6 +9,7 @@
 #import "MaWeiboViewController.h"
 #import "UIBarButtonItem+StyledButton.h"
 #import "MaWeiboCell.h"
+#import "MoreCafeAppDelegate.h"
 
 @interface MaWeiboViewController ()
 
@@ -28,8 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController)];
-
+	
+	UIImage *image = [UIImage imageNamed:@"backButtom"];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:image];
+		
 	[self initSubViews];
 	self.navigationItem.title = @"Weibo";
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -40,12 +43,18 @@
 	// Do any additional setup after loading the view.
 }
 
-
--(void) dismissViewController
+-(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+	[super viewWillAppear:animated];
+	
+	if ([self isLoggedIn]) {
+		[self logoutWeiboButtom];
+	}
+	else{
+		[self loginWeiboButtom];
+	}
 
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,6 +74,25 @@
 	[self.tableView addSubview:_refreshHeaderView];
 
 }
+
+-(void) dismissViewController
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) loginWeiboButtom
+{
+	UIImage *accountStatusImage = [UIImage imageNamed:@"needLoginIcon"];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(loginWeibo) buttomImage:accountStatusImage];
+}
+
+-(void) logoutWeiboButtom
+{
+	UIImage *accountStatusImage = [UIImage imageNamed:@"readyIcon"];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(logoutWeibo) buttomImage:accountStatusImage];
+
+}
+
 
 #pragma mark -
 #pragma mark UITableViewDataSource
@@ -157,6 +185,94 @@
 	return [NSDate date]; // should return date data source was last changed
 	
 }
+
+
+#pragma mark -
+#pragma mark SinaWeibo Staff
+-(BOOL)isLoggedIn
+{
+	SinaWeibo *sinaweibo = [self sinaweibo];
+	return  [sinaweibo isLoggedIn];
+}
+
+- (void)loginWeibo
+{
+	UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+	NSLog(@"%@", [keyWindow subviews]);
+	userInfo = nil;
+	statuses = nil;
+	
+	SinaWeibo *sinaweibo = [self sinaweibo];
+	[sinaweibo logIn];
+}
+
+-(void)logoutWeibo
+{
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    [sinaweibo logOut];
+}
+
+- (SinaWeibo *)sinaweibo
+{
+    MoreCafeAppDelegate *delegate = (MoreCafeAppDelegate *)[UIApplication sharedApplication].delegate;
+    return delegate.sinaweibo;
+}
+
+- (void)removeAuthData
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SinaWeiboAuthData"];
+}
+
+- (void)storeAuthData
+{
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    
+    NSDictionary *authData = [NSDictionary dictionaryWithObjectsAndKeys:
+                              sinaweibo.accessToken, @"AccessTokenKey",
+                              sinaweibo.expirationDate, @"ExpirationDateKey",
+                              sinaweibo.userID, @"UserIDKey",
+                              sinaweibo.refreshToken, @"refresh_token", nil];
+    [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"SinaWeiboAuthData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+#pragma mark -
+#pragma mark SinaWeibo Delegate
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
+    
+    [self logoutWeiboButtom];
+    [self storeAuthData];
+}
+
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboDidLogOut");
+    [self removeAuthData];
+    [self loginWeiboButtom];
+}
+
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    NSLog(@"sinaweiboLogInDidCancel");
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
+{
+    NSLog(@"sinaweibo logInDidFailWithError %@", error);
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
+    [self removeAuthData];
+    [self loginWeiboButtom];
+}
+
 
 
 @end

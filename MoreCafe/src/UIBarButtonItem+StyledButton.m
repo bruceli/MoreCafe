@@ -12,15 +12,9 @@
 
 @implementation UIBarButtonItem (StyledButton)
 
-+ (UIBarButtonItem *)styledBackBarImgButtonItemWithTarget:(id)target selector:(SEL)selector;
++ (UIBarButtonItem *)styledBackBarImgButtonItemWithTarget:(id)target selector:(SEL)selector buttomImage:(UIImage*)image;
 {
-	UIImage *image = [UIImage imageNamed:@"backButtom"];
-	image = [image stretchableImageWithLeftCapWidth:20.0f topCapHeight:20.0f];
-	
-//	NSString *title = NSLocalizedString(@"Back", nil);
-	
-//	CGSize imgSize = image.size;
-	
+	image = [image stretchableImageWithLeftCapWidth:20.0f topCapHeight:20.0f];	
 	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, image.size.width, image.size.height)];
 	[button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
 	[button setBackgroundImage:image forState:UIControlStateNormal];
@@ -42,8 +36,6 @@
 	CGSize textSize = [title sizeWithFont:font];
 	CGFloat margin = (button.frame.size.height - textSize.height) / 2;
 	CGFloat marginRightLeft = (button.frame.size.width - textSize.width)/2;
-	
-	
 	
 	//CGFloat marginLeft = button.frame.size.width - textSize.width - marginRight;
 	//(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)

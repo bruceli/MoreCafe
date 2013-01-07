@@ -1,8 +1,6 @@
-
-#define kAppKey             @"3872365553"
-#define kAppSecret          @"4f9eb7ad785fc55340ef5207867fb048"
+#define kAppKey             @"3111231318"
+#define kAppSecret          @"ade7c8775fcb3b823438d83e290db108"
 #define kAppRedirectURI     @"http://google.com.hk"
-
 
 
 #define MA_CELL_GAP 5

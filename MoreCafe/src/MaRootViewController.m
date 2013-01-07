@@ -10,6 +10,7 @@
 #import "MaRootViewController.h"
 #import "MaSubItemController.h"
 #import "MaWeiboViewController.h"
+#import "MoreCafeAppDelegate.h"
 
 @interface MaRootViewController ()
 @end
@@ -95,9 +96,9 @@
 //    MaSubItemController* viewController = [[MaSubItemController alloc]init];
 //    viewController.indexPath = indexPath;
 //    NSDictionary* dict = [_dataSourceMgr.dataSource objectAtIndex: indexPath.row];
-	MaWeiboViewController* viewController = [[MaWeiboViewController alloc]init];	
-    
-    [self.navigationController pushViewController: viewController animated:YES];
+	
+	MoreCafeAppDelegate* app = (MoreCafeAppDelegate *)[[UIApplication sharedApplication] delegate];    
+    [self.navigationController pushViewController: app.weiboViewController animated:YES];
 }
 
 

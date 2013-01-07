@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIBarButtonItem (StyledButton)
-+ (UIBarButtonItem *)styledBackBarImgButtonItemWithTarget:(id)target selector:(SEL)selector;
++ (UIBarButtonItem *)styledBackBarImgButtonItemWithTarget:(id)target selector:(SEL)selector buttomImage:(UIImage*)image;
 + (UIBarButtonItem *)styledBackBarButtonItemWithTarget:(id)target selector:(SEL)selector;
 + (UIBarButtonItem *)styledCancelBarButtonItemWithTarget:(id)target selector:(SEL)selector;
 + (UIBarButtonItem *)styledSubmitBarButtonItemWithTitle:(NSString *)title target:(id)target selector:(SEL)selector;

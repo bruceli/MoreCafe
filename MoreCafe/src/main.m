@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "magicappAppDelegate.h"
+#import "MoreCafeAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([magicappAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([MoreCafeAppDelegate class]));
     }
 }
