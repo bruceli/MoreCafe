@@ -23,6 +23,8 @@
 	//Weibo stuff
 	NSDictionary *userInfo;
     NSArray *statuses;
+    NSString *postStatusText;
+    NSString *postImageStatusText;
 
 	
 }

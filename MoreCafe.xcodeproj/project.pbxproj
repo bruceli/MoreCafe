@@ -37,6 +37,7 @@
 		59AC4B0F169B3E250034919E /* readyIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59AC4B0B169B3E250034919E /* readyIcon.png */; };
 		59AC4B10169B3E250034919E /* needLoginIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59AC4B0C169B3E250034919E /* needLoginIcon.png */; };
 		59AC4B2E169B42430034919E /* MoreCafeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AC4B2D169B42430034919E /* MoreCafeAppDelegate.m */; };
+		59AC4B38169B5E540034919E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AC4B37169B5E540034919E /* Accounts.framework */; };
 		59AE4CEF16996D2D007D7C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE4CEE16996D2D007D7C99 /* main.m */; };
 		59AE4CF216996D50007D7C99 /* MaDataSourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE4CF116996D50007D7C99 /* MaDataSourceController.m */; };
 		59AE4CF616996D9F007D7C99 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE4CF516996D9F007D7C99 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -158,6 +159,7 @@
 		59AC4B0C169B3E250034919E /* needLoginIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = needLoginIcon.png; path = Resources/needLoginIcon.png; sourceTree = "<group>"; };
 		59AC4B2C169B42430034919E /* MoreCafeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCafeAppDelegate.h; path = src/MoreCafeAppDelegate.h; sourceTree = "<group>"; };
 		59AC4B2D169B42430034919E /* MoreCafeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCafeAppDelegate.m; path = src/MoreCafeAppDelegate.m; sourceTree = "<group>"; };
+		59AC4B37169B5E540034919E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		59AE4CEE16996D2D007D7C99 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
 		59AE4CF016996D50007D7C99 /* MaDataSourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaDataSourceController.h; path = src/MaDataSourceController.h; sourceTree = "<group>"; };
 		59AE4CF116996D50007D7C99 /* MaDataSourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaDataSourceController.m; path = src/MaDataSourceController.m; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				59AC4A9C169A83460034919E /* CoreText.framework in Frameworks */,
 				59AC4AA2169A8FB20034919E /* ImageIO.framework in Frameworks */,
 				59AC4AA4169A8FD80034919E /* MobileCoreServices.framework in Frameworks */,
+				59AC4B38169B5E540034919E /* Accounts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +238,7 @@
 		263DFB231689346300C02B37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59AC4B37169B5E540034919E /* Accounts.framework */,
 				59AC4A9F169A8E470034919E /* libxml2.dylib */,
 				59AC4AA3169A8FD80034919E /* MobileCoreServices.framework */,
 				59AC4AA1169A8FB20034919E /* ImageIO.framework */,

@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+StyledButton.h"
 #import "MaWeiboCell.h"
 #import "MoreCafeAppDelegate.h"
+#import "Accounts/Accounts.h"
 
 @interface MaWeiboViewController ()
 
@@ -36,11 +37,6 @@
 	[self initSubViews];
 	self.navigationItem.title = @"Weibo";
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
-
-	// Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -56,6 +52,25 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
+	// Do any additional setup after loading the view.
+	[self loadTimeLine];
+	[self testACAccount];
+
+}
+
+-(void)testACAccount
+{
+	ACAccountStore *store = [[ACAccountStore alloc] init]; 
+	ACAccountType *twitterType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierSinaWeibo];
+	
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -64,8 +79,6 @@
 
 - (void)initSubViews
 {
-//	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];	
-//	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - self.navigationController.navigationBar.frame.size.height);
 	self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rootbackground"]];
 	
 	_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
@@ -130,6 +143,7 @@
 	
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
+	[self loadTimeLine];
 	_reloading = YES;
 	
 }
@@ -236,6 +250,14 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)loadTimeLine
+{
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    [sinaweibo requestWithURL:@"statuses/user_timeline.json"
+                       params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
+                   httpMethod:@"GET"
+                     delegate:self];
+}
 
 #pragma mark -
 #pragma mark SinaWeibo Delegate
@@ -271,6 +293,73 @@
     NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
     [self removeAuthData];
     [self loginWeiboButtom];
+}
+
+#pragma mark - SinaWeiboRequest Delegate 
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+	[self doneLoadingTableViewData];
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+		userInfo = nil;
+    }
+    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
+    {
+        statuses = nil;
+    }
+    else if ([request.url hasSuffix:@"statuses/update.json"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:[NSString stringWithFormat:@"Post status \"%@\" failed!", postStatusText]
+                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+        [alertView release];
+        
+        NSLog(@"Post status failed with error : %@", error);
+    }
+    else if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" failed!", postImageStatusText]
+                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+        [alertView release];
+        
+        NSLog(@"Post image status failed with error : %@", error);
+    }
+    
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+	[self doneLoadingTableViewData];
+
+    if ([request.url hasSuffix:@"users/show.json"])
+    {
+        userInfo = result;
+    }
+    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
+    {
+        statuses = [result objectForKey:@"statuses"];
+    }
+    else if ([request.url hasSuffix:@"statuses/update.json"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:[NSString stringWithFormat:@"Post status \"%@\" succeed!", [result objectForKey:@"text"]]
+                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];		
+		postStatusText = nil;
+    }
+    else if ([request.url hasSuffix:@"statuses/upload.json"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" succeed!", [result objectForKey:@"text"]]
+                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+        [alertView release];
+        
+        postImageStatusText = nil;
+    }
 }
 
 
