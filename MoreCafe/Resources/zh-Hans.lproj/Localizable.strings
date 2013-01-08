@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  MoreCafe
+
+  Created by Thunder on 1/8/13.
+  Copyright (c) 2013 MagicApp. All rights reserved.
+*/
+"%d hours ago" = "%1$d 小时前";
+
+"%d minutes ago" = "%1$d 分钟前";
+
+"%d of %d" = "%1$d/%2$d";
+
+"%d seconds ago" = "%1$d 秒前";
+
+"%dd" = "%1$d 天 ";
+
+"%dh" = "%1$d 小时";
+
+"%dm" = "%1$d 分钟";
+
+"<1m" = "< 1 分钟";
+
+"about a minute ago" = "约 1 分钟前";
+
+"about an hour ago" = "约 1 小时前";
+
+"EEE h:mm a" = "EEEEHH：mm";
+
+"EEEE" = "EEEE";
+
+"EEEE, LLLL d, YYYY" = "YYYY年MMMMd日EEEE";
+
+"h:mm a" = "HH：mm";
+
+"just a moment ago" = "不久前";
+
+"M/d/yy" = "yyyy/MM/dd";
+
+"MMM d h:mm a" = "MMMMd日HH：mm";
+
+"MMMM" = "MMMM";
+
+"MMMM d" = "MMMMd日";
+
+"Today" = "今天";
+
+"Yesterday" = "昨天";
+
+"yyyy" = "yyyyy年";
+

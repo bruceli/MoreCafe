@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  MoreCafe
+
+  Created by Thunder on 1/8/13.
+  Copyright (c) 2013 MagicApp. All rights reserved.
+*/
+"%d hours ago" = "%d hours ago";
+
+"%d minutes ago" = "%d minutes ago";
+
+"%d seconds ago" = "%d seconds ago";
+
+/* Date format: 3d */
+"%dd" = "%dd";
+
+/* Date format: 3h */
+"%dh" = "%dh";
+
+/* Date format: 50m */
+"%dm" = "%dm";
+
+/* Date format: less than one minute ago */
+"<1m" = "<1m";
+
+/* Date format: Mon 1:05 pm */
+"EEE h:mm a" = "EEE h:mm a";
+
+/* Date format: Monday */
+"EEEE" = "EEEE";
+
+/* Date format: Monday, July 27, 2009 */
+"EEEE, LLLL d, YYYY" = "EEEE, LLLL d, YYYY";
+
+/* Date format: 7/27/09 */
+"M/d/yy" = "M/d/yy";
+
+/* Date format: Jul 27 1:05 pm */
+"MMM d h:mm a" = "MMM d h:mm a";
+
+/* Date format: July */
+"MMMM" = "MMMM";
+
+/* Date format: July 27 */
+"MMMM d" = "MMMM d";
+
+"Today" = "Today";
+
+"Yesterday" = "Yesterday";
+
+"about a minute ago" = "about a minute ago";
+
+"about an hour ago" = "about an hour ago";
+
+/* Date format: 1:05 pm */
+"h:mm a" = "h:mm a";
+
+"just a moment ago" = "just a moment ago";
+
+/* Date format: 2009 */
+"yyyy" = "yyyy";

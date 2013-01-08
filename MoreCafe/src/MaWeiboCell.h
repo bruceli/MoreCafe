@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MaTimeLabel;
 
 @interface MaWeiboCell : UITableViewCell<DTAttributedTextContentViewDelegate>
 {
 	AsyncImageView* _userIconView;
 	UILabel* _userNameView;
-	DTAttributedTextView* _timeView;
+	MaTimeLabel* _timeView;
 	DTAttributedTextView* _messageTextView;
 	AsyncImageView* _messagePictView;
 	

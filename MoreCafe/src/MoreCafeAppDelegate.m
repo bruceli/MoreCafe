@@ -15,6 +15,7 @@
 @implementation MoreCafeAppDelegate
 @synthesize sinaweibo = _sinaweibo;
 @synthesize weiboViewController = _weiboViewController;
+static int _networkActivityIndicatorCounter = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -93,6 +94,19 @@
 	NSLog(@"%@",url.absoluteString);
 	
     return [self.sinaweibo handleOpenURL:url];
+}
+
+
++ (void) increaseNetworkActivityIndicator
+{
+	_networkActivityIndicatorCounter++;
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = _networkActivityIndicatorCounter > 0;
+}
+
++ (void) decreaseNetworkActivityIndicator
+{
+	_networkActivityIndicatorCounter--;
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = _networkActivityIndicatorCounter > 0;
 }
 
 

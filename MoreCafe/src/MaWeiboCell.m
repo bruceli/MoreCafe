@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 MagicApp. All rights reserved.
 //
 #import "MaWeiboCell.h"
+#import "MaTimeLabel.h"
 
 @implementation MaWeiboCell
 
@@ -46,10 +47,11 @@
 	_userIconView = [[AsyncImageView alloc]initWithFrame:CGRectMake(MA_CELL_GAP, MA_CELL_GAP, MA_CELL_IMG_SIZE, MA_CELL_IMG_SIZE)];
 	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP * 2, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
 	
-	_timeView = [[DTAttributedTextView alloc] initWithFrame:CGRectMake(_userNameView.frame.origin.x+_userNameView.frame.size.width +MA_CELL_GAP , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
-	_timeView.textDelegate = self;
+	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.origin.x+_userNameView.frame.size.width +MA_CELL_GAP , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
 	_timeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-
+	//	[_timeView initWithCreateTime:item.creatTime];
+	//	[_timeView refreshLabel];	
+	
 	_messageTextView = [[DTAttributedTextView alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP * 2, _userNameView.frame.origin.y + MA_CELL_NAME_HEIGHT + MA_CELL_GAP, MA_CELL_MESSAGE_WIDTH, MA_CELL_MESSAGE_HEIGHT)];
 	_messageTextView.textDelegate = self;
 	_messageTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -80,7 +82,7 @@
 {
 	[_userIconView setImageByString:@"b.jpeg"];
 	_userNameView.text = @"MoreCafé";
-	[self fillText:@"<p>10月10日 23:00</p>" to:_timeView];
+	_timeView.text = @"10月10日 23:00";
 	[self fillText:@"<p>Surface weather analysis is a special type of weather map that provides a view of weather elements over a geographical area at a specified time </p>" to:_messageTextView];
 	_sourceView.text = @"MoreCafé";
 	_messageStatusView.text = @"Replay:10 | Comment:20";

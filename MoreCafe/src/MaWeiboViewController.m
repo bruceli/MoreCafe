@@ -59,15 +59,13 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
 	// Do any additional setup after loading the view.
-	[self loadTimeLine];
-	[self testACAccount];
-
+	[self loadTimeLine];	
 }
 
 -(void)testACAccount
 {
-	ACAccountStore *store = [[ACAccountStore alloc] init]; 
-	ACAccountType *twitterType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierSinaWeibo];
+//	ACAccountStore *store = [[ACAccountStore alloc] init]; 
+//	ACAccountType *twitterType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierSinaWeibo];
 	
 }
 
@@ -189,15 +187,11 @@
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-	
 	return _reloading; // should return if data source model is reloading
-	
 }
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-	
 	return [NSDate date]; // should return date data source was last changed
-	
 }
 
 
@@ -211,13 +205,14 @@
 
 - (void)loginWeibo
 {
-	UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-	NSLog(@"%@", [keyWindow subviews]);
+//	UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+//	NSLog(@"%@", [keyWindow subviews]);
 	userInfo = nil;
 	statuses = nil;
 	
 	SinaWeibo *sinaweibo = [self sinaweibo];
 	[sinaweibo logIn];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
 }
 
 -(void)logoutWeibo
@@ -252,11 +247,18 @@
 
 - (void)loadTimeLine
 {
+	if (![self isLoggedIn]) 
+	{
+		NSLog(@"%@",@"Weibo token expired... ");
+		return;
+	}
     SinaWeibo *sinaweibo = [self sinaweibo];
     [sinaweibo requestWithURL:@"statuses/user_timeline.json"
                        params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
                    httpMethod:@"GET"
                      delegate:self];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
+
 }
 
 #pragma mark -
@@ -268,6 +270,8 @@
     
     [self logoutWeiboButtom];
     [self storeAuthData];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
 }
 
 - (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo
@@ -285,6 +289,7 @@
 
 - (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
 {
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
     NSLog(@"sinaweibo logInDidFailWithError %@", error);
 }
 
@@ -299,6 +304,8 @@
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
 	[self doneLoadingTableViewData];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
     if ([request.url hasSuffix:@"users/show.json"])
     {
 		userInfo = nil;
@@ -333,6 +340,7 @@
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
 	[self doneLoadingTableViewData];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
 
     if ([request.url hasSuffix:@"users/show.json"])
     {

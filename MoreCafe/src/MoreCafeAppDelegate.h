@@ -22,4 +22,7 @@
 @property (readonly, nonatomic) SinaWeibo *sinaweibo;
 @property (readonly, nonatomic) MaWeiboViewController *weiboViewController;
 
++ (void) increaseNetworkActivityIndicator;
++ (void) decreaseNetworkActivityIndicator;
+
 @end

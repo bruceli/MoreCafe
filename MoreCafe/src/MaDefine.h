@@ -22,5 +22,12 @@
 #define MA_CELL_MESSAGE_X_DELTA_OF_POPUP_TRIANGLE 15
 #define MA_CELL_MESSAGE_X_BORDER 3
 #define MA_CELL_MESSAGE_Y_BORDER 9
-
 #define MA_CELL_MESSAGE_BORDER_RADIUS 3
+
+#define MA_MINUTE 60
+#define MA_HOUR   (60 * MA_MINUTE)
+#define MA_DAY    (24 * MA_HOUR)
+#define MA_5_DAYS (5 * MA_DAY)
+#define MA_WEEK   (7 * MA_DAY)
+#define MA_MONTH  (30.5 * MA_DAY)
+#define MA_YEAR   (365 * MA_DAY)
