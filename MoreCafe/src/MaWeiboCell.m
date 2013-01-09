@@ -45,19 +45,19 @@
  UILabel* _messageStatusView;
 	 */
 	_userIconView = [[AsyncImageView alloc]initWithFrame:CGRectMake(MA_CELL_GAP, MA_CELL_GAP, MA_CELL_IMG_SIZE, MA_CELL_IMG_SIZE)];
-	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP * 2, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
+	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
 	
 	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.origin.x+_userNameView.frame.size.width +MA_CELL_GAP , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
 	_timeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	//	[_timeView initWithCreateTime:item.creatTime];
 	//	[_timeView refreshLabel];	
 	
-	_messageTextView = [[DTAttributedTextView alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP * 2, _userNameView.frame.origin.y + MA_CELL_NAME_HEIGHT + MA_CELL_GAP, MA_CELL_MESSAGE_WIDTH, MA_CELL_MESSAGE_HEIGHT)];
+	_messageTextView = [[DTAttributedTextView alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, _userNameView.frame.origin.y + MA_CELL_NAME_HEIGHT + MA_CELL_GAP, MA_CELL_MESSAGE_WIDTH, MA_CELL_MESSAGE_HEIGHT)];
 	_messageTextView.textDelegate = self;
 	_messageTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_messageTextView.backgroundColor = [UIColor clearColor];
 	
-	_messagePictView = [[AsyncImageView alloc]initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP * 2, _messageTextView.frame.origin.y + 60 + MA_CELL_GAP,  270, 110)];
+	_messagePictView = [[AsyncImageView alloc]initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, _messageTextView.frame.origin.y + 60 + MA_CELL_GAP,  270, 110)];
 //	_messagePictView.backgroundColor = [UIColor orangeColor];
 	
 	_sourceView = [[UILabel alloc]initWithFrame:CGRectZero];
