@@ -127,7 +127,7 @@
 	NSDictionary* retweets = [dict objectForKey:@"retweeted_status"];; 
 	if (retweets) {
 		CGFloat retweetHeight = [MaUtility estimateHeightBy:[retweets objectForKey:@"text"] image:[retweets objectForKey:@"thumbnail_pic"]];
-		height += retweetHeight;
+		height = retweetHeight + height + MA_CELL_GAP*6;
 	}
 	
 	return height;

@@ -115,7 +115,36 @@
 	_bubbleView = nil;	
 	_bubbleView = [[UIImageView alloc] initWithImage:img];
 	[self addSubview:_bubbleView];
+
 }
+
+- (void)fillBubbleBy:retweetMsgText image:retweetImgURL
+{
+	DTAttributedTextView* rtMsgTextView;
+	AsyncImageView* rtImageView;
+	rtMsgTextView = [[DTAttributedTextView alloc] initWithFrame:CGRectMake(7,MA_CELL_GAP,MA_CELL_MESSAGE_RETANGLE_TEXT_WIDTH,20)];
+	rtMsgTextView.textDelegate = self;
+	rtMsgTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	rtMsgTextView.backgroundColor = [UIColor clearColor];
+	rtMsgTextView.scrollEnabled = NO;
+	NSString* string = [MaUtility encodeingText:retweetMsgText]; 
+	[MaUtility fillText:string to:rtMsgTextView];
+	[_bubbleView addSubview:rtMsgTextView];
+	
+	CGSize textViewSize = [rtMsgTextView.contentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:MA_CELL_MESSAGE_RETANGLE_TEXT_WIDTH];
+	
+	CGFloat height = textViewSize.height;
+	rtMsgTextView.frame = CGRectMake(rtMsgTextView.frame.origin.x, rtMsgTextView.frame.origin.y, rtMsgTextView.frame.size.width, height);
+	
+	if ([retweetImgURL length]>0) {
+		rtImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(rtMsgTextView.frame.origin.x, rtMsgTextView.frame.origin.y + height + MA_CELL_GAP*2, MA_CELL_MESSAGE_PICT_SIZE, MA_CELL_MESSAGE_PICT_SIZE)];
+		rtImageView.contentMode = UIViewContentModeScaleAspectFit;
+		[rtImageView setImageByString:retweetImgURL];
+		[_bubbleView addSubview:rtImageView];
+
+	}
+}
+
 
 -(void) fillCellDataWith:(NSDictionary*)detail
 {
@@ -168,9 +197,10 @@
 	
 	if (retweets) {
 		CGFloat height = [MaUtility estimateHeightBy:retweetMsgText image:retweetImgURL];
-		height += MA_CELL_GAP*2;
+		height += MA_CELL_GAP*6;
 		[self drawBubble:height];
 		_bubbleView.frame = CGRectMake(_messageTextView.frame.origin.x,_messageTextView.frame.origin.y + _messageTextView.frame.size.height, _bubbleView.frame.size.width,_bubbleView.frame.size.height);
+		[self fillBubbleBy:retweetMsgText image:retweetImgURL];
 	}
 	else
 		[_bubbleView removeFromSuperview];
