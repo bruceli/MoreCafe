@@ -58,12 +58,12 @@
 
 	[self addSubview:_userIconView];
 	[self addSubview:_userNameView];
-
 	[self addSubview:_timeView];
 	[self addSubview:_messageTextView];
 	[self addSubview:_messagePictView];
 	[self addSubview:_sourceView];
 	[self addSubview:_messageStatusView];
+
 //	[self drawBubble:MA_CELL_MESSAGE_HEIGHT];
 }
 
@@ -107,7 +107,14 @@
 
 	CGImageRef imgRef = CGBitmapContextCreateImage(context);
     UIImage* img = [UIImage imageWithCGImage:imgRef scale:scaleValue orientation:UIImageOrientationUp];
+	
+	if([_bubbleView isDescendantOfView:self])
+	{
+		[_bubbleView removeFromSuperview];
+	}
+	_bubbleView = nil;	
 	_bubbleView = [[UIImageView alloc] initWithImage:img];
+	[self addSubview:_bubbleView];
 }
 
 -(void) fillCellDataWith:(NSDictionary*)detail
@@ -162,17 +169,12 @@
 	if (retweets) {
 		CGFloat height = [MaUtility estimateHeightBy:retweetMsgText image:retweetImgURL];
 		height += MA_CELL_GAP*2;
-		NSLog(@"_bubbleView height is: %f", height);
-
 		[self drawBubble:height];
 		_bubbleView.frame = CGRectMake(_messageTextView.frame.origin.x,_messageTextView.frame.origin.y + _messageTextView.frame.size.height, _bubbleView.frame.size.width,_bubbleView.frame.size.height);
-		
-		if(!([_bubbleView isDescendantOfView:self])) { 
-			[self addSubview:_bubbleView];
-		}		
 	}
 	else
 		[_bubbleView removeFromSuperview];
+
 }
 
 -(void)adjustViewsBelowMessageTextView
