@@ -21,8 +21,8 @@
 	BOOL _reloading;
 
 	//Weibo stuff
-	NSDictionary *userInfo;
-    NSArray *statuses;
+	NSDictionary *_userInfo;
+    NSArray *_messages;
     NSString *postStatusText;
     NSString *postImageStatusText;
 

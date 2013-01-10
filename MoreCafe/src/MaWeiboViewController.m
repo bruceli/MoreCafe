@@ -11,6 +11,7 @@
 #import "MaWeiboCell.h"
 #import "MoreCafeAppDelegate.h"
 #import "Accounts/Accounts.h"
+#import "MaUtility.h"
 
 @interface MaWeiboViewController ()
 
@@ -22,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+		_messages = [[NSArray alloc]init];
     }
     return self;
 }
@@ -36,7 +37,7 @@
 		
 	[self initSubViews];
 	self.navigationItem.title = NSLocalizedString(@"Weibo", nil);
-	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -112,13 +113,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;
+    return [_messages count];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 250;
+{	
+	CGFloat height;	
+	NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
+	height = [MaUtility estimateHeightBy:[dict objectForKey:@"text"] image:[dict objectForKey:@"thumbnail_pic"]];
+	height += MA_CELL_MIN_HEIGHT;
+	
+	NSDictionary* retweets = [dict objectForKey:@"retweeted_status"];; 
+	if (retweets) {
+		CGFloat retweetHeight = [MaUtility estimateHeightBy:[retweets objectForKey:@"text"] image:[retweets objectForKey:@"thumbnail_pic"]];
+		height += retweetHeight;
+	}
+	
+	return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,11 +140,17 @@
     MaWeiboCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[MaWeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+	}
+	   
+	NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
+	[cell fillCellDataWith: dict];
+
 	// Configure the cell.
 	
     return cell;
 }
+
+
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
@@ -207,8 +225,8 @@
 {
 //	UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
 //	NSLog(@"%@", [keyWindow subviews]);
-	userInfo = nil;
-	statuses = nil;
+	_userInfo = nil;
+	_messages = nil;
 	
 	SinaWeibo *sinaweibo = [self sinaweibo];
 	[sinaweibo logIn];
@@ -253,8 +271,9 @@
 		return;
 	}
     SinaWeibo *sinaweibo = [self sinaweibo];
-    [sinaweibo requestWithURL:@"statuses/user_timeline.json"
-                       params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
+    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
+                      // params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
+                       params:nil 
                    httpMethod:@"GET"
                      delegate:self];
 	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
@@ -308,11 +327,11 @@
 
     if ([request.url hasSuffix:@"users/show.json"])
     {
-		userInfo = nil;
+		_userInfo = nil;
     }
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
-        statuses = nil;
+        _messages = nil;
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {
@@ -344,11 +363,16 @@
 
     if ([request.url hasSuffix:@"users/show.json"])
     {
-        userInfo = result;
+        _userInfo = result;
     }
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
-        statuses = [result objectForKey:@"statuses"];
+        _messages = [result objectForKey:@"statuses"];
+    }
+	else if ([request.url hasSuffix:@"statuses/home_timeline.json"])
+    {
+        _messages = [result objectForKey:@"statuses"];
+		[self.tableView reloadData];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {

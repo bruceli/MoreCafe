@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>kMA_PARAGRPH_HEADER</key>
+	<string>&lt;p </string>
+	<key>kMA_PARAGRPH_END</key>
+	<string> &lt;/p&gt;</string>
+	<key>kMA_PARAGRPH_MARK</key>
+	<string>&lt;/p&gt; &lt;p</string>
+	<key>kMA_MESSAGE_BODY_STYLE</key>
+	<string> style=&quot;font-size:14px;line-height:20px;color:rgb(100, 100, 100);&quot;&gt;</string>
+	<key>kMA_LIST_HEADER</key>
+	<string>&lt;ul </string>
+	<key>kMA_LIST_END</key>
+	<string> &lt;/ul&gt;</string>
+	<key>kMA_ITEM_HEADER</key>
+	<string>&lt;li&gt; </string>
+	<key>kMA_ITEM_END</key>
+	<string> &lt;/li&gt;</string>
+</dict>
+</plist>

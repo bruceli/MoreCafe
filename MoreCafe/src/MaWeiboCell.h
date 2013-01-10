@@ -16,10 +16,15 @@
 	MaTimeLabel* _timeView;
 	DTAttributedTextView* _messageTextView;
 	AsyncImageView* _messagePictView;
+	UIImageView* _customSeperator;
+	UIImageView* _bubbleView;
 	
 	UILabel* _sourceView;
 	UILabel* _messageStatusView;
 	
 	NSDictionary* _message;
 }
+
+-(void) fillCellDataWith:(NSDictionary*)dict;
+
 @end

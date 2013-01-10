@@ -13,6 +13,8 @@
 		263DFB371689346300C02B37 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 263DFB361689346300C02B37 /* Default.png */; };
 		263DFB391689346300C02B37 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 263DFB381689346300C02B37 /* Default@2x.png */; };
 		263DFB3B1689346300C02B37 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 263DFB3A1689346300C02B37 /* Default-568h@2x.png */; };
+		590974CD169E9E8E0035A0B7 /* MaUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 590974CC169E9E8E0035A0B7 /* MaUtility.m */; };
+		590974DF169E9FFA0035A0B7 /* css.plist in Resources */ = {isa = PBXBuildFile; fileRef = 590974DE169E9FFA0035A0B7 /* css.plist */; };
 		59117931169C18650043858B /* MaTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59117930169C18650043858B /* MaTimeLabel.m */; };
 		591179DF169C19FA0043858B /* NSDate+MaDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 591179DE169C19FA0043858B /* NSDate+MaDate.m */; };
 		59117A1E169C21D20043858B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59117A20169C21D20043858B /* Localizable.strings */; };
@@ -134,6 +136,9 @@
 		263DFB361689346300C02B37 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		263DFB381689346300C02B37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		263DFB3A1689346300C02B37 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		590974CB169E9E8E0035A0B7 /* MaUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaUtility.h; path = src/MaUtility.h; sourceTree = "<group>"; };
+		590974CC169E9E8E0035A0B7 /* MaUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaUtility.m; path = src/MaUtility.m; sourceTree = "<group>"; };
+		590974DE169E9FFA0035A0B7 /* css.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = css.plist; path = Resources/css.plist; sourceTree = "<group>"; };
 		5911792F169C18650043858B /* MaTimeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaTimeLabel.h; path = src/MaTimeLabel.h; sourceTree = "<group>"; };
 		59117930169C18650043858B /* MaTimeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaTimeLabel.m; path = src/MaTimeLabel.m; sourceTree = "<group>"; };
 		591179DD169C19FA0043858B /* NSDate+MaDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+MaDate.h"; path = "src/NSDate+MaDate.h"; sourceTree = "<group>"; };
@@ -303,7 +308,6 @@
 				59F24AB01699E1560068035E /* blueArrow@2x.png */,
 				59AC4AA5169A909F0034919E /* cell_seperator.png */,
 				59AC4AA6169A909F0034919E /* cell_seperator@2x.png */,
-				59AE4D12169976E3007D7C99 /* dataFile.plist */,
 				59F24AB11699E1560068035E /* grayArrow.png */,
 				59F24AB21699E1560068035E /* grayArrow@2x.png */,
 				59AC4B01169AD0200034919E /* icon.png */,
@@ -326,6 +330,8 @@
 		599F3A05169006AA006397CB /* MaBase */ = {
 			isa = PBXGroup;
 			children = (
+				590974CB169E9E8E0035A0B7 /* MaUtility.h */,
+				590974CC169E9E8E0035A0B7 /* MaUtility.m */,
 				59F24AD5169A01DC0068035E /* MaWeiboCell.h */,
 				59F24AD6169A01DC0068035E /* MaWeiboCell.m */,
 				5911792F169C18650043858B /* MaTimeLabel.h */,
@@ -367,6 +373,8 @@
 		59AE4D111699769A007D7C99 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				59AE4D12169976E3007D7C99 /* dataFile.plist */,
+				590974DE169E9FFA0035A0B7 /* css.plist */,
 				59AE4CF016996D50007D7C99 /* MaDataSourceController.h */,
 				59AE4CF116996D50007D7C99 /* MaDataSourceController.m */,
 			);
@@ -562,6 +570,7 @@
 				59AC4B10169B3E250034919E /* needLoginIcon.png in Resources */,
 				59117A1E169C21D20043858B /* Localizable.strings in Resources */,
 				59117A24169C233F0043858B /* InfoPlist.strings in Resources */,
+				590974DF169E9FFA0035A0B7 /* css.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +597,7 @@
 				59AC4B2E169B42430034919E /* MoreCafeAppDelegate.m in Sources */,
 				59117931169C18650043858B /* MaTimeLabel.m in Sources */,
 				591179DF169C19FA0043858B /* NSDate+MaDate.m in Sources */,
+				590974CD169E9E8E0035A0B7 /* MaUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

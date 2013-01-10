@@ -12,4 +12,6 @@
 {
 	NSTimeInterval createTime;
 }
+-(void)initWithCreateTime:(NSString*)inTime;
+-(void)refreshLabel;
 @end
