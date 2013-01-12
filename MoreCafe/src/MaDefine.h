@@ -3,15 +3,15 @@
 #define kAppRedirectURI     @"http://google.com.hk"
 
 
-#define MA_CELL_MIN_HEIGHT 60.0f
+#define MA_CELL_MIN_HEIGHT 55.0f
 
 #define MA_CELL_GAP 5
 #define MA_CELL_IMG_SIZE 48
 
-#define MA_CELL_NAME_WIDTH 150
+#define MA_CELL_NAME_WIDTH 160
 #define MA_CELL_NAME_HEIGHT 20
 
-#define MA_CELL_TIME_WIDTH 100
+#define MA_CELL_TIME_WIDTH 90
 #define MA_CELL_TIME_HEIGHT 15
 
 #define MA_CELL_MESSAGE_WIDTH 250
@@ -29,6 +29,7 @@
 #define MA_CELL_MESSAGE_BORDER_RADIUS 3
 #define MA_CELL_MESSAGE_RETANGLE_TEXT_WIDTH 240
 
+#define MA_CELL_STATUS_WIDTH 150
 
 #define MA_MINUTE 60
 #define MA_HOUR   (60 * MA_MINUTE)

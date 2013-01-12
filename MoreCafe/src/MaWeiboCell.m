@@ -27,10 +27,10 @@
 	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
 	_userNameView.backgroundColor = [UIColor clearColor];
 	_userNameView.textColor = [UIColor darkGrayColor];
-    _userNameView.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:18.0f];
+    _userNameView.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:16.0f];
 
 
-	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.origin.x+_userNameView.frame.size.width +MA_CELL_GAP , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
+	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.size.width + 60  , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
 	_timeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_timeView.backgroundColor = [UIColor clearColor];
 	_timeView.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
@@ -50,8 +50,23 @@
 //	_messagePictView.backgroundColor = [UIColor orangeColor];
 	
 	_sourceView = [[UILabel alloc]initWithFrame:CGRectZero];
+	_sourceView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	_sourceView.backgroundColor = [UIColor clearColor];
+	_sourceView.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+	_sourceView.textAlignment = NSTextAlignmentLeft;
+	_sourceView.highlightedTextColor = [UIColor whiteColor];
+	_sourceView.textColor = [UIColor lightGrayColor];
+	_sourceView.opaque = NO;
+
 	_messageStatusView = [[UILabel alloc]initWithFrame:CGRectZero];
-	
+	_messageStatusView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	_messageStatusView.backgroundColor = [UIColor clearColor];
+	_messageStatusView.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+	_messageStatusView.textAlignment = NSTextAlignmentRight;
+	_messageStatusView.highlightedTextColor = [UIColor whiteColor];
+	_messageStatusView.textColor = [UIColor lightGrayColor];
+	_messageStatusView.opaque = NO;
+
 	_customSeperator=[[UIImageView alloc]initWithFrame:CGRectMake(0, 248, 320, 2)];
 	_customSeperator.image = [UIImage imageNamed:@"cell_seperator"];
 //	[self addSubview:_customSeperator];  
@@ -196,14 +211,47 @@
 		[_messagePictView removeFromSuperview];
 	
 	if (retweets) {
-		CGFloat height = [MaUtility estimateHeightBy:retweetMsgText image:retweetImgURL];
+		// Add comment name string
+		NSMutableString* result = [[NSMutableString alloc]init];
+		NSDictionary* user = [retweets objectForKey:@"user"];  
+		NSString* displayName = [user objectForKey:@"name"] ;
+        if(displayName)
+        {
+			[result appendString:@"@"];
+            [result appendString:displayName];
+            [result appendString:@": "];
+			[result appendString:retweetMsgText];
+        }
+		
+		CGFloat height = [MaUtility estimateHeightBy:result image:retweetImgURL];
 		height += MA_CELL_GAP*6;
 		[self drawBubble:height];
 		_bubbleView.frame = CGRectMake(_messageTextView.frame.origin.x,_messageTextView.frame.origin.y + _messageTextView.frame.size.height, _bubbleView.frame.size.width,_bubbleView.frame.size.height);
-		[self fillBubbleBy:retweetMsgText image:retweetImgURL];
+		
+		[self fillBubbleBy:result image:retweetImgURL];
 	}
 	else
 		[_bubbleView removeFromSuperview];
+	
+	CGFloat totalHeight;
+	if (retweets)
+		totalHeight = _bubbleView.frame.origin.y + _bubbleView.frame.size.height;
+	else if ([msgImageURL length]>0)
+		totalHeight = _messagePictView.frame.origin.y + _messagePictView.frame.size.height;
+	else 
+		totalHeight = _messageTextView.frame.origin.y + _messageTextView.frame.size.height;
+	
+	NSString* srcString = [detail objectForKey:@"source"];
+	NSString* sourceAppString = [self getSourceStringform:srcString];
+	_sourceView.frame = CGRectMake(_userNameView.frame.origin.x, totalHeight+MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT);
+	_sourceView.text = sourceAppString;
+	
+	NSString* commCount = [detail objectForKey:@"comments_count"];
+	NSString* rpCount = [detail objectForKey:@"reposts_count"];
+
+	NSString* sourceString = [self getCommentAndRepostStringBy:commCount rePostCount:rpCount];
+	_messageStatusView.frame = CGRectMake(_userNameView.frame.size.width +MA_CELL_GAP, totalHeight+MA_CELL_GAP, MA_CELL_STATUS_WIDTH, MA_CELL_TIME_HEIGHT);
+	_messageStatusView.text = sourceString;
 
 }
 
@@ -218,7 +266,48 @@
 	_customSeperator.frame = CGRectMake(0, _messagePictView.frame.origin.y+_messagePictView.frame.size.height  ,320 ,2);
 }
 
-// 
+-(NSString*) getSourceStringform:(NSString*)inString
+{
+	//    <a href="http://desktop.weibo.com/?source=app" rel="nofollow">XXXXXXX</a>
+	//                                                                  ^startingRange.location + 1
+	//                                                                  XXXXXXX ----> String we wanted
+	//                                                                         ^substing.length - 4
+	//                                                              
+    NSRange startRange = [inString rangeOfString:@">"];
+    
+    NSString* subString = [inString substringFromIndex:startRange.location+1];
+    NSString* result = [subString substringToIndex:subString.length-4];
+	
+    return result;
+}
+
+
+
+-(NSString*) getCommentAndRepostStringBy:(NSString*)commentCount rePostCount:(NSString*)rpCount
+{
+    NSMutableString* result = [[NSMutableString alloc]initWithString:@""];
+    NSInteger commValue, rpValue = 0;
+    commValue = [commentCount intValue];
+    rpValue = [rpCount intValue];
+	
+    if (commValue != 0 || rpValue != 0)
+    {
+        [result setString: NSLocalizedString(@"Comment:", nil)];
+        NSString *strCommValue = [NSString stringWithFormat:@"%d", commValue];
+        [result appendString:strCommValue];
+        
+		NSString* rePostString = NSLocalizedString(@" | Repost:", nil);
+        NSString *strRpValue = [NSString stringWithFormat:@"%d", rpValue];
+		
+        [result appendString:rePostString];
+        [result appendString:strRpValue];
+		
+    }
+	
+    return result;
+	
+}
+
 CGContextRef initContext (int pixelsWide,int pixelsHigh)
 {
     CGContextRef    context = NULL;

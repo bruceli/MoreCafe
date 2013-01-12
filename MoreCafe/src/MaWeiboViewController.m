@@ -43,14 +43,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
 	if ([self isLoggedIn]) {
 		[self logoutWeiboButtom];
 	}
 	else{
 		[self loginWeiboButtom];
 	}
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -84,7 +82,6 @@
 	_refreshHeaderView.backgroundColor = [UIColor darkGrayColor];
 	_refreshHeaderView.delegate = self;
 	[self.tableView addSubview:_refreshHeaderView];
-
 }
 
 -(void) dismissViewController
@@ -102,7 +99,6 @@
 {
 	UIImage *accountStatusImage = [UIImage imageNamed:@"readyIcon"];
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(logoutWeibo) buttomImage:accountStatusImage];
-
 }
 
 
@@ -126,7 +122,17 @@
 	
 	NSDictionary* retweets = [dict objectForKey:@"retweeted_status"];; 
 	if (retweets) {
-		CGFloat retweetHeight = [MaUtility estimateHeightBy:[retweets objectForKey:@"text"] image:[retweets objectForKey:@"thumbnail_pic"]];
+		NSMutableString* result = [[NSMutableString alloc]init];
+		NSDictionary* user = [retweets objectForKey:@"user"];  
+		NSString* displayName = [user objectForKey:@"screen_name"] ;
+        if(displayName)
+        {
+            [result appendString:displayName];
+            [result appendString:@": "];
+			[result appendString:[retweets objectForKey:@"text"]];
+        }
+
+		CGFloat retweetHeight = [MaUtility estimateHeightBy:result image:[retweets objectForKey:@"thumbnail_pic"]];
 		height = retweetHeight + height + MA_CELL_GAP*6;
 	}
 	
