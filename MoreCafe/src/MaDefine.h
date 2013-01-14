@@ -1,10 +1,15 @@
 #define kAppKey             @"3111231318"
 #define kAppSecret          @"ade7c8775fcb3b823438d83e290db108"
 #define kAppRedirectURL     @"http://google.com.hk"
+#define MA_TOOLBAR_HEIGHT 44
+
+
+
+#define MA_ART_WIDTH 240
+#define MA_ART_WIDTH_DELTA 40
 
 
 #define MA_CELL_MIN_HEIGHT 55.0f
-
 #define MA_CELL_GAP 5
 #define MA_CELL_IMG_SIZE 48
 

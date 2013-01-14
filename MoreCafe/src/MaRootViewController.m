@@ -5,7 +5,6 @@
 //  Created by Thunder on 12/29/12.
 //  Copyright (c) 2012 MagicApp. All rights reserved.
 //
-#define MA_TOOLBAR_HEIGHT 44
 
 #import "MaRootViewController.h"
 #import "MaSubItemController.h"
@@ -41,7 +40,7 @@
 	NSArray* itemArray = [[NSArray alloc] initWithObjects:@"test", @"test",@"test",@"test",nil];
 	
 	[self setupViewsByArray:itemArray];
-	_scrollView.contentSize = CGSizeMake( bounds.size.width * [itemArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
+	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [itemArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
 	[self.view addSubview:_scrollView];
 }
@@ -57,9 +56,9 @@
 	
 	for (int i = 0 ; i < [itemArray count]; i ++)
 	{
-		CGRect frame = CGRectMake(bounds.size.width * i ,
+		CGRect frame = CGRectMake(MA_ART_WIDTH * i ,
 								  0,
-								  bounds.size.width,
+								  MA_ART_WIDTH,
 								  bounds.size.height - MA_TOOLBAR_HEIGHT );
 		
 		UIImageView* imgView = [[UIImageView alloc] initWithFrame:frame];
@@ -101,27 +100,25 @@
     [self.navigationController pushViewController: app.weiboViewController animated:YES];
 }
 
+-(CGPoint)calculateScrollingOffset:(UIScrollView*)view
+{
+	CGFloat contentOffset = view.contentOffset.x + MA_ART_WIDTH/2; // half imageView width
+	NSInteger index = floorf(contentOffset / MA_ART_WIDTH);
+    CGPoint offset = CGPointMake((MA_ART_WIDTH * index) - MA_ART_WIDTH_DELTA  , 0);
+	//        NSLog(@"Drag to , %f", _scrollView.frame.size.width * _currentPageIndex);
+
+	return offset;
+}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)view
 {
-	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-
-	CGFloat contentOffset = view.contentOffset.x + bounds.size.width/2; // half imageView width
-    NSInteger index = floorf(contentOffset / view.frame.size.width);
-    CGPoint offset = CGPointMake(view.frame.size.width * index, 0);
-    [view setContentOffset:offset animated:YES];
+    [view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)view willDecelerate:(BOOL)decelerate
 {
-	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-
-    if (!decelerate) {
-        CGFloat contentOffset = view.contentOffset.x + bounds.size.width/2; // half imageView width
-        _currentIndex = floorf(contentOffset / view.frame.size.width);
-        CGPoint offset = CGPointMake(view.frame.size.width * _currentIndex, 0);
-        [view setContentOffset:offset animated:YES];
-		//        NSLog(@"Drag to , %f", _scrollView.frame.size.width * _currentPageIndex);
+	if (!decelerate) {
+		[view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
     }
 }
 
