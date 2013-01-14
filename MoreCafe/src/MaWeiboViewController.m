@@ -221,6 +221,82 @@
 }
 
 
+- (void)mergeMessages:(NSArray*)array isAppend:(BOOL)mode
+{
+//	[_messages addObjectsFromArray:message];
+	NSMutableArray* sameArray = [[NSMutableArray alloc]init];
+	
+	if (!mode)	// load data from top of table 
+	{
+		for(NSDictionary* newDict in array)
+		{
+			NSString* newWeiboID = [newDict objectForKey:@"idstr"];
+			for(NSDictionary* theDict in _messages)
+			{
+				NSString* theWeiboID = [theDict objectForKey:@"idstr"];
+//				NSLog(@"   newDict ID %@",newWeiboID);
+//				NSLog(@"theWeiboID ID %@",theWeiboID);
+
+				if ([newWeiboID isEqualToString:theWeiboID]) {
+					[sameArray addObject:newDict];
+					break;
+				}
+			}
+		}
+		
+		NSMutableArray* destArray = [NSMutableArray arrayWithArray:array];
+		[destArray removeObjectsInArray:sameArray];
+		NSIndexSet* indexSet = [[NSIndexSet alloc]initWithIndexesInRange:NSMakeRange(0,[destArray count])];
+		[_messages insertObjects:destArray atIndexes:indexSet];
+	}	
+	else	// load data from bottom of table
+	{
+		[_messages addObjectsFromArray:array];
+	}
+	
+	[self addMoreItem];
+}
+- (void)loadTimeLine
+{
+	if (![self isLoggedIn]) 
+	{
+		NSLog(@"%@",@"Weibo token expired... ");
+		return;
+	}
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
+	 // params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
+                       params:nil 
+                   httpMethod:@"GET"
+                     delegate:self];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
+}
+
+
+- (void)loadMore
+{
+	UILabel* lable = (UILabel*)[_moreCell viewWithTag:MA_MORE_CELL_LABLE_TAG];
+	if (lable.text == NSLocalizedString(@"Loading...",nil)) {
+		return;
+	}
+	
+	_pages ++;
+	
+	if (![self isLoggedIn]) 
+	{
+		NSLog(@"%@",@"Weibo token expired... ");
+		return;
+	}
+	lable.text = NSLocalizedString(@"Loading...",nil);
+	
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
+					   params:[NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", _pages] forKey:@"page"]
+                   httpMethod:@"GET"
+                     delegate:self];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
+}
+
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
 
@@ -264,8 +340,11 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
     if (bottomEdge >= scrollView.contentSize.height) {
-        // we are at the end
+        NSLog(@"%@",@"TableView at the End point");
 		[self loadMore];
+
+		// we are at the end
+//		[self reloadTableViewDataSource];
     }
 }
 
@@ -339,46 +418,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)loadTimeLine
-{
-	if (![self isLoggedIn]) 
-	{
-		NSLog(@"%@",@"Weibo token expired... ");
-		return;
-	}
-    SinaWeibo *sinaweibo = [self sinaweibo];
-    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
-                      // params:[NSMutableDictionary dictionaryWithObject:sinaweibo.userID forKey:@"uid"]
-                       params:nil 
-                   httpMethod:@"GET"
-                     delegate:self];
-	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
-}
-
-
-- (void)loadMore
-{
-	UILabel* lable = (UILabel*)[_moreCell viewWithTag:MA_MORE_CELL_LABLE_TAG];
-	if (lable.text == NSLocalizedString(@"Loading...",nil)) {
-		return;
-	}
-	
-	_pages ++;
-
-	if (![self isLoggedIn]) 
-	{
-		NSLog(@"%@",@"Weibo token expired... ");
-		return;
-	}
-	lable.text = NSLocalizedString(@"Loading...",nil);
-
-    SinaWeibo *sinaweibo = [self sinaweibo];
-    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
-					   params:[NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", _pages] forKey:@"page"]
-                   httpMethod:@"GET"
-                     delegate:self];
-	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
-}
 
 #pragma mark -
 #pragma mark SinaWeibo Delegate
@@ -470,14 +509,18 @@
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
         NSArray* message = [result objectForKey:@"statuses"];
-		[_messages addObjectsFromArray:message];
+		//[self mergeMessages:message:];
+
     }
 	else if ([request.url hasSuffix:@"statuses/home_timeline.json"])
     {
+		BOOL appendMode = NO;
 		NSArray* message = [result objectForKey:@"statuses"];
-		[_messages addObjectsFromArray:message];
-
-		[self addMoreItem];
+		NSString* page = [request.params objectForKey:@"page"];
+		if ([page length]> 0) {
+			appendMode = YES;
+		}
+		[self mergeMessages:message isAppend:appendMode];
 		[self.tableView reloadData];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
