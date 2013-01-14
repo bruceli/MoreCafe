@@ -31,7 +31,7 @@
 	_userNameView.textColor = [UIColor darkGrayColor];
     _userNameView.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:16.0f];
 
-	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.size.width + 60  , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
+	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.size.width + 55  , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
 	_timeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_timeView.backgroundColor = [UIColor clearColor];
 	_timeView.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
