@@ -508,7 +508,7 @@
     }
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
-        NSArray* message = [result objectForKey:@"statuses"];
+    //    NSArray* message = [result objectForKey:@"statuses"];
 		//[self mergeMessages:message:];
 
     }

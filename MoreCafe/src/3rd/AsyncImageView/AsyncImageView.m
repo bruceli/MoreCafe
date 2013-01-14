@@ -32,6 +32,8 @@
 //
 
 #import "AsyncImageView.h"
+#import "MoreCafeAppDelegate.h"
+
 #import <objc/message.h>
 
 
@@ -209,12 +211,16 @@ NSString *const AsyncImageErrorKey = @"error";
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.data = [NSMutableData data];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     //add data
     [_data appendData:data];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -222,6 +228,8 @@ NSString *const AsyncImageErrorKey = @"error";
     [self performSelectorInBackground:@selector(processDataInBackground:) withObject:_data];
     self.connection = nil;
     self.data = nil;
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -229,6 +237,8 @@ NSString *const AsyncImageErrorKey = @"error";
     self.connection = nil;
     self.data = nil;
     [self loadFailedWithError:error];
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+
 }
 
 - (void)start
@@ -268,6 +278,8 @@ NSString *const AsyncImageErrorKey = @"error";
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [_connection start];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
+
 }
 
 - (void)cancel
@@ -693,6 +705,7 @@ NSString *const AsyncImageErrorKey = @"error";
             [self addSubview:_activityView];
         }
         [_activityView startAnimating];
+
     }
 }
 
@@ -723,6 +736,7 @@ NSString *const AsyncImageErrorKey = @"error";
 	}
 	
     [_activityView stopAnimating];
+
 }
 
 - (void)dealloc

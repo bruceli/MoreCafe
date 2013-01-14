@@ -3,7 +3,9 @@
 #define kAppRedirectURL     @"http://google.com.hk"
 #define MA_TOOLBAR_HEIGHT 44
 
-
+#define ZOOM_VIEW_TAG 100
+#define MA_MAX_ZOOM_RATE 2.0
+#define MA_MIN_ZOOM_RATE 1.0
 
 #define MA_ART_WIDTH 240
 #define MA_ART_WIDTH_DELTA 40

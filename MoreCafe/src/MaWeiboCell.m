@@ -155,10 +155,14 @@
 	
 	if ([retweetImgURL length]>0) {
 		rtImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(rtMsgTextView.frame.origin.x, rtMsgTextView.frame.origin.y + height + MA_CELL_GAP*2, MA_CELL_MESSAGE_PICT_SIZE, MA_CELL_MESSAGE_PICT_SIZE)];
+		[self addSingleTapGestureRecognizerTo:rtImageView];
 		rtImageView.contentMode = UIViewContentModeScaleAspectFit;
 		rtImageView.crossfadeImages = NO;
+
 		[rtImageView setImageByString:retweetImgURL];
 		[_bubbleView addSubview:rtImageView];
+		[_bubbleView setUserInteractionEnabled:YES];
+
 
 	}
 }
@@ -166,6 +170,7 @@
 
 -(void) fillCellDataWith:(NSDictionary*)detail
 {
+	_message = detail;
 	//------------------ 
 	// Message Info
 	//------------------ 
@@ -206,6 +211,7 @@
 
 	if ([msgImageURL length]>0) {
 		[_messagePictView setImageByString:msgImageURL];
+		[self addSingleTapGestureRecognizerTo:_messagePictView];
 		if(!([_messagePictView isDescendantOfView:self])) { 
 			[self addSubview:_messagePictView];
 		}
@@ -268,6 +274,59 @@
 
 	_customSeperator.frame = CGRectMake(0, _messagePictView.frame.origin.y+_messagePictView.frame.size.height  ,320 ,2);
 }
+
+-(void)addSingleTapGestureRecognizerTo:(UIView*)view
+{
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+	singleTap.numberOfTapsRequired = 1;
+	[view setUserInteractionEnabled:YES];
+    [view addGestureRecognizer:singleTap];
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+	UIView* view = gestureRecognizer.view;	
+	[self toggleZoom:view];
+}
+
+-(void) toggleZoom:(UIView*) sender 
+{
+	if (_hiddenView)
+	{					
+		// zoomout
+		CGRect frame = [sender.window convertRect:_hiddenView.frame fromView:_hiddenView.superview];
+	//	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		[UIView animateWithDuration:0.3 animations:
+		 ^{ sender.frame = frame; sender.alpha = 0.0;} 
+						 completion:
+		 ^(BOOL finished){
+			 [_scaleImageView removeFromSuperview];
+			 _hiddenView = nil;
+			 _scaleImageView = nil;
+		 }];
+	}
+	else
+	{					// zoom in		
+		_hiddenView = (AsyncImageView*)sender;
+		CGRect frame = [sender.window convertRect:sender.frame fromView:sender.superview];
+		
+		CGRect screenRect = [[UIScreen mainScreen] bounds];
+		_scaleImageView = [[MaScaleImageView alloc] initWithFrame:frame];
+		_scaleImageView.scaleImageViewDelegate = self;
+		[UIView animateWithDuration:0.2 animations:^{ _scaleImageView.frame = screenRect; }];
+		
+		if (sender != _messagePictView) 
+		{	// retweet pict
+			NSDictionary* retweet = [_message objectForKey:@"retweeted_status"];
+			[_scaleImageView loadImageFrom:[retweet objectForKey:@"original_pic"]];
+		}
+		else	// message Pict
+			[_scaleImageView loadImageFrom:[_message objectForKey:@"original_pic"]];
+		[sender.window addSubview:_scaleImageView];
+//		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+		
+	}
+}
+
 
 -(NSString*) getSourceStringform:(NSString*)inString
 {

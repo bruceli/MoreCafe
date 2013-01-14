@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MaScaleImageView.h"
+
 @class MaTimeLabel;
 
-@interface MaWeiboCell : UITableViewCell<DTAttributedTextContentViewDelegate>
+@interface MaWeiboCell : UITableViewCell<DTAttributedTextContentViewDelegate,MaScaleImageViewDelegate>
 {
 	AsyncImageView* _userIconView;
 	UILabel* _userNameView;
@@ -23,6 +25,10 @@
 	UILabel* _messageStatusView;
 	
 	NSDictionary* _message;
+	
+	AsyncImageView* _hiddenView;
+	MaScaleImageView* _scaleImageView;
+
 }
 
 -(void) fillCellDataWith:(NSDictionary*)dict;
