@@ -23,7 +23,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		_messages = [[NSArray alloc]init];
+		_messages = [[NSMutableArray alloc]init];
+		_moreItem = [[NSDictionary alloc] initWithObjectsAndKeys:@"More",@"More",nil];
+		_moreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreCell"];
+		[self configMoreCell];
+		_pages = 1;
     }
     return self;
 }
@@ -116,46 +120,105 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {	
 	CGFloat height;	
-	NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
-	height = [MaUtility estimateHeightBy:[dict objectForKey:@"text"] image:[dict objectForKey:@"thumbnail_pic"]];
-	height += MA_CELL_MIN_HEIGHT;
-	
-	NSDictionary* retweets = [dict objectForKey:@"retweeted_status"];; 
-	if (retweets) {
-		NSMutableString* result = [[NSMutableString alloc]init];
-		NSDictionary* user = [retweets objectForKey:@"user"];  
-		NSString* displayName = [user objectForKey:@"screen_name"] ;
-        if(displayName)
-        {
-            [result appendString:displayName];
-            [result appendString:@": "];
-			[result appendString:[retweets objectForKey:@"text"]];
-        }
+	if ([self isMoreCell:indexPath]) {
+		height = 44;
+	}
+	else
+	{
+		NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
+		height = [MaUtility estimateHeightBy:[dict objectForKey:@"text"] image:[dict objectForKey:@"thumbnail_pic"]];
+		height += MA_CELL_MIN_HEIGHT;
+		
+		NSDictionary* retweets = [dict objectForKey:@"retweeted_status"];; 
+		if (retweets) {
+			NSMutableString* result = [[NSMutableString alloc]init];
+			NSDictionary* user = [retweets objectForKey:@"user"];  
+			NSString* displayName = [user objectForKey:@"screen_name"] ;
+			if(displayName)
+			{
+				[result appendString:displayName];
+				[result appendString:@": "];
+				[result appendString:[retweets objectForKey:@"text"]];
+			}
 
-		CGFloat retweetHeight = [MaUtility estimateHeightBy:result image:[retweets objectForKey:@"thumbnail_pic"]];
-		height = retweetHeight + height + MA_CELL_GAP*6;
+			CGFloat retweetHeight = [MaUtility estimateHeightBy:result image:[retweets objectForKey:@"thumbnail_pic"]];
+			height = retweetHeight + height + MA_CELL_GAP*6;
+		}
 	}
 	
 	return height;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    MaWeiboCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[MaWeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell;
+	if ([self isMoreCell:indexPath])
+		cell = _moreCell;
+	else
+	{
+		MaWeiboCell *weiboCell;
+		static NSString *CellIdentifier = @"Cell";
+		weiboCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (weiboCell == nil) {
+			weiboCell = [[MaWeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		}
+		   
+		NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
+		[weiboCell fillCellDataWith: dict];
+		cell = weiboCell;
+		// Configure the cell.
 	}
-	   
-	NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
-	[cell fillCellDataWith: dict];
-
-	// Configure the cell.
-	
     return cell;
 }
 
+- (BOOL) isMoreCell:(NSIndexPath*) indexPath
+{
+	BOOL status = NO; 
+	NSDictionary* dict = [_messages objectAtIndex:indexPath.row];
+	
+	if (indexPath.row == [_messages count] -1)
+	{
+		if(dict == _moreItem)
+			status =  YES;
+	}
+	return status;
+}
+
+- (void)addMoreItem
+{
+	[_messages removeObject:_moreItem];
+	[_messages addObject:_moreItem];
+	UILabel* lable = (UILabel*)[_moreCell viewWithTag:MA_MORE_CELL_LABLE_TAG];
+	lable.text = NSLocalizedString(@"Load more...",nil);
+}
+
+-(void)configMoreCell
+{
+	[self addSingleTapGestureRecognizerTo:_moreCell];
+	UILabel* lable= [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 200, 40)];
+	lable.tag = MA_MORE_CELL_LABLE_TAG;
+	lable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	lable.backgroundColor = [UIColor clearColor];
+	lable.font = [UIFont systemFontOfSize:16];
+	lable.textAlignment = NSTextAlignmentLeft;
+	lable.textColor = [UIColor darkGrayColor];
+	lable.opaque = NO;
+	lable.text = NSLocalizedString(@"Load more...",nil);
+	[_moreCell addSubview:lable];	
+}
+
+-(void)addSingleTapGestureRecognizerTo:(UIView*)view
+{
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+	singleTap.numberOfTapsRequired = 1;
+	[view setUserInteractionEnabled:YES];
+    [view addGestureRecognizer:singleTap];
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+//	[self.view viewWithTag:custTag]
+	[self loadMore];
+}
 
 
 #pragma mark -
@@ -194,9 +257,16 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 	
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if (bottomEdge >= scrollView.contentSize.height) {
+        // we are at the end
+		[self loadMore];
+    }
 }
 
 
@@ -283,7 +353,31 @@
                    httpMethod:@"GET"
                      delegate:self];
 	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
+}
 
+
+- (void)loadMore
+{
+	UILabel* lable = (UILabel*)[_moreCell viewWithTag:MA_MORE_CELL_LABLE_TAG];
+	if (lable.text == NSLocalizedString(@"Loading...",nil)) {
+		return;
+	}
+	
+	_pages ++;
+
+	if (![self isLoggedIn]) 
+	{
+		NSLog(@"%@",@"Weibo token expired... ");
+		return;
+	}
+	lable.text = NSLocalizedString(@"Loading...",nil);
+
+    SinaWeibo *sinaweibo = [self sinaweibo];
+    [sinaweibo requestWithURL:@"statuses/home_timeline.json"
+					   params:[NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", _pages] forKey:@"page"]
+                   httpMethod:@"GET"
+                     delegate:self];
+	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
 }
 
 #pragma mark -
@@ -304,6 +398,7 @@
     NSLog(@"sinaweiboDidLogOut");
     [self removeAuthData];
     [self loginWeiboButtom];
+	_pages = 1;
 }
 
 
@@ -323,6 +418,7 @@
     NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
     [self removeAuthData];
     [self loginWeiboButtom];
+	_pages = 1;
 }
 
 #pragma mark - SinaWeiboRequest Delegate 
@@ -337,7 +433,7 @@
     }
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
-        _messages = nil;
+        //_messages = nil;
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {
@@ -373,11 +469,15 @@
     }
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
-        _messages = [result objectForKey:@"statuses"];
+        NSArray* message = [result objectForKey:@"statuses"];
+		[_messages addObjectsFromArray:message];
     }
 	else if ([request.url hasSuffix:@"statuses/home_timeline.json"])
     {
-        _messages = [result objectForKey:@"statuses"];
+		NSArray* message = [result objectForKey:@"statuses"];
+		[_messages addObjectsFromArray:message];
+
+		[self addMoreItem];
 		[self.tableView reloadData];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])

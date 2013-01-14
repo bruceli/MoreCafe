@@ -22,10 +22,12 @@
 
 	//Weibo stuff
 	NSDictionary *_userInfo;
-    NSArray *_messages;
+    NSMutableArray *_messages;
     NSString *postStatusText;
     NSString *postImageStatusText;
-
+	NSInteger _pages;
 	
+	NSDictionary* _moreItem;
+	UITableViewCell* _moreCell;
 }
 @end

@@ -1,6 +1,6 @@
 #define kAppKey             @"3111231318"
 #define kAppSecret          @"ade7c8775fcb3b823438d83e290db108"
-#define kAppRedirectURI     @"http://google.com.hk"
+#define kAppRedirectURL     @"http://google.com.hk"
 
 
 #define MA_CELL_MIN_HEIGHT 55.0f
@@ -11,7 +11,7 @@
 #define MA_CELL_NAME_WIDTH 160
 #define MA_CELL_NAME_HEIGHT 20
 
-#define MA_CELL_TIME_WIDTH 90
+#define MA_CELL_TIME_WIDTH 100
 #define MA_CELL_TIME_HEIGHT 15
 
 #define MA_CELL_MESSAGE_WIDTH 250
@@ -38,3 +38,5 @@
 #define MA_WEEK   (7 * MA_DAY)
 #define MA_MONTH  (30.5 * MA_DAY)
 #define MA_YEAR   (365 * MA_DAY)
+
+#define MA_MORE_CELL_LABLE_TAG 9800

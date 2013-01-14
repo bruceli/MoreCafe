@@ -24,11 +24,12 @@
 - (void)initCell
 {
 	_userIconView = [[AsyncImageView alloc]initWithFrame:CGRectMake(MA_CELL_GAP, MA_CELL_GAP, MA_CELL_IMG_SIZE, MA_CELL_IMG_SIZE)];
+	_userIconView.crossfadeImages = NO;
+	
 	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
 	_userNameView.backgroundColor = [UIColor clearColor];
 	_userNameView.textColor = [UIColor darkGrayColor];
     _userNameView.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:16.0f];
-
 
 	_timeView = [[MaTimeLabel alloc] initWithFrame:CGRectMake(_userNameView.frame.size.width + 60  , MA_CELL_GAP, MA_CELL_TIME_WIDTH, MA_CELL_TIME_HEIGHT)];
 	_timeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -47,6 +48,7 @@
 	
 	_messagePictView = [[AsyncImageView alloc]initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, _messageTextView.frame.origin.y + 60 + MA_CELL_GAP,  MA_CELL_MESSAGE_PICT_SIZE, MA_CELL_MESSAGE_PICT_SIZE)];
 	_messagePictView.contentMode = UIViewContentModeScaleAspectFit;
+	_messagePictView.crossfadeImages = NO;
 //	_messagePictView.backgroundColor = [UIColor orangeColor];
 	
 	_sourceView = [[UILabel alloc]initWithFrame:CGRectZero];
@@ -154,6 +156,7 @@
 	if ([retweetImgURL length]>0) {
 		rtImageView = [[AsyncImageView alloc]initWithFrame:CGRectMake(rtMsgTextView.frame.origin.x, rtMsgTextView.frame.origin.y + height + MA_CELL_GAP*2, MA_CELL_MESSAGE_PICT_SIZE, MA_CELL_MESSAGE_PICT_SIZE)];
 		rtImageView.contentMode = UIViewContentModeScaleAspectFit;
+		rtImageView.crossfadeImages = NO;
 		[rtImageView setImageByString:retweetImgURL];
 		[_bubbleView addSubview:rtImageView];
 

@@ -25,19 +25,19 @@
 
 "about an hour ago" = "约 1 小时前";
 
-"EEE h:mm a" = "EEEEHH：mm";
+"EEE h:mm a" = "EEEEHH:mm";
 
 "EEEE" = "EEEE";
 
 "EEEE, LLLL d, YYYY" = "YYYY年MMMMd日EEEE";
 
-"h:mm a" = "HH：mm";
+"h:mm a" = "HH:mm";
 
 "just a moment ago" = "不久前";
 
 "M/d/yy" = "yyyy/MM/dd";
 
-"MMM d h:mm a" = "MMMMd日HH：mm";
+"MMM d h:mm a" = "MMMMd日HH:mm";
 
 "MMMM" = "MMMM";
 
@@ -54,3 +54,7 @@
 "Comment:" = "评论:";
 
 " | Repost:" = " | 转发:";
+
+"Load more..." = "加载更多...";
+"Loading..." = "正在努力加载...";
+
