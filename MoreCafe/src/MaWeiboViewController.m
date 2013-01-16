@@ -255,6 +255,8 @@
 	}
 	
 	[self addMoreItem];
+	[self.tableView reloadData];
+
 }
 - (void)loadTimeLine
 {
@@ -334,20 +336,17 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
     if (bottomEdge >= scrollView.contentSize.height) {
-        NSLog(@"%@",@"TableView at the End point");
 		[self loadMore];
 
 		// we are at the end
 //		[self reloadTableViewDataSource];
     }
 }
-
 
 #pragma mark -
 #pragma mark EGORefreshTableHeaderDelegate Methods
@@ -521,7 +520,6 @@
 			appendMode = YES;
 		}
 		[self mergeMessages:message isAppend:appendMode];
-		[self.tableView reloadData];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {

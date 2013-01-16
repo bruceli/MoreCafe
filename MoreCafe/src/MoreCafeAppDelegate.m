@@ -28,11 +28,10 @@ static int _networkActivityIndicatorCounter = 0;
 
 	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
     [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
-	controller.navigationItem.title = @"Café";
 
 	self.window.rootViewController = theController;
 
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
 	
 	[self initSinaWeibo];

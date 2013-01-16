@@ -3,6 +3,8 @@
 #define kAppRedirectURL     @"http://google.com.hk"
 #define MA_TOOLBAR_HEIGHT 44
 
+#define MA_ART_FRAME_Y 100
+
 #define ZOOM_VIEW_TAG 100
 #define MA_MAX_ZOOM_RATE 2.0
 #define MA_MIN_ZOOM_RATE 1.0
@@ -47,3 +49,5 @@
 #define MA_YEAR   (365 * MA_DAY)
 
 #define MA_MORE_CELL_LABLE_TAG 9800
+
+#define MA_LIST_CELL_HEIGHT 330
