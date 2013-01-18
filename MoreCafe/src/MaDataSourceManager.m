@@ -38,7 +38,9 @@
      Get array from Root ditionary;
      */
     NSString* arrayName = [_enumArray objectAtIndex:type];
-    [_dataSource addObjectsFromArray:[_rootDictonary objectForKey:arrayName]];
+	NSDictionary* dict = [_rootDictonary objectForKey:arrayName];
+	[_dataSource addObjectsFromArray:[dict objectForKey:@"itemArray"]];
+
 }
 
 -(NSDictionary*)itemInfoByViewType:(MO_CAFE_TYPE)type;

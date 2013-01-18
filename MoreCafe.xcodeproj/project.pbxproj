@@ -20,6 +20,16 @@
 		59117A1E169C21D20043858B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59117A20169C21D20043858B /* Localizable.strings */; };
 		59117A24169C233F0043858B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59117A26169C233F0043858B /* InfoPlist.strings */; };
 		5939107B16A87176002A36F8 /* MaDataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5939107A16A87176002A36F8 /* MaDataSourceManager.m */; };
+		5939109C16A98E70002A36F8 /* MaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5939109B16A98E70002A36F8 /* MaDetailViewController.m */; };
+		593910A316A9B6CE002A36F8 /* cafe0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5939109D16A9B6CE002A36F8 /* cafe0.jpg */; };
+		593910A416A9B6CE002A36F8 /* cafe1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5939109E16A9B6CE002A36F8 /* cafe1.jpg */; };
+		593910A516A9B6CE002A36F8 /* cafe2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5939109F16A9B6CE002A36F8 /* cafe2.jpg */; };
+		593910A616A9B6CE002A36F8 /* cafe3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 593910A016A9B6CE002A36F8 /* cafe3.jpg */; };
+		593910A716A9B6CE002A36F8 /* cafe4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 593910A116A9B6CE002A36F8 /* cafe4.jpg */; };
+		593910A816A9B6CE002A36F8 /* cafe5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 593910A216A9B6CE002A36F8 /* cafe5.jpg */; };
+		593910AA16A9B9E5002A36F8 /* emptyImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 593910A916A9B9E5002A36F8 /* emptyImg.jpg */; };
+		593910AD16A9C444002A36F8 /* action.png in Resources */ = {isa = PBXBuildFile; fileRef = 593910AB16A9C444002A36F8 /* action.png */; };
+		593910AE16A9C444002A36F8 /* action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 593910AC16A9C444002A36F8 /* action@2x.png */; };
 		593F58B616A473980005A82E /* MaScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593F58B516A473980005A82E /* MaScaleImageView.m */; };
 		599F39F9168EF4BC006397CB /* MaRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599F39F8168EF4BC006397CB /* MaRootViewController.m */; };
 		599F39FF169005F8006397CB /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F39FD169005F8006397CB /* navbar.png */; };
@@ -153,6 +163,17 @@
 		59117A27169C23450043858B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5939107916A87176002A36F8 /* MaDataSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaDataSourceManager.h; path = src/MaDataSourceManager.h; sourceTree = "<group>"; };
 		5939107A16A87176002A36F8 /* MaDataSourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaDataSourceManager.m; path = src/MaDataSourceManager.m; sourceTree = "<group>"; };
+		5939109A16A98E70002A36F8 /* MaDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaDetailViewController.h; path = src/MaDetailViewController.h; sourceTree = "<group>"; };
+		5939109B16A98E70002A36F8 /* MaDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaDetailViewController.m; path = src/MaDetailViewController.m; sourceTree = "<group>"; };
+		5939109D16A9B6CE002A36F8 /* cafe0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe0.jpg; path = Resources/cafe0.jpg; sourceTree = "<group>"; };
+		5939109E16A9B6CE002A36F8 /* cafe1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe1.jpg; path = Resources/cafe1.jpg; sourceTree = "<group>"; };
+		5939109F16A9B6CE002A36F8 /* cafe2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe2.jpg; path = Resources/cafe2.jpg; sourceTree = "<group>"; };
+		593910A016A9B6CE002A36F8 /* cafe3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe3.jpg; path = Resources/cafe3.jpg; sourceTree = "<group>"; };
+		593910A116A9B6CE002A36F8 /* cafe4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe4.jpg; path = Resources/cafe4.jpg; sourceTree = "<group>"; };
+		593910A216A9B6CE002A36F8 /* cafe5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafe5.jpg; path = Resources/cafe5.jpg; sourceTree = "<group>"; };
+		593910A916A9B9E5002A36F8 /* emptyImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = emptyImg.jpg; path = Resources/emptyImg.jpg; sourceTree = "<group>"; };
+		593910AB16A9C444002A36F8 /* action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action.png; path = Resources/action.png; sourceTree = "<group>"; };
+		593910AC16A9C444002A36F8 /* action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action@2x.png"; path = "Resources/action@2x.png"; sourceTree = "<group>"; };
 		593F58B416A473980005A82E /* MaScaleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaScaleImageView.h; path = src/MaScaleImageView.h; sourceTree = "<group>"; };
 		593F58B516A473980005A82E /* MaScaleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaScaleImageView.m; path = src/MaScaleImageView.m; sourceTree = "<group>"; };
 		599F39F7168EF4BC006397CB /* MaRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaRootViewController.h; path = src/MaRootViewController.h; sourceTree = "<group>"; };
@@ -317,6 +338,15 @@
 		599F3A01169005FC006397CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				593910AB16A9C444002A36F8 /* action.png */,
+				593910AC16A9C444002A36F8 /* action@2x.png */,
+				593910A916A9B9E5002A36F8 /* emptyImg.jpg */,
+				5939109D16A9B6CE002A36F8 /* cafe0.jpg */,
+				5939109E16A9B6CE002A36F8 /* cafe1.jpg */,
+				5939109F16A9B6CE002A36F8 /* cafe2.jpg */,
+				593910A016A9B6CE002A36F8 /* cafe3.jpg */,
+				593910A116A9B6CE002A36F8 /* cafe4.jpg */,
+				593910A216A9B6CE002A36F8 /* cafe5.jpg */,
 				59117A20169C21D20043858B /* Localizable.strings */,
 				59AC4A9D169A84EA0034919E /* b.jpeg */,
 				59FC12A816A68C40006C5224 /* wall@2x.png */,
@@ -390,6 +420,8 @@
 				599F39F8168EF4BC006397CB /* MaRootViewController.m */,
 				59FC12A016A66B86006C5224 /* MaListViewController.h */,
 				59FC12A116A66B86006C5224 /* MaListViewController.m */,
+				5939109A16A98E70002A36F8 /* MaDetailViewController.h */,
+				5939109B16A98E70002A36F8 /* MaDetailViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -597,6 +629,15 @@
 				590974DF169E9FFA0035A0B7 /* css.plist in Resources */,
 				59FC12A716A679DF006C5224 /* artFrame@2x.png in Resources */,
 				59FC12A916A68C41006C5224 /* wall@2x.png in Resources */,
+				593910A316A9B6CE002A36F8 /* cafe0.jpg in Resources */,
+				593910A416A9B6CE002A36F8 /* cafe1.jpg in Resources */,
+				593910A516A9B6CE002A36F8 /* cafe2.jpg in Resources */,
+				593910A616A9B6CE002A36F8 /* cafe3.jpg in Resources */,
+				593910A716A9B6CE002A36F8 /* cafe4.jpg in Resources */,
+				593910A816A9B6CE002A36F8 /* cafe5.jpg in Resources */,
+				593910AA16A9B9E5002A36F8 /* emptyImg.jpg in Resources */,
+				593910AD16A9C444002A36F8 /* action.png in Resources */,
+				593910AE16A9C444002A36F8 /* action@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +667,7 @@
 				59FC12A216A66B86006C5224 /* MaListViewController.m in Sources */,
 				59FC12A516A66C15006C5224 /* MaListCell.m in Sources */,
 				5939107B16A87176002A36F8 /* MaDataSourceManager.m in Sources */,
+				5939109C16A98E70002A36F8 /* MaDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

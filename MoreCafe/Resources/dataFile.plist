@@ -58,7 +58,7 @@
 				<key>detail</key>
 				<string>在意大利原文中，Espresso是迅速、快速流动的意思，Espresso被誉为“咖啡之魂”，意大利人发明了它，并将它带到全世界，Espresso不仅仅是一杯浓缩咖啡，也是一种咖啡名称，是一种烘焙方法，更是一种生活方式，一杯完美的Espresso，应该有浓厚的油脂，强烈美妙的烟熏味，夹杂一丝焦糖的香甜，有着丰富并且持续的口感，Espresso又分为单份和双份，单份30毫升，双份60毫升，需要一口饮尽，才能享受其美妙的味道。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>cafe0</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -68,7 +68,7 @@
 				<key>detail</key>
 				<string>美式咖啡(英文：Americano，意大利语：Caffè Americano)咖啡的一种，是最普通的咖啡。是使用滴滤式咖啡壶、虹吸壶、法压壶之类的器具所制作出的黑咖啡，又或者是意式浓缩中加入大量的水制成。口味比较淡。因为萃取时间长，所以咖啡因含量高。可以在纯粹的黑咖啡里加糖和奶，也可以像非洲和阿拉伯地区那样在咖啡中加入肉桂等香料，甚至加入果汁。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>cafe1</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -78,7 +78,7 @@
 				<key>detail</key>
 				<string>拿铁咖啡是意大利浓缩咖啡与牛奶的经典混合，意大利人也很喜欢把拿铁作为早餐的饮料。喝拿铁的意大利人，与其说他们喜欢意大利浓缩咖啡，不如说他们喜欢牛奶，也只有espresso才能给普普通通的牛奶带来让人难以忘怀的味道。本店特推黑糖拿铁，这一季的时令混搭，暖胃舒心的黑糖拿铁温暖来袭，冬日提神暖身，难敌拿铁的芳美滋味。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>cafe2</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -88,7 +88,7 @@
 				<key>detail</key>
 				<string>摩卡咖啡(CafeMocha)是一种最古老的咖啡，它是由意大利浓缩咖啡、巧克力酱、鲜奶油和牛奶混合而成，其历史要追溯到咖啡的起源。本店特推的榛果摩卡，由香浓巧克力与榛果糖浆完美结合，为冬天带来丝丝暖意。就在今天，无需等待，放下一切烦恼，让味蕾尽情享受吧。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>cafe3</string>
 			</dict>
 		</array>
 	</dict>

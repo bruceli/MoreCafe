@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MaListViewController : UITableViewController
+{
+	NSArray* _dataArray;
+}
+
+@property (nonatomic, retain) NSArray* dataArray;
 
 @end

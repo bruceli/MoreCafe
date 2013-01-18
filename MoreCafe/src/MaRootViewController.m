@@ -130,8 +130,9 @@
 	}
 	else
 	{
-		[_dataSourceMgr updateDataSourceArrayByViewType:type];
 		MaListViewController* viewController = [[MaListViewController alloc]init];
+		[_dataSourceMgr updateDataSourceArrayByViewType:type];
+		viewController.dataArray = _dataSourceMgr.dataSource;
 		[self.navigationController pushViewController: viewController animated:YES];
 	}
 }

@@ -7,6 +7,7 @@
 //
 
 #import "MaListViewController.h"
+#import "MaDetailViewController.h"
 #import "UIBarButtonItem+StyledButton.h"
 #import "MaListCell.h"
 
@@ -15,6 +16,7 @@
 @end
 
 @implementation MaListViewController
+@synthesize dataArray = _dataArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,6 +34,7 @@
 	UIImage *image = [UIImage imageNamed:@"backButtom"];
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:image];
 
+	self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rootbackground"]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,6 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,7 +66,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 8;
+    return [_dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,7 +77,7 @@
 		cell = [[MaListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	
-
+	[cell fillCellDataWith:[_dataArray objectAtIndex:indexPath.row]];
     // Configure the cell...
 	cell.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 
@@ -82,7 +86,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return MA_LIST_CELL_HEIGHT;
+	return MA_LIST_VIEW_ROW_HEIGHT;
 }
 
 /*
@@ -128,13 +132,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	MaDetailViewController* viewController = [[MaDetailViewController alloc]init];
+	viewController.dict = [_dataArray objectAtIndex:indexPath.row];
+	[self.navigationController pushViewController: viewController animated:YES];
 }
 
 @end

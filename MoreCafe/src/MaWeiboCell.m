@@ -84,16 +84,6 @@
 //	[self drawBubble:MA_CELL_MESSAGE_HEIGHT];
 }
 
-- (void)fillCellContent
-{
-	[_userIconView setImageByString:@"b.jpeg"];
-	_userNameView.text = @"MoreCafé";
-	_timeView.text = @"10月10日 23:00";
-//	[self fillText:@"<p>Surface weather analysis is a special type of weather map that provides a view of weather elements over a geographical area at a specified time </p>" to:_messageTextView];
-	_sourceView.text = @"MoreCafé";
-	_messageStatusView.text = @"Replay:10 | Comment:20";
-}
-
 - (void)drawBubble:(CGFloat)height
 {	
 	CGFloat scaleValue = [[UIScreen mainScreen] scale];

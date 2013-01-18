@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MaListCell : UITableViewCell
+{
+	AsyncImageView* _imgView;
+	UILabel* _nameLable;
+	UILabel* _discriptionLable;
+	
+	
+}
+-(void)fillCellDataWith:(NSDictionary*)dict;
 
 @end
