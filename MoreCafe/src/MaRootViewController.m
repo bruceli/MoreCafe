@@ -11,6 +11,7 @@
 #import "MaListViewController.h"
 
 #import "MoreCafeAppDelegate.h"
+#import "MaDataSourceManager.h"
 
 @interface MaRootViewController ()
 @end
@@ -20,6 +21,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		_dataSourceMgr = [[MaDataSourceManager alloc] init];
+
 	}
     return self;
 }
@@ -44,10 +47,9 @@
 	_scrollView.backgroundColor = [UIColor clearColor];
 		
 	_currentIndex = 0;
-	NSArray* itemArray = [[NSArray alloc] initWithObjects:@"test", @"test",@"test",@"test",nil];
 	
-	[self setupViewsByArray:itemArray];
-	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [itemArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
+	[self setupViewsByArray:_dataSourceMgr.enumArray];
+	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [_dataSourceMgr.enumArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
 	[self.view addSubview:_scrollView];
 }
@@ -69,19 +71,39 @@
 								  0,
 								  MA_ART_WIDTH,
 								  bounds.size.height - MA_TOOLBAR_HEIGHT );
-		// 
+		
+		
 		UIView* view = [[UIImageView alloc] initWithFrame:frame];
 		[view setUserInteractionEnabled:YES];
+		
+		NSDictionary* dict = [_dataSourceMgr itemInfoByViewType:i];
+		NSString* nameString = [dict objectForKey:@"name"];
+		NSString* iconString = [dict objectForKey:@"icon"];
 		
 		UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(20,20, 200, 250)];
 		imgView.image = image;
 		imgView.backgroundColor = [UIColor clearColor];
 		imgView.contentMode = UIViewContentModeCenter;
+		imgView.tag = Ma_VIEW_INDEX + i;
 		[view addSubview:imgView];
 		[self addGestureRecognizerTo:imgView];
+		
+		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height+5,200,25)];
+		lable.backgroundColor = [UIColor greenColor];
+		lable.text = nameString;
+		lable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		lable.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+		lable.textAlignment = NSTextAlignmentCenter;
+		lable.highlightedTextColor = [UIColor whiteColor];
+		lable.textColor = [UIColor blackColor];
+		lable.opaque = NO;
+		[view addSubview:lable];
 
 		view.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+		
 		[_scrollView addSubview:view];
+		NSLog(@"item created,%d",i);
+		
 	}
 }
 
@@ -99,13 +121,19 @@
 //    viewController.indexPath = indexPath;
 //    NSDictionary* dict = [_dataSourceMgr.dataSource objectAtIndex: indexPath.row];
 	
-//	MoreCafeAppDelegate* app = (MoreCafeAppDelegate *)[[UIApplication sharedApplication] delegate];    
+	MoreCafeAppDelegate* app = (MoreCafeAppDelegate *)[[UIApplication sharedApplication] delegate];    
 //    [self.navigationController pushViewController: app.weiboViewController animated:YES];
 	
-	MaListViewController* viewController = [[MaListViewController alloc]init];
-	[self.navigationController pushViewController: viewController animated:YES];
-
-
+	MO_CAFE_TYPE type = gestureRecognizer.view.tag - Ma_VIEW_INDEX;
+	if (type == MOCAFE_WEIBO) {
+		[self.navigationController pushViewController: app.weiboViewController animated:YES];
+	}
+	else
+	{
+		[_dataSourceMgr updateDataSourceArrayByViewType:type];
+		MaListViewController* viewController = [[MaListViewController alloc]init];
+		[self.navigationController pushViewController: viewController animated:YES];
+	}
 }
 
 -(CGPoint)calculateScrollingOffset:(UIScrollView*)view
@@ -118,7 +146,7 @@
 	if (index==0) {	// first art frame -- Right alignment
 		offset = CGPointMake((MA_ART_WIDTH * index), 0);
 	}
-	else if(index == 3){	// end art frame -- left aligment
+	else if(index == [_dataSourceMgr.enumArray count]){	// end art frame -- left aligment
 		offset = CGPointMake((MA_ART_WIDTH * index)- MA_ART_WIDTH_DELTA*2, 0);
 	}
 	else{	// art frame at middle
@@ -133,9 +161,16 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)view
 {
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-	if (view.contentOffset.x < 0 ||view.contentOffset.x > bounds.size.width )	// do not call setContentOffset when unnecessary;
+
+//	NSLog(@"return offset.x = %f",view.contentOffset.x);
+
+	NSInteger maxWidth = MA_ART_WIDTH * [_dataSourceMgr.enumArray count];
+	NSInteger maxOffset = maxWidth - MA_ART_WIDTH - (bounds.size.width - MA_ART_WIDTH);
+//	NSLog(@"calculated offset = %d", maxOffset);
+
+	if (view.contentOffset.x < 0 ||view.contentOffset.x >= maxOffset )	// skip setContentOffset when unnecessary;
 		return;
-	
+
     [view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
 //	NSLog(@"%@", @"scrollViewDidEndDecelerating");
 }

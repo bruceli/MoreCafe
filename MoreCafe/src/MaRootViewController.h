@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MaDataSourceManager;
 
 @interface MaRootViewController : UIViewController <UIScrollViewDelegate>
 {
 	UIScrollView* _scrollView;
 	NSInteger _currentIndex;
+	MaDataSourceManager* _dataSourceMgr;
+
 }
 
 @end

@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MaDataSourceController : NSObject
+@interface MaDataSourceManager : NSObject
 
 {
 	NSDictionary* _rootDictonary;
 	NSMutableArray* _dataSource;
-	
+	NSArray* _enumArray;
+
+	NSMutableArray* _currentActivityArray;
 }
 
 @property (nonatomic, retain) NSMutableArray* dataSource;
+@property (nonatomic, retain) NSArray* enumArray;
+
+-(void)updateDataSourceArrayByViewType:(MO_CAFE_TYPE)type;
+-(NSDictionary*)itemInfoByViewType:(MO_CAFE_TYPE)type;
 
 @end

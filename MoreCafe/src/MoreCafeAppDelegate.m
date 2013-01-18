@@ -8,13 +8,14 @@
 
 #import "MoreCafeAppDelegate.h"
 #import "MaRootViewController.h"
-#import "MaDataSourceController.h"
+#import "MaDataSourceManager.h"
 #import "MaWeiboViewController.h"
 #import "SinaWeibo.h"
 
 @implementation MoreCafeAppDelegate
 @synthesize sinaweibo = _sinaweibo;
 @synthesize weiboViewController = _weiboViewController;
+//@synthesize dataSourceMgr = _dataSourceMgr;
 static int _networkActivityIndicatorCounter = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -24,7 +25,6 @@ static int _networkActivityIndicatorCounter = 0;
 	[AsyncImageLoader sharedLoader];	
 
 	MaRootViewController* controller =[[MaRootViewController alloc] init];
-	_dataSourceController = [[MaDataSourceController alloc] init];
 
 	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
     [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];

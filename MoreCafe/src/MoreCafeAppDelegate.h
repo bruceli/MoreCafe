@@ -9,18 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @class SinaWeibo;
-@class MaDataSourceController;
+@class MaDataSourceManager;
 @class MaWeiboViewController;
 
 @interface MoreCafeAppDelegate : UIResponder <UIApplicationDelegate>
 {
-	MaDataSourceController* _dataSourceController;
     SinaWeibo *_sinaweibo;
 	MaWeiboViewController* _weiboViewController;
 }
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly, nonatomic) SinaWeibo *sinaweibo;
 @property (readonly, nonatomic) MaWeiboViewController *weiboViewController;
+//@property (nonatomic, retain) MaDataSourceManager* dataSourceMgr;
 
 + (void) increaseNetworkActivityIndicator;
 + (void) decreaseNetworkActivityIndicator;

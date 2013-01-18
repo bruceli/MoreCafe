@@ -7,6 +7,7 @@
 //
 
 #import "MaListCell.h"
+#import "MaScaleImageView.h"
 
 @implementation MaListCell
 
@@ -14,8 +15,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-		self.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
+		[self initCell];
 
     }
     return self;
@@ -24,8 +25,15 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
+
+-(void)initCell
+{
+	CGRect frame = CGRectMake(5, 5, 310, 280);
+	
+
+
+}
 @end

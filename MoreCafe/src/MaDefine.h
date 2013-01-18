@@ -1,6 +1,20 @@
 #define kAppKey             @"3111231318"
 #define kAppSecret          @"ade7c8775fcb3b823438d83e290db108"
 #define kAppRedirectURL     @"http://google.com.hk"
+
+enum {
+    MOCAFE_NEW = 0,
+    MOCAFE_CAFE,
+    MOCAFE_TEA ,
+    MOCAFE_FOOD ,
+    MOCAFE_ACTIVITIES ,
+    MOCAFE_WEIBO ,
+    MOCAFE_ABOUT ,
+};
+typedef NSUInteger MO_CAFE_TYPE;
+
+#define Ma_VIEW_INDEX 1000
+
 #define MA_TOOLBAR_HEIGHT 44
 
 #define MA_ART_FRAME_Y 100

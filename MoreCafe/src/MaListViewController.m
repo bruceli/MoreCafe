@@ -20,7 +20,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-		[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+		[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     }
     return self;
 }
@@ -75,7 +75,8 @@
 	
 
     // Configure the cell...
-    
+	cell.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+
     return cell;
 }
 
