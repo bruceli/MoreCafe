@@ -40,7 +40,7 @@
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:image];
 		
 	[self initSubViews];
-	self.navigationItem.title = NSLocalizedString(@"Weibo", nil);
+//	self.navigationItem.title = NSLocalizedString(@"Weibo", nil);
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 

@@ -7,7 +7,7 @@
 		<key>name</key>
 		<string>新品和特惠</string>
 		<key>icon</key>
-		<string></string>
+		<string>cafe1</string>
 		<key>itemArray</key>
 		<array>
 			<dict>
@@ -45,7 +45,7 @@
 	<key>cafe</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>cafe0</string>
 		<key>name</key>
 		<string>咖啡</string>
 		<key>itemArray</key>
@@ -95,7 +95,7 @@
 	<key>tea</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>cafe3</string>
 		<key>name</key>
 		<string>茶饮和冰品</string>
 		<key>itemArray</key>

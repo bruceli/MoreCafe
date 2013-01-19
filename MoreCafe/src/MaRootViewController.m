@@ -85,8 +85,18 @@
 		imgView.backgroundColor = [UIColor clearColor];
 		imgView.contentMode = UIViewContentModeCenter;
 		imgView.tag = Ma_VIEW_INDEX + i;
-		[view addSubview:imgView];
 		[self addGestureRecognizerTo:imgView];
+		
+		AsyncImageView* iconView = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 60, 190, 190)]; 
+		iconView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+		[view addSubview:iconView];
+		[view addSubview:imgView];
+		
+		if ([iconString length]>0) {
+			NSMutableString* imgPath = [NSMutableString stringWithString:iconString];
+			[imgPath appendString:@".jpg"];
+			[iconView setImageByString:imgPath];
+		}
 		
 		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height+5,200,25)];
 		lable.backgroundColor = [UIColor greenColor];
@@ -102,7 +112,7 @@
 		view.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 		
 		[_scrollView addSubview:view];
-		NSLog(@"item created,%d",i);
+//		NSLog(@"item created,%d",i);
 		
 	}
 }
@@ -139,7 +149,6 @@
 
 -(CGPoint)calculateScrollingOffset:(UIScrollView*)view
 {
-	
 	CGFloat contentOffset = view.contentOffset.x + MA_ART_WIDTH/2; // half imageView width
 //	NSLog(@"offset.x = %f",view.contentOffset.x);
 	NSInteger index = floorf(contentOffset / MA_ART_WIDTH);

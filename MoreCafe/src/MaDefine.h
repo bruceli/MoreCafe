@@ -1,6 +1,6 @@
-#define kAppKey             @"3111231318"
-#define kAppSecret          @"ade7c8775fcb3b823438d83e290db108"
-#define kAppRedirectURL     @"http://google.com.hk"
+#define kAppKey             @"1076507647"
+#define kAppSecret          @"c3fa815939559399fdb116f76784c0b5"
+#define kAppRedirectURL     @"http://www.weibo.com"
 
 enum {
     MOCAFE_NEW = 0,
@@ -66,9 +66,9 @@ typedef NSUInteger MO_CAFE_TYPE;
 
 #define MA_LIST_VIEW_ROW_HEIGHT 370
 
-#define MA_LIST_CELL_GAP 10
-#define MA_LIST_CELL_WIDTH 300
+#define MA_LIST_CELL_GAP 20
+#define MA_LIST_CELL_WIDTH 280
 #define MA_LIST_CELL_HEIGHT 350
 #define MA_LIST_CELL_INNER_GAP 5
-#define MA_LIST_CELL_INNER_WIDTH 290
+#define MA_LIST_CELL_INNER_WIDTH 270
 #define MA_LIST_CELL_INNER_HEIGHT 260
