@@ -14,7 +14,8 @@
 	UIScrollView* _scrollView;
 	NSInteger _currentIndex;
 	MaDataSourceManager* _dataSourceMgr;
-
+	UILabel* _proverbView;
+	
 }
 
 @end

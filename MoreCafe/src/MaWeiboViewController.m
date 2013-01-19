@@ -247,6 +247,10 @@
 		NSMutableArray* destArray = [NSMutableArray arrayWithArray:array];
 		[destArray removeObjectsInArray:sameArray];
 		NSIndexSet* indexSet = [[NSIndexSet alloc]initWithIndexesInRange:NSMakeRange(0,[destArray count])];
+		
+		if (_messages == nil) 
+			_messages = [[NSMutableArray alloc]init];
+		
 		[_messages insertObjects:destArray atIndexes:indexSet];
 	}	
 	else	// load data from bottom of table

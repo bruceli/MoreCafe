@@ -35,7 +35,7 @@
 
 	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - MA_TOOLBAR_HEIGHT);
 	UIImageView* wallView = [[UIImageView alloc]initWithFrame:frame];	
-	UIImage* wallImage = [UIImage imageNamed:@"wall"];
+	UIImage* wallImage = [UIImage imageNamed:@"background"];
 	wallView.image = wallImage;
 	[self.view addSubview:wallView];
 	
@@ -51,7 +51,23 @@
 	[self setupViewsByArray:_dataSourceMgr.enumArray];
 	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [_dataSourceMgr.enumArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
+	CGRect proverbViewFrame = CGRectMake(30, 300, 260, 60);
+
+	_proverbView = [[UILabel alloc] initWithFrame:proverbViewFrame];
+	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+	_proverbView.text = @"人生，总让人无语。笑的时候，不一定开心，也许是一种无奈；哭的时候，不一定流泪，也许是一种释放；痛的时候，不一定受伤，也许是一种心动。走过一段路，总想看到一道风景，因为已经刻骨铭心；想起一个人，总会流泪，因为已经融入生命；唱起一首歌，总会沉默，因为已经难以释怀。风雨人生，淡然在心。";
+	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+	_proverbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	_proverbView.font = [UIFont systemFontOfSize:12];
+	_proverbView.textAlignment = NSTextAlignmentLeft;
+	_proverbView.textColor = [UIColor whiteColor];
+	_proverbView.opaque = NO;
+	_proverbView.lineBreakMode = NSLineBreakByWordWrapping;
+	_proverbView.numberOfLines = 0;
+	
+	[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,8 +104,19 @@
 		[self addGestureRecognizerTo:imgView];
 		
 		AsyncImageView* iconView = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 60, 190, 190)]; 
-		iconView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+		
+		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height - 48,200,25)];
+		lable.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+		lable.text = nameString;
+		lable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		lable.font = [UIFont systemFontOfSize:18];
+		lable.textAlignment = NSTextAlignmentCenter;
+		lable.textColor = [UIColor whiteColor];
+		lable.opaque = NO;
+
+		
 		[view addSubview:iconView];
+		[view addSubview:lable];
 		[view addSubview:imgView];
 		
 		if ([iconString length]>0) {
@@ -97,19 +124,9 @@
 			[imgPath appendString:@".jpg"];
 			[iconView setImageByString:imgPath];
 		}
-		
-		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height+5,200,25)];
-		lable.backgroundColor = [UIColor greenColor];
-		lable.text = nameString;
-		lable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		lable.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
-		lable.textAlignment = NSTextAlignmentCenter;
-		lable.highlightedTextColor = [UIColor whiteColor];
-		lable.textColor = [UIColor blackColor];
-		lable.opaque = NO;
-		[view addSubview:lable];
-
-		view.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+	
+		view.backgroundColor = [UIColor clearColor];
+		//[UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 		
 		[_scrollView addSubview:view];
 //		NSLog(@"item created,%d",i);

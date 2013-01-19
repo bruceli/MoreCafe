@@ -39,7 +39,7 @@
 	view.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 	
 	[self addSubview:view];
-	CGRect innerFrame = CGRectMake(MA_LIST_CELL_INNER_GAP,MA_LIST_CELL_INNER_GAP, MA_LIST_CELL_INNER_WIDTH, MA_LIST_CELL_INNER_WIDTH);
+	CGRect innerFrame = CGRectMake(MA_LIST_CELL_INNER_GAP,MA_LIST_CELL_INNER_GAP, MA_LIST_CELL_INNER_WIDTH, MA_LIST_CELL_INNER_HEIGHT);
 
 	_imgView = [[AsyncImageView alloc] initWithFrame:innerFrame];
 	_imgView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
