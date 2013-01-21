@@ -20,6 +20,9 @@
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
 
+	UIView* _loginView;
+	UIView* _timeLineView;
+	
 	//Weibo stuff
 	NSDictionary *_userInfo;
     NSMutableArray *_messages;
@@ -29,5 +32,6 @@
 	
 	NSDictionary* _moreItem;
 	UITableViewCell* _moreCell;
+
 }
 @end

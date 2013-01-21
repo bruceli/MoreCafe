@@ -9,6 +9,7 @@
 #import "MaDetailViewController.h"
 #import "UIBarButtonItem+StyledButton.h"
 #import "MaUtility.h"
+#import "MaPostController.h"
 
 @interface MaDetailViewController ()
 
@@ -39,7 +40,7 @@
 	UIImage *backImg = [UIImage imageNamed:@"backButtom"];
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:backImg];
 	
-	UIImage *shareImg = [UIImage imageNamed:@"action"];
+	UIImage *shareImg = [UIImage imageNamed:@"actionButtom"];
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(weiboShare) buttomImage:shareImg];	
 	
 	
@@ -64,8 +65,6 @@
 	[_scrollerView addSubview:_nameLable];
 	[_scrollerView addSubview:_detailTextView];
 	
-	
-	
 	[self fillData];
 }
 
@@ -77,7 +76,10 @@
 
 -(void)weiboShare
 {
-
+	MaPostController* postViewController = [[MaPostController alloc] init];
+	[postViewController setText:[_dict objectForKey:@"discription"] image: _imgView.image];
+	UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+	[self presentViewController: postNavController animated: YES completion:nil];
 }
 
 -(void)fillData

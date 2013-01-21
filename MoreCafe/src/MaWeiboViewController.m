@@ -12,6 +12,7 @@
 #import "MoreCafeAppDelegate.h"
 #import "Accounts/Accounts.h"
 #import "MaUtility.h"
+#import "MaPostController.h"
 
 @interface MaWeiboViewController ()
 
@@ -28,6 +29,7 @@
 		_moreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreCell"];
 		[self configMoreCell];
 		_pages = 1;
+		
     }
     return self;
 }
@@ -38,22 +40,29 @@
 	
 	UIImage *image = [UIImage imageNamed:@"backButtom"];
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:image];
-		
+
+	image = [UIImage imageNamed:@"composeButtom"];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(composeWeibo) buttomImage:image];
+
 	[self initSubViews];
 //	self.navigationItem.title = NSLocalizedString(@"Weibo", nil);
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+	_timeLineView = self.view;
+
+	[self initLoginView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	if ([self isLoggedIn]) {
-		[self logoutWeiboButtom];
+		[self removeLoginView];
 	}
 	else{
-		[self loginWeiboButtom];
+		[self setLoginView];
 	}
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -65,11 +74,37 @@
 	[self loadTimeLine];	
 }
 
+-(void)setLoginView
+{
+	self.view = _loginView;
+}
+
+-(void)removeLoginView
+{
+	self.view = _timeLineView;
+}
+
+-(void)initLoginView
+{
+	_loginView = [[UIView alloc] initWithFrame:self.view.frame];
+	
+	UIImage* image = [UIImage imageNamed:@"weiboLoginButtom"];
+	UIImage* imageDown = [UIImage imageNamed:@"weiboLoginButtomDown"];
+
+	UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+	
+	UIButton * buttom = [[UIButton alloc]initWithFrame:CGRectMake(100, 230, imageView.frame.size.width, imageView.frame.size.height)];
+	[buttom setImage:image forState:UIControlStateNormal];
+	[buttom setImage:imageDown forState:UIControlStateHighlighted];
+	[buttom addTarget:self action:@selector(loginWeibo) forControlEvents:UIControlEventTouchUpInside]; 
+
+	[_loginView addSubview:buttom];
+}
+
 -(void)testACAccount
 {
 //	ACAccountStore *store = [[ACAccountStore alloc] init]; 
 //	ACAccountType *twitterType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierSinaWeibo];
-	
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +128,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void) composeWeibo
+{		
+    MaPostController* postViewController = [[MaPostController alloc] init];
+    UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+	[self presentViewController: postNavController animated: YES completion:nil];
+}
+
+/*
 -(void) loginWeiboButtom
 {
 	UIImage *accountStatusImage = [UIImage imageNamed:@"needLoginIcon"];
@@ -104,7 +147,7 @@
 	UIImage *accountStatusImage = [UIImage imageNamed:@"readyIcon"];
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(logoutWeibo) buttomImage:accountStatusImage];
 }
-
+*/
 
 #pragma mark -
 #pragma mark UITableViewDataSource
@@ -262,11 +305,13 @@
 	[self.tableView reloadData];
 
 }
+
 - (void)loadTimeLine
 {
 	if (![self isLoggedIn]) 
 	{
 		NSLog(@"%@",@"Weibo token expired... ");
+		[self setLoginView];
 		return;
 	}
     SinaWeibo *sinaweibo = [self sinaweibo];
@@ -302,6 +347,8 @@
                      delegate:self];
 	[MoreCafeAppDelegate increaseNetworkActivityIndicator];
 }
+
+
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
@@ -429,8 +476,11 @@
 {
     NSLog(@"sinaweiboDidLogIn userID = %@ accesstoken = %@ expirationDate = %@ refresh_token = %@", sinaweibo.userID, sinaweibo.accessToken, sinaweibo.expirationDate,sinaweibo.refreshToken);
     
-    [self logoutWeiboButtom];
-    [self storeAuthData];
+//    [self logoutWeiboButtom];
+
+    [self removeLoginView];
+	[self loadTimeLine];
+	[self storeAuthData];
 	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
 
 }
@@ -439,7 +489,7 @@
 {
     NSLog(@"sinaweiboDidLogOut");
     [self removeAuthData];
-    [self loginWeiboButtom];
+    [self setLoginView];
 	_pages = 1;
 }
 
@@ -459,7 +509,7 @@
 {
     NSLog(@"sinaweiboAccessTokenInvalidOrExpired %@", error);
     [self removeAuthData];
-    [self loginWeiboButtom];
+    [self setLoginView];
 	_pages = 1;
 }
 
@@ -467,8 +517,8 @@
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
 	[self doneLoadingTableViewData];
-	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
-
+	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];	
+	
     if ([request.url hasSuffix:@"users/show.json"])
     {
 		_userInfo = nil;
@@ -476,6 +526,8 @@
     else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
     {
         //_messages = nil;
+		NSLog(@"Timeline failed with error : %@", error);
+
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {

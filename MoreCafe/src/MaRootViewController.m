@@ -65,7 +65,7 @@
 	_proverbView.lineBreakMode = NSLineBreakByWordWrapping;
 	_proverbView.numberOfLines = 0;
 	
-	[self.view addSubview:_proverbView];
+	//[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
 
 }
