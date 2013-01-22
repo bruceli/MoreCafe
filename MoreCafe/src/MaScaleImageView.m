@@ -72,6 +72,10 @@
 //	_imageView.image = img;
 }
 
+-(void)setImage:(UIImage*)img
+{
+	_imageView.image = img;
+}
 
 -(void)imageIsReadyNotify:(UIView*)view
 {	

@@ -44,7 +44,7 @@
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(weiboShare) buttomImage:shareImg];	
 	
 	
-	CGRect frame = CGRectMake(5, 5, 310, 310);
+	CGRect frame = CGRectMake(20, 20, 280, 280);
 	_imgView = [[AsyncImageView alloc]initWithFrame:frame];
 	_nameLable = [[UILabel alloc] initWithFrame:CGRectMake(frame.origin.x,frame.origin.y+frame.size.height-40,frame.size.width,40)];
 	_nameLable.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];

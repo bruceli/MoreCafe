@@ -7,10 +7,11 @@
 //
 
 #import "MaDefine.h"
+#import "MaScaleImageView.h"
 
 #define IMAGE_ICON_INDEX 0
 
-@interface MaPostController : UIViewController<UIActionSheetDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MaPostController : UIViewController<UIActionSheetDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MaScaleImageViewDelegate>
 {
     // PostController UI element.
     UIToolbar* _postToolbar;
@@ -30,6 +31,10 @@
     // PostController Message Data
     UIImage* capturedImage;
     NSNumber* weiboID;      
+	
+	AsyncImageView* _hiddenView;
+	MaScaleImageView* _scaleImageView;
+
 }
 -(void)setText:(NSString*)string image:(UIImage*)image;
 

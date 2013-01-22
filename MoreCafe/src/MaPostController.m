@@ -422,15 +422,44 @@
 }
 
 -(void)viewCapturedImage
-{    
- /*   MaImageViewController* viewImageController = [[MaImageViewController alloc] init];
-    UINavigationController *viewImageNavController = [[UINavigationController alloc] initWithRootViewController:viewImageController];
-    viewImageController.theImage = capturedImage;
-    
-    [self presentViewController:viewImageNavController animated:YES completion:nil];
-*/
+{   
+	[self toggleZoom:_postToolbar];
 }
 
+-(void) toggleZoom:(UIView*) sender 
+{
+	if (_hiddenView)
+	{					
+		// zoomout
+		CGRect frame = [sender.window convertRect:_hiddenView.frame fromView:_hiddenView.superview];
+		[UIView animateWithDuration:0.3 animations:
+		 ^{ sender.frame = frame; sender.alpha = 0.0;[_textView becomeFirstResponder];} 
+						 completion:
+		 ^(BOOL finished){
+			 [_scaleImageView removeFromSuperview];
+			 _hiddenView = nil;
+			 _scaleImageView = nil;
+
+		 }];
+	}
+	else
+	{					// zoom in		
+		_hiddenView = (AsyncImageView*)sender;
+		CGRect frame = [sender.window convertRect:sender.frame fromView:sender.superview];
+		
+		CGRect screenRect = [[UIScreen mainScreen] bounds];
+		_scaleImageView = [[MaScaleImageView alloc] initWithFrame:frame];
+		_scaleImageView.scaleImageViewDelegate = self;
+		[UIView animateWithDuration:0.2 animations:^{ _scaleImageView.frame = screenRect; }];
+		
+		[_scaleImageView setImage:capturedImage ]; 
+		[sender.window addSubview:_scaleImageView];		
+	}
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+	[[gestureRecognizer.view superview] removeFromSuperview];
+}
 
 -(UIImage*)resizeImage:(UIImage*)inImage
 {

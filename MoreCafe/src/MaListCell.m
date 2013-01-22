@@ -7,7 +7,6 @@
 //
 
 #import "MaListCell.h"
-#import "MaScaleImageView.h"
 
 @implementation MaListCell
 
@@ -101,15 +100,4 @@
 
 }
 
--(void)addGestureRecognizerTo:(UIView*)view
-{
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-	singleTap.numberOfTapsRequired = 1;
-	[view setUserInteractionEnabled:YES];
-    [view addGestureRecognizer:singleTap];
-}
-
-- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
-	
-}
 @end

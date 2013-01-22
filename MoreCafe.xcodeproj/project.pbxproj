@@ -475,7 +475,7 @@
 			name = resizeImage;
 			sourceTree = "<group>";
 		};
-		597E01CE16AE67A7003785C9 /* New Group */ = {
+		597E01CE16AE67A7003785C9 /* Notifacation */ = {
 			isa = PBXGroup;
 			children = (
 				597E020716AE7FF0003785C9 /* NoticeView.bundle */,
@@ -497,7 +497,7 @@
 				597E021716AE7FF0003785C9 /* WBSuccessNoticeView.h */,
 				597E021816AE7FF0003785C9 /* WBSuccessNoticeView.m */,
 			);
-			name = "New Group";
+			name = Notifacation;
 			sourceTree = "<group>";
 		};
 		599F3A01169005FC006397CB /* Resources */ = {
@@ -618,7 +618,7 @@
 		59F24A9F1699DB970068035E /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
-				597E01CE16AE67A7003785C9 /* New Group */,
+				597E01CE16AE67A7003785C9 /* Notifacation */,
 				597A6E3116AD260000C4414B /* resizeImage */,
 				597A6E0D16AD256800C4414B /* actionSheet */,
 				591179DD169C19FA0043858B /* NSDate+MaDate.h */,
