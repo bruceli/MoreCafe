@@ -69,11 +69,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
 	// Do any additional setup after loading the view.
-	[self loadTimeLine];	
+	if ([_messages count]==0) {
+		[self loadTimeLine];	
+	}
 }
 
 -(void)setLoginView
@@ -125,12 +126,12 @@
 	[self.tableView addSubview:_refreshHeaderView];
 }
 
--(void) dismissViewController
+-(void)dismissViewController
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void) composeWeibo
+-(void)composeWeibo
 {		
     MaPostController* postViewController = [[MaPostController alloc] init];
     UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
@@ -364,9 +365,7 @@
 #pragma mark UIScrollViewDelegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-	
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -507,7 +506,6 @@
 {
 	[self doneLoadingTableViewData];
 	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];	
-	[MoreCafeAppDelegate showErrorNotification:@"ERROR" inView:self.view];
 	
     if ([request.url hasSuffix:@"users/show.json"])
     {
@@ -517,27 +515,15 @@
     {
         //_messages = nil;
 		NSLog(@"Timeline failed with error : %@", error);
-
+		[MoreCafeAppDelegate showErrorNotification:NSLocalizedString(@"WeiboLoadFailed",nil) inView:self.view];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" failed!", postStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        [alertView release];
-        
-        NSLog(@"Post status failed with error : %@", error);
+		[MoreCafeAppDelegate showErrorNotification:NSLocalizedString(@"WeiboSendFailed",nil) inView:self.view];
     }
     else if ([request.url hasSuffix:@"statuses/upload.json"])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" failed!", postImageStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        [alertView release];
-        
-        NSLog(@"Post image status failed with error : %@", error);
+		[MoreCafeAppDelegate showErrorNotification:NSLocalizedString(@"WeiboSendFailed",nil) inView:self.view];
     }
     
 }
@@ -546,17 +532,10 @@
 {
 	[self doneLoadingTableViewData];
 	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
-	[MoreCafeAppDelegate showSuccessNotification:@"Success" inView:self.view];
 
     if ([request.url hasSuffix:@"users/show.json"])
     {
         _userInfo = result;
-    }
-    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
-    {
-    //    NSArray* message = [result objectForKey:@"statuses"];
-		//[self mergeMessages:message:];
-
     }
 	else if ([request.url hasSuffix:@"statuses/home_timeline.json"])
     {
@@ -566,24 +545,20 @@
 		if ([page length]> 0) {
 			appendMode = YES;
 		}
+		[MoreCafeAppDelegate showSuccessNotification:NSLocalizedString(@"WeiboLoadSuccess",nil) inView:self.view];
+
 		[self mergeMessages:message isAppend:appendMode];
     }
     else if ([request.url hasSuffix:@"statuses/update.json"])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];		
+		[MoreCafeAppDelegate showSuccessNotification:NSLocalizedString(@"WeiboSendSuccess",nil) inView:self.view];
+
 		postStatusText = nil;
     }
     else if ([request.url hasSuffix:@"statuses/upload.json"])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        [alertView release];
-        
+		[MoreCafeAppDelegate showSuccessNotification:NSLocalizedString(@"WeiboSendSuccess",nil) inView:self.view];
+
         postImageStatusText = nil;
     }
 }

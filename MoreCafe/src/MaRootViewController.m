@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
 
 	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - MA_TOOLBAR_HEIGHT);
@@ -52,6 +51,10 @@
 	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [_dataSourceMgr.enumArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
 	CGRect proverbViewFrame = CGRectMake(30, 300, 260, 60);
+
+	
+	
+	//			NSInteger randNum = (arc4random() % (max - min) + min) ; 
 
 	_proverbView = [[UILabel alloc] initWithFrame:proverbViewFrame];
 	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
@@ -116,7 +119,7 @@
 
 		
 		[view addSubview:iconView];
-		[view addSubview:lable];
+	//	[view addSubview:lable];
 		[view addSubview:imgView];
 		
 		if ([iconString length]>0) {

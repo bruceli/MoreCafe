@@ -56,5 +56,32 @@
 " | Repost:" = " | 转发:";
 
 "Load more..." = "加载更多...";
+
 "Loading..." = "正在努力加载...";
+
+"WeiboLongMessage" = "通过MoreCafé分享长微博";
+
+"WeiboLongMessageTextCount" = "长微博";
+
+"WeiboTag" = "#MoreCafe_bar#";
+
+"WeiboCancel" = "取消";
+
+"WeiboChooseFromLib" = "从照片库选取";
+
+"WeiboTakeFromCam" = "拍摄";
+
+"WeiboRemovePict" = "删除图片";
+
+"WeiboViewPict" = "查看图片";
+
+"WeiboShareImage" = "在MoreCafé分享图片";
+
+"WeiboLoadSuccess"="加载完成";
+
+"WeiboSendSuccess"="已发送";
+
+"WeiboLoadFailed" = "加载失败";
+
+"WeiboSendFailed" = "发送失败";
 

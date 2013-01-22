@@ -5,9 +5,9 @@
 	<key>new</key>
 	<dict>
 		<key>name</key>
-		<string>新品和特惠</string>
+		<string>新品与特惠</string>
 		<key>icon</key>
-		<string>cafe1</string>
+		<string>new</string>
 		<key>itemArray</key>
 		<array>
 			<dict>
@@ -45,7 +45,7 @@
 	<key>cafe</key>
 	<dict>
 		<key>icon</key>
-		<string>cafe0</string>
+		<string>cafe</string>
 		<key>name</key>
 		<string>咖啡</string>
 		<key>itemArray</key>
@@ -95,9 +95,9 @@
 	<key>tea</key>
 	<dict>
 		<key>icon</key>
-		<string>cafe3</string>
+		<string>tea</string>
 		<key>name</key>
-		<string>茶饮和冰品</string>
+		<string>茶饮与冰品</string>
 		<key>itemArray</key>
 		<array>
 			<dict>
@@ -225,7 +225,7 @@
 	<key>food</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>food</string>
 		<key>name</key>
 		<string>美食</string>
 		<key>itemArray</key>
@@ -315,9 +315,9 @@
 	<key>activities</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>activities</string>
 		<key>name</key>
-		<string>画展活动</string>
+		<string>画展与活动</string>
 		<key>itemArray</key>
 		<array>
 			<dict>
@@ -336,14 +336,14 @@
 	<key>weibo</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>weibo</string>
 		<key>name</key>
 		<string>微博</string>
 	</dict>
 	<key>about</key>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>about</string>
 		<key>name</key>
 		<string>关于我们</string>
 		<key>detail</key>
