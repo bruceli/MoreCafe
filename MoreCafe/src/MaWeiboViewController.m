@@ -13,6 +13,7 @@
 #import "Accounts/Accounts.h"
 #import "MaUtility.h"
 #import "MaPostController.h"
+#import "WBNoticeView.h"
 
 @interface MaWeiboViewController ()
 
@@ -55,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	
 	if ([self isLoggedIn]) {
 		[self removeLoginView];
 	}
@@ -135,19 +137,6 @@
 	[self presentViewController: postNavController animated: YES completion:nil];
 }
 
-/*
--(void) loginWeiboButtom
-{
-	UIImage *accountStatusImage = [UIImage imageNamed:@"needLoginIcon"];
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(loginWeibo) buttomImage:accountStatusImage];
-}
-
--(void) logoutWeiboButtom
-{
-	UIImage *accountStatusImage = [UIImage imageNamed:@"readyIcon"];
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(logoutWeibo) buttomImage:accountStatusImage];
-}
-*/
 
 #pragma mark -
 #pragma mark UITableViewDataSource
@@ -518,6 +507,7 @@
 {
 	[self doneLoadingTableViewData];
 	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];	
+	[MoreCafeAppDelegate showErrorNotification:@"ERROR" inView:self.view];
 	
     if ([request.url hasSuffix:@"users/show.json"])
     {
@@ -556,6 +546,7 @@
 {
 	[self doneLoadingTableViewData];
 	[MoreCafeAppDelegate decreaseNetworkActivityIndicator];
+	[MoreCafeAppDelegate showSuccessNotification:@"Success" inView:self.view];
 
     if ([request.url hasSuffix:@"users/show.json"])
     {

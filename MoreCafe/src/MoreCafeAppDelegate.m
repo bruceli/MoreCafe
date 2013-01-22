@@ -12,6 +12,9 @@
 #import "MaWeiboViewController.h"
 #import "SinaWeibo.h"
 
+#import "WBErrorNoticeView.h"
+#import "WBSuccessNoticeView.h"
+
 @implementation MoreCafeAppDelegate
 @synthesize sinaweibo = _sinaweibo;
 @synthesize weiboViewController = _weiboViewController;
@@ -108,6 +111,17 @@ static int _networkActivityIndicatorCounter = 0;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = _networkActivityIndicatorCounter > 0;
 }
 
++(void)showSuccessNotification:(NSString*)message inView:(UIView*)view
+{
+    WBSuccessNoticeView *notice = [WBSuccessNoticeView successNoticeInView:view title:message];
+    [notice show];
+}
 
 
++(void)showErrorNotification:(NSString*)message inView:(UIView*)view
+{
+    WBErrorNoticeView *notice = [WBErrorNoticeView errorNoticeInView:view title:NSLocalizedString(@"ERROR",nil) message:message];
+    [notice show];
+
+}
 @end

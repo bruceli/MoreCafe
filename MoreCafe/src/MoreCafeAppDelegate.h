@@ -22,7 +22,10 @@
 @property (readonly, nonatomic) MaWeiboViewController *weiboViewController;
 //@property (nonatomic, retain) MaDataSourceManager* dataSourceMgr;
 
-+ (void) increaseNetworkActivityIndicator;
-+ (void) decreaseNetworkActivityIndicator;
++ (void)increaseNetworkActivityIndicator;
++ (void)decreaseNetworkActivityIndicator;
++ (void)showSuccessNotification:(NSString*)message inView:(UIView*)view;
++ (void)showErrorNotification:(NSString*)message inView:(UIView*)view;
+
 
 @end

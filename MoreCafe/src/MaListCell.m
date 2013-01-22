@@ -45,13 +45,11 @@
 	CGRect innerFrame = CGRectMake(MA_LIST_CELL_INNER_GAP,MA_LIST_CELL_INNER_GAP, MA_LIST_CELL_INNER_WIDTH, MA_LIST_CELL_INNER_HEIGHT);
 
 	_imgView = [[AsyncImageView alloc] initWithFrame:innerFrame];
-	_imgView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
+	// _imgView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 
 	
-	_nameLable = [[UILabel alloc] initWithFrame:CGRectMake(innerFrame.origin.x, innerFrame.origin.y+innerFrame.size.height - 40, MA_LIST_CELL_INNER_WIDTH, 40)];
-	_nameLable.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
-	
-	_nameLable.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+	_nameLable = [[UILabel alloc] initWithFrame:CGRectMake(innerFrame.origin.x, innerFrame.origin.y+innerFrame.size.height - 40, MA_LIST_CELL_INNER_WIDTH, 40)];	
+	_nameLable.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.4];
 	_nameLable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_nameLable.font = [UIFont boldSystemFontOfSize:20];
 	_nameLable.textAlignment = NSTextAlignmentRight;
