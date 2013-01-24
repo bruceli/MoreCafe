@@ -45,7 +45,7 @@
 		UIImage *image = [UIImage imageNamed:@"closeButtom"];
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(cancel) buttomImage:image];
 		
-		image = [UIImage imageNamed:@"sendbuttom"];
+		image = [UIImage imageNamed:@"sendButtom"];
 		self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(post) buttomImage:image];
 
 
