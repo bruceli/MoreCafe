@@ -12,6 +12,7 @@
 
 #import "MoreCafeAppDelegate.h"
 #import "MaDataSourceManager.h"
+#import "MaAboutViewController.h"
 
 @interface MaRootViewController ()
 @end
@@ -34,7 +35,7 @@
 
 	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - MA_TOOLBAR_HEIGHT);
 	UIImageView* wallView = [[UIImageView alloc]initWithFrame:frame];	
-	UIImage* wallImage = [UIImage imageNamed:@"background"];
+	UIImage* wallImage = [UIImage imageNamed:@"wall"];
 	wallView.image = wallImage;
 	[self.view addSubview:wallView];
 	
@@ -43,8 +44,9 @@
 	_scrollView.showsVerticalScrollIndicator=NO;
 
 	_scrollView.delegate = self;
-	_scrollView.backgroundColor = [UIColor clearColor];
-		
+	_scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wall"]];
+	//_scrollView.backgroundColor = [UIColor clearColor];
+
 	_currentIndex = 0;
 	
 	[self setupViewsByArray:_dataSourceMgr.enumArray];
@@ -54,11 +56,11 @@
 
 	
 	
-	//			NSInteger randNum = (arc4random() % (max - min) + min) ; 
+	// NSInteger randNum = (arc4random() % (max - min) + min) ; 
 
 	_proverbView = [[UILabel alloc] initWithFrame:proverbViewFrame];
 	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
-	_proverbView.text = @"人生，总让人无语。笑的时候，不一定开心，也许是一种无奈；哭的时候，不一定流泪，也许是一种释放；痛的时候，不一定受伤，也许是一种心动。走过一段路，总想看到一道风景，因为已经刻骨铭心；想起一个人，总会流泪，因为已经融入生命；唱起一首歌，总会沉默，因为已经难以释怀。风雨人生，淡然在心。";
+	_proverbView.text = @"" ;
 	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
 	_proverbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_proverbView.font = [UIFont systemFontOfSize:12];
@@ -67,6 +69,13 @@
 	_proverbView.opaque = NO;
 	_proverbView.lineBreakMode = NSLineBreakByWordWrapping;
 	_proverbView.numberOfLines = 0;
+	
+	if(bounds.size.height == 548)
+	{
+		UIImageView* bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 440, 320, 60)];
+		bottomImageView.image = [UIImage imageNamed:@"bottomStyle"];
+		//[self.view addSubview:bottomImageView];	
+	}
 	
 	//[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
@@ -82,7 +91,7 @@
 -(void)setupViewsByArray:(NSArray*)itemArray
 {
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-	UIImage* image = [UIImage imageNamed:@"artFrame"];
+	UIImage* image = [UIImage imageNamed:@"artFrameLight"];
 
 	for (int i = 0 ; i < [itemArray count]; i ++)
 	{
@@ -108,8 +117,8 @@
 		
 		AsyncImageView* iconView = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 60, 190, 190)]; 
 		
-		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height - 48,200,25)];
-		lable.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+		UILabel* lable = [[UILabel alloc] initWithFrame:CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y+imgView.frame.size.height - 46,200,25)];
+		lable.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.4];
 		lable.text = nameString;
 		lable.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		lable.font = [UIFont systemFontOfSize:18];
@@ -119,7 +128,7 @@
 
 		
 		[view addSubview:iconView];
-	//	[view addSubview:lable];
+		[view addSubview:lable];
 		[view addSubview:imgView];
 		
 		if ([iconString length]>0) {
@@ -157,6 +166,13 @@
 	MO_CAFE_TYPE type = gestureRecognizer.view.tag - Ma_VIEW_INDEX;
 	if (type == MOCAFE_WEIBO) {
 		[self.navigationController pushViewController: app.weiboViewController animated:YES];
+	}
+	else if (type == MOCAFE_ABOUT)
+	{
+		MaAboutViewController* controller = [[MaAboutViewController alloc] init];
+		[_dataSourceMgr updateDataSourceArrayByViewType:type];
+		controller.dict = [_dataSourceMgr itemInfoByViewType:type];
+		[self.navigationController pushViewController: controller animated:YES];
 	}
 	else
 	{

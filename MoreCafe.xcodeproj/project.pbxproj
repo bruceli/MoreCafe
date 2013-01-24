@@ -71,8 +71,11 @@
 		597E025016AEA33D003785C9 /* about.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 597E024916AEA33D003785C9 /* about.jpg */; };
 		597E025116AEA33D003785C9 /* tea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 597E024A16AEA33D003785C9 /* tea.jpg */; };
 		597E025416AEA37D003785C9 /* new.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 597E025316AEA37D003785C9 /* new.jpg */; };
-		5988FE2316AA96B7000655A2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5988FE2116AA96B6000655A2 /* background.png */; };
-		5988FE2416AA96B7000655A2 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5988FE2216AA96B6000655A2 /* background@2x.png */; };
+		598017CF16B12D9D00AD3D1C /* MaAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 598017CE16B12D9D00AD3D1C /* MaAboutViewController.m */; };
+		598017D116B1366400AD3D1C /* cafeAbout.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 598017D016B1366400AD3D1C /* cafeAbout.jpg */; };
+		599E13C916AFBD2E00866BF1 /* bottomStyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 599E13C816AFBD2E00866BF1 /* bottomStyle@2x.png */; };
+		599E13D016AFBEC100866BF1 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 599E13CF16AFBEC100866BF1 /* BBCyclingLabel.m */; };
+		599E13D216AFCC5600866BF1 /* artFrameLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 599E13D116AFCC5600866BF1 /* artFrameLight@2x.png */; };
 		599F39F9168EF4BC006397CB /* MaRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599F39F8168EF4BC006397CB /* MaRootViewController.m */; };
 		599F39FF169005F8006397CB /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F39FD169005F8006397CB /* navbar.png */; };
 		599F3A00169005F8006397CB /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 599F39FE169005F8006397CB /* navbar@2x.png */; };
@@ -281,8 +284,13 @@
 		597E024916AEA33D003785C9 /* about.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = about.jpg; path = Resources/about.jpg; sourceTree = "<group>"; };
 		597E024A16AEA33D003785C9 /* tea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tea.jpg; path = Resources/tea.jpg; sourceTree = "<group>"; };
 		597E025316AEA37D003785C9 /* new.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = new.jpg; path = Resources/new.jpg; sourceTree = "<group>"; };
-		5988FE2116AA96B6000655A2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
-		5988FE2216AA96B6000655A2 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resources/background@2x.png"; sourceTree = "<group>"; };
+		598017CD16B12D9D00AD3D1C /* MaAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaAboutViewController.h; path = src/MaAboutViewController.h; sourceTree = "<group>"; };
+		598017CE16B12D9D00AD3D1C /* MaAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaAboutViewController.m; path = src/MaAboutViewController.m; sourceTree = "<group>"; };
+		598017D016B1366400AD3D1C /* cafeAbout.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cafeAbout.jpg; path = Resources/cafeAbout.jpg; sourceTree = "<group>"; };
+		599E13C816AFBD2E00866BF1 /* bottomStyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bottomStyle@2x.png"; path = "Resources/bottomStyle@2x.png"; sourceTree = "<group>"; };
+		599E13CE16AFBEC100866BF1 /* BBCyclingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBCyclingLabel.h; path = src/3rd/BBCLable/BBCyclingLabel.h; sourceTree = "<group>"; };
+		599E13CF16AFBEC100866BF1 /* BBCyclingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBCyclingLabel.m; path = src/3rd/BBCLable/BBCyclingLabel.m; sourceTree = "<group>"; };
+		599E13D116AFCC5600866BF1 /* artFrameLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "artFrameLight@2x.png"; path = "Resources/artFrameLight@2x.png"; sourceTree = "<group>"; };
 		599F39F7168EF4BC006397CB /* MaRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaRootViewController.h; path = src/MaRootViewController.h; sourceTree = "<group>"; };
 		599F39F8168EF4BC006397CB /* MaRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaRootViewController.m; path = src/MaRootViewController.m; sourceTree = "<group>"; };
 		599F39FD169005F8006397CB /* navbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navbar.png; path = Resources/navbar.png; sourceTree = "<group>"; };
@@ -536,10 +544,10 @@
 				597E025216AEA345003785C9 /* root */,
 				59117A20169C21D20043858B /* Localizable.strings */,
 				592D897B16ADBEB900137A1B /* camera.png */,
+				599E13C816AFBD2E00866BF1 /* bottomStyle@2x.png */,
 				592D897C16ADBEB900137A1B /* camera@2x.png */,
+				598017D016B1366400AD3D1C /* cafeAbout.jpg */,
 				597A6E3B16AD315000C4414B /* listCellbackground@2x.png */,
-				5988FE2116AA96B6000655A2 /* background.png */,
-				5988FE2216AA96B6000655A2 /* background@2x.png */,
 				59A7B22D16AD5BF100274869 /* closeButtom.png */,
 				59A7B22E16AD5BF100274869 /* closeButtom@2x.png */,
 				592D899516ADC18700137A1B /* actionButtom.png */,
@@ -563,6 +571,7 @@
 				599F3A071690071D006397CB /* backButtom@2x.png */,
 				59FC12A616A679DF006C5224 /* artFrame@2x.png */,
 				59F24AAD1699E1560068035E /* blackArrow.png */,
+				599E13D116AFCC5600866BF1 /* artFrameLight@2x.png */,
 				59F24AAE1699E1560068035E /* blackArrow@2x.png */,
 				59F24AAF1699E1560068035E /* blueArrow.png */,
 				59F24AB01699E1560068035E /* blueArrow@2x.png */,
@@ -629,6 +638,8 @@
 				599F39F8168EF4BC006397CB /* MaRootViewController.m */,
 				59FC12A016A66B86006C5224 /* MaListViewController.h */,
 				59FC12A116A66B86006C5224 /* MaListViewController.m */,
+				598017CD16B12D9D00AD3D1C /* MaAboutViewController.h */,
+				598017CE16B12D9D00AD3D1C /* MaAboutViewController.m */,
 				5939109A16A98E70002A36F8 /* MaDetailViewController.h */,
 				5939109B16A98E70002A36F8 /* MaDetailViewController.m */,
 			);
@@ -650,6 +661,8 @@
 		59F24A9F1699DB970068035E /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				599E13CE16AFBEC100866BF1 /* BBCyclingLabel.h */,
+				599E13CF16AFBEC100866BF1 /* BBCyclingLabel.m */,
 				597E01CE16AE67A7003785C9 /* Notifacation */,
 				597A6E3116AD260000C4414B /* resizeImage */,
 				597A6E0D16AD256800C4414B /* actionSheet */,
@@ -849,8 +862,6 @@
 				593910A716A9B6CE002A36F8 /* cafe4.jpg in Resources */,
 				593910A816A9B6CE002A36F8 /* cafe5.jpg in Resources */,
 				593910AA16A9B9E5002A36F8 /* emptyImg.jpg in Resources */,
-				5988FE2316AA96B7000655A2 /* background.png in Resources */,
-				5988FE2416AA96B7000655A2 /* background@2x.png in Resources */,
 				597A6E2116AD257F00C4414B /* SheetBackground.png in Resources */,
 				597A6E2216AD257F00C4414B /* SheetBackground@2x.png in Resources */,
 				597A6E2316AD257F00C4414B /* SheetButtonDestroy@2x.png in Resources */,
@@ -889,6 +900,9 @@
 				597E025116AEA33D003785C9 /* tea.jpg in Resources */,
 				597E025416AEA37D003785C9 /* new.jpg in Resources */,
 				59CC08DB16AEACCB0013F460 /* proverb.plist in Resources */,
+				599E13C916AFBD2E00866BF1 /* bottomStyle@2x.png in Resources */,
+				599E13D216AFCC5600866BF1 /* artFrameLight@2x.png in Resources */,
+				598017D116B1366400AD3D1C /* cafeAbout.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,6 +946,8 @@
 				597E021F16AE7FF0003785C9 /* WBRedGradientView.m in Sources */,
 				597E022016AE7FF0003785C9 /* WBStickyNoticeView.m in Sources */,
 				597E022116AE7FF0003785C9 /* WBSuccessNoticeView.m in Sources */,
+				599E13D016AFBEC100866BF1 /* BBCyclingLabel.m in Sources */,
+				598017CF16B12D9D00AD3D1C /* MaAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

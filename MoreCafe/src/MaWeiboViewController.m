@@ -72,7 +72,7 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
 	// Do any additional setup after loading the view.
-	if ([_messages count]==0) {
+	if ([_messages count]<1) {
 		[self loadTimeLine];	
 	}
 }
