@@ -88,8 +88,6 @@
 		59A7B21416AD4D4300274869 /* weiboLoginButtomDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B21316AD4D4300274869 /* weiboLoginButtomDown@2x.png */; };
 		59A7B21716AD54DE00274869 /* composeButtom.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B21516AD54DE00274869 /* composeButtom.png */; };
 		59A7B21816AD54DE00274869 /* composeButtom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B21616AD54DE00274869 /* composeButtom@2x.png */; };
-		59A7B22B16AD5B5200274869 /* sendbuttom.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B22916AD5B5200274869 /* sendbuttom.png */; };
-		59A7B22C16AD5B5200274869 /* sendbuttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B22A16AD5B5200274869 /* sendbuttom@2x.png */; };
 		59A7B22F16AD5BF100274869 /* closeButtom.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B22D16AD5BF100274869 /* closeButtom.png */; };
 		59A7B23016AD5BF100274869 /* closeButtom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A7B22E16AD5BF100274869 /* closeButtom@2x.png */; };
 		59AC4A9C169A83460034919E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AC4A9B169A83460034919E /* CoreText.framework */; };
@@ -305,8 +303,6 @@
 		59A7B21316AD4D4300274869 /* weiboLoginButtomDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weiboLoginButtomDown@2x.png"; path = "Resources/weiboLoginButtomDown@2x.png"; sourceTree = "<group>"; };
 		59A7B21516AD54DE00274869 /* composeButtom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = composeButtom.png; path = Resources/composeButtom.png; sourceTree = "<group>"; };
 		59A7B21616AD54DE00274869 /* composeButtom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "composeButtom@2x.png"; path = "Resources/composeButtom@2x.png"; sourceTree = "<group>"; };
-		59A7B22916AD5B5200274869 /* sendbuttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sendbuttom.png; path = Resources/sendbuttom.png; sourceTree = "<group>"; };
-		59A7B22A16AD5B5200274869 /* sendbuttom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sendbuttom@2x.png"; path = "Resources/sendbuttom@2x.png"; sourceTree = "<group>"; };
 		59A7B22D16AD5BF100274869 /* closeButtom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = closeButtom.png; path = Resources/closeButtom.png; sourceTree = "<group>"; };
 		59A7B22E16AD5BF100274869 /* closeButtom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "closeButtom@2x.png"; path = "Resources/closeButtom@2x.png"; sourceTree = "<group>"; };
 		59AC4A9B169A83460034919E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -552,8 +548,6 @@
 				59A7B22E16AD5BF100274869 /* closeButtom@2x.png */,
 				592D899516ADC18700137A1B /* actionButtom.png */,
 				592D899616ADC18700137A1B /* actionButtom@2x.png */,
-				59A7B22916AD5B5200274869 /* sendbuttom.png */,
-				59A7B22A16AD5B5200274869 /* sendbuttom@2x.png */,
 				593910A916A9B9E5002A36F8 /* emptyImg.jpg */,
 				5939109D16A9B6CE002A36F8 /* cafe0.jpg */,
 				5939109E16A9B6CE002A36F8 /* cafe1.jpg */,
@@ -883,8 +877,6 @@
 				59A7B21416AD4D4300274869 /* weiboLoginButtomDown@2x.png in Resources */,
 				59A7B21716AD54DE00274869 /* composeButtom.png in Resources */,
 				59A7B21816AD54DE00274869 /* composeButtom@2x.png in Resources */,
-				59A7B22B16AD5B5200274869 /* sendbuttom.png in Resources */,
-				59A7B22C16AD5B5200274869 /* sendbuttom@2x.png in Resources */,
 				59A7B22F16AD5BF100274869 /* closeButtom.png in Resources */,
 				59A7B23016AD5BF100274869 /* closeButtom@2x.png in Resources */,
 				592D897D16ADBEBA00137A1B /* camera.png in Resources */,
