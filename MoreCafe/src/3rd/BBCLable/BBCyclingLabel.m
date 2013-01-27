@@ -222,13 +222,13 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
 
 - (CGFloat)minimumFontSize
 {
-    return _currentLabel.minimumFontSize;
+    return _currentLabel.minimumScaleFactor;
 }
 
 - (void)setMinimumFontSize:(CGFloat)minimumFontSize
 {
     for (UILabel* label in _labels) {
-        label.minimumFontSize = minimumFontSize;
+        label.minimumScaleFactor = minimumFontSize;
     }
 }
 

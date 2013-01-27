@@ -56,10 +56,10 @@
 	[self setupViewsByArray:_dataSourceMgr.enumArray];
 	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [_dataSourceMgr.enumArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
-	CGRect proverbViewFrame = CGRectMake(30, 290, 270, 80);
+	CGRect proverbViewFrame = CGRectMake(30, 290, 270, 100);
 	
 	_proverbView = [[BBCyclingLabel alloc] initWithFrame:proverbViewFrame];
-	_proverbView.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
+	_proverbView.transitionEffect = BBCyclingLabelTransitionEffectCrossFade;
 	_proverbView.transitionDuration = 1.5;
 	_proverbView.backgroundColor = [UIColor clearColor];
 	_proverbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -89,14 +89,14 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-	[_proverbViewHelperThread cancel];
+//	[_proverbViewHelperThread cancel];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	_proverbViewHelperThread = [[NSThread alloc] initWithTarget:self selector:@selector(refreshProverb) object:nil];
-	[_proverbViewHelperThread start];
+//	_proverbViewHelperThread = [[NSThread alloc] initWithTarget:self selector:@selector(refreshProverb) object:nil];
+//	[_proverbViewHelperThread start];
 }
 
 -(void)refreshProverb
@@ -238,6 +238,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)view
 {
+	
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
 	
 	//	NSLog(@"return offset.x = %f",view.contentOffset.x);
@@ -250,6 +251,7 @@
 		return;
 	
     [view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
+	[self updateProverb];
 	//	NSLog(@"%@", @"scrollViewDidEndDecelerating");
 }
 
@@ -259,7 +261,7 @@
 	if (!decelerate) {
 		[view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
 		//		NSLog(@"%@", @"scrollViewDidEndDragging");
-		
+		[self updateProverb];
     }
 }
 

@@ -17,7 +17,7 @@
 	BBCyclingLabel* _proverbView;
 	
 	NSArray* _proverbArray;
-	NSThread* _proverbViewHelperThread;
+//	NSThread* _proverbViewHelperThread;
 }
 
 @end
