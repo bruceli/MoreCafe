@@ -59,6 +59,12 @@
 
 "Loading..." = "正在努力加载...";
 
+"Release to refresh..." = "松开即可刷新";
+
+"Pull down to refresh..." = "下拉可以刷新";
+
+"Last Updated:" = "最后更新: ";
+
 "WeiboLongMessage" = "通过MoreCafé分享长微博";
 
 "WeiboLongMessageTextCount" = "长微博";

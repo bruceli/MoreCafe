@@ -79,7 +79,7 @@
     noticeViewHeight += 30.0;
     
     // Make sure we hide completely the view, including its shadow
-    float hiddenYOrigin = -noticeViewHeight - 120.0;
+    float hiddenYOrigin = -noticeViewHeight - 200.0;
     
     // Make and add the notice view
     self.gradientView = [[WBRedGradientView alloc] initWithFrame:CGRectMake(0.0, hiddenYOrigin, viewWidth, noticeViewHeight + 10.0)];
