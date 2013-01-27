@@ -86,6 +86,8 @@
 
 - (void)drawBubble:(CGFloat)height
 {	
+	height += 4;// DTTextView wordwarp issue 
+	
 	CGFloat scaleValue = [[UIScreen mainScreen] scale];
 
 	UIGraphicsBeginImageContextWithOptions(CGSizeMake(MA_CELL_MESSAGE_WIDTH,height), NO, scaleValue);

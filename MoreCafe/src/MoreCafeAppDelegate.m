@@ -14,6 +14,7 @@
 
 #import "WBErrorNoticeView.h"
 #import "WBSuccessNoticeView.h"
+#import "MaUtility.h"
 
 @implementation MoreCafeAppDelegate
 @synthesize sinaweibo = _sinaweibo;
@@ -26,7 +27,7 @@ static int _networkActivityIndicatorCounter = 0;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	[AsyncImageLoader sharedLoader];	
-
+	[self preloadDTTextView];
 	MaRootViewController* controller =[[MaRootViewController alloc] init];
 
 	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -123,5 +124,18 @@ static int _networkActivityIndicatorCounter = 0;
     WBErrorNoticeView *notice = [WBErrorNoticeView errorNoticeInView:view title:NSLocalizedString(@"ERROR",nil) message:message];
     [notice show];
 
+}
+
+-(void)preloadDTTextView
+{
+	DTAttributedTextView* _detailTextView = [[DTAttributedTextView alloc]initWithFrame:CGRectMake(20,220,280,20)];
+//	_detailTextView.textDelegate = self;
+	_detailTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	_detailTextView.backgroundColor = [UIColor clearColor];
+	_detailTextView.scrollEnabled = NO;
+	
+	[MaUtility fillText:@"TEST" to:_detailTextView];
+
+	
 }
 @end
