@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 @class MaDataSourceManager;
-
+@class BBCyclingLabel;
 @interface MaRootViewController : UIViewController <UIScrollViewDelegate>
 {
 	UIScrollView* _scrollView;
 	NSInteger _currentIndex;
 	MaDataSourceManager* _dataSourceMgr;
-	UILabel* _proverbView;
+	BBCyclingLabel* _proverbView;
 	
+	NSArray* _proverbArray;
+	NSThread* _proverbViewHelperThread;
 }
 
 @end

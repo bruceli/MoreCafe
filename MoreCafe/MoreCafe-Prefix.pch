@@ -13,6 +13,6 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#import "DTCoreText.h"
 #import "AsyncImageView.h"
+#import "DTCoreText.h"
 #import "MaDefine.h"

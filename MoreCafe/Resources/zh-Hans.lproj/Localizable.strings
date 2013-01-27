@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  MoreCafe
-
-  Created by Thunder on 1/8/13.
-  Copyright (c) 2013 MagicApp. All rights reserved.
-*/
+ Localizable.strings
+ MoreCafe
+ 
+ Created by Thunder on 1/8/13.
+ Copyright (c) 2013 MagicApp. All rights reserved.
+ */
 "%d hours ago" = "%1$d 小时前";
 
 "%d minutes ago" = "%1$d 分钟前";
@@ -85,3 +85,10 @@
 
 "WeiboSendFailed" = "发送失败";
 
+"checkMap" = "查看地图";
+
+"WeiboDisconnect" = "断开微博账户";
+
+"WeiboDisconnecting" = "正在断开";
+
+"WeiboNotConnect" = "未连接微博账户";

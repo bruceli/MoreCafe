@@ -7,7 +7,6 @@
 //
 
 #import "MaScaleImageView.h"
-#import "MaDefine.h"
 
 
 @implementation MaScaleImageView

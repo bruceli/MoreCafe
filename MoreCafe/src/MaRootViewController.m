@@ -13,6 +13,7 @@
 #import "MoreCafeAppDelegate.h"
 #import "MaDataSourceManager.h"
 #import "MaAboutViewController.h"
+#import "BBCyclingLabel.h"
 
 @interface MaRootViewController ()
 @end
@@ -23,7 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		_dataSourceMgr = [[MaDataSourceManager alloc] init];
-
+		
 	}
     return self;
 }
@@ -31,8 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"proverb" ofType:@"plist"];        
+	_proverbArray = [[NSArray alloc] initWithContentsOfFile:path];
+	
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-
+	
 	CGRect frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - MA_TOOLBAR_HEIGHT);
 	UIImageView* wallView = [[UIImageView alloc]initWithFrame:frame];	
 	UIImage* wallImage = [UIImage imageNamed:@"wall"];
@@ -42,33 +46,32 @@
 	_scrollView = [[UIScrollView alloc ] initWithFrame:frame ];
 	_scrollView.showsHorizontalScrollIndicator=NO;
 	_scrollView.showsVerticalScrollIndicator=NO;
-
+	
 	_scrollView.delegate = self;
-	_scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wall"]];
-	//_scrollView.backgroundColor = [UIColor clearColor];
-
+	//_scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wall"]];
+	_scrollView.backgroundColor = [UIColor clearColor];
+	
 	_currentIndex = 0;
 	
 	[self setupViewsByArray:_dataSourceMgr.enumArray];
 	_scrollView.contentSize = CGSizeMake( MA_ART_WIDTH * [_dataSourceMgr.enumArray count] , bounds.size.height - MA_TOOLBAR_HEIGHT);
 	
-	CGRect proverbViewFrame = CGRectMake(30, 300, 260, 60);
-
+	CGRect proverbViewFrame = CGRectMake(30, 290, 270, 80);
 	
-	
-	// NSInteger randNum = (arc4random() % (max - min) + min) ; 
-
-	_proverbView = [[UILabel alloc] initWithFrame:proverbViewFrame];
-	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
-	_proverbView.text = @"" ;
-	_proverbView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
+	_proverbView = [[BBCyclingLabel alloc] initWithFrame:proverbViewFrame];
+	_proverbView.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
+	_proverbView.transitionDuration = 1.5;
+	_proverbView.backgroundColor = [UIColor clearColor];
 	_proverbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	_proverbView.font = [UIFont systemFontOfSize:12];
+	_proverbView.font = [UIFont boldSystemFontOfSize:12];
 	_proverbView.textAlignment = NSTextAlignmentLeft;
-	_proverbView.textColor = [UIColor whiteColor];
+	_proverbView.textColor = [UIColor darkGrayColor];
+	_proverbView.shadowColor = [UIColor whiteColor];
+	_proverbView.shadowOffset = CGSizeMake(1, 1);
 	_proverbView.opaque = NO;
 	_proverbView.lineBreakMode = NSLineBreakByWordWrapping;
 	_proverbView.numberOfLines = 0;
+	_proverbView.clipsToBounds = YES;
 	
 	if(bounds.size.height == 548)
 	{
@@ -77,9 +80,44 @@
 		//[self.view addSubview:bottomImageView];	
 	}
 	
-	//[self.view addSubview:_proverbView];
+	[self updateProverb];
+	[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
+	
+}
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[_proverbViewHelperThread cancel];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	_proverbViewHelperThread = [[NSThread alloc] initWithTarget:self selector:@selector(refreshProverb) object:nil];
+	[_proverbViewHelperThread start];
+}
+
+-(void)refreshProverb
+{
+	while (TRUE) {
+		[NSThread sleepForTimeInterval:10];
+		if([[NSThread currentThread] isCancelled])
+			break;
+		
+		[self performSelectorOnMainThread:@selector(updateProverb) withObject:nil waitUntilDone:YES]; 
+	}
+}
+
+-(void)updateProverb
+{
+	NSInteger max = [_proverbArray count] - 1;
+	NSInteger min = 0;
+	NSInteger randNum = (arc4random() % (max - min) + min) ;
+	
+	NSString* string = [_proverbArray objectAtIndex:randNum];
+	[_proverbView setText:string animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +130,7 @@
 {
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
 	UIImage* image = [UIImage imageNamed:@"artFrameLight"];
-
+	
 	for (int i = 0 ; i < [itemArray count]; i ++)
 	{
 		CGRect frame = CGRectMake(MA_ART_WIDTH * i ,
@@ -125,7 +163,7 @@
 		lable.textAlignment = NSTextAlignmentCenter;
 		lable.textColor = [UIColor whiteColor];
 		lable.opaque = NO;
-
+		
 		
 		[view addSubview:iconView];
 		[view addSubview:lable];
@@ -136,12 +174,12 @@
 			[imgPath appendString:@".jpg"];
 			[iconView setImageByString:imgPath];
 		}
-	
+		
 		view.backgroundColor = [UIColor clearColor];
 		//[UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 		
 		[_scrollView addSubview:view];
-//		NSLog(@"item created,%d",i);
+		//		NSLog(@"item created,%d",i);
 		
 	}
 }
@@ -155,13 +193,7 @@
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
-	
-//    MaSubItemController* viewController = [[MaSubItemController alloc]init];
-//    viewController.indexPath = indexPath;
-//    NSDictionary* dict = [_dataSourceMgr.dataSource objectAtIndex: indexPath.row];
-	
 	MoreCafeAppDelegate* app = (MoreCafeAppDelegate *)[[UIApplication sharedApplication] delegate];    
-//    [self.navigationController pushViewController: app.weiboViewController animated:YES];
 	
 	MO_CAFE_TYPE type = gestureRecognizer.view.tag - Ma_VIEW_INDEX;
 	if (type == MOCAFE_WEIBO) {
@@ -186,7 +218,7 @@
 -(CGPoint)calculateScrollingOffset:(UIScrollView*)view
 {
 	CGFloat contentOffset = view.contentOffset.x + MA_ART_WIDTH/2; // half imageView width
-//	NSLog(@"offset.x = %f",view.contentOffset.x);
+	//	NSLog(@"offset.x = %f",view.contentOffset.x);
 	NSInteger index = floorf(contentOffset / MA_ART_WIDTH);
 	CGPoint offset;
 	if (index==0) {	// first art frame -- Right alignment
@@ -197,28 +229,28 @@
 	}
 	else{	// art frame at middle
 		offset = CGPointMake((MA_ART_WIDTH * index) - MA_ART_WIDTH_DELTA  , 0);
-	//        NSLog(@"Drag to , %f", _scrollView.frame.size.width * _currentPageIndex);
+		//        NSLog(@"Drag to , %f", _scrollView.frame.size.width * _currentPageIndex);
 	}
-//	NSLog(@"return offset.x = %f",offset.x);
-
+	//	NSLog(@"return offset.x = %f",offset.x);
+	
 	return offset;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)view
 {
 	CGRect bounds = [ [ UIScreen mainScreen ] applicationFrame ];
-
-//	NSLog(@"return offset.x = %f",view.contentOffset.x);
-
+	
+	//	NSLog(@"return offset.x = %f",view.contentOffset.x);
+	
 	NSInteger maxWidth = MA_ART_WIDTH * [_dataSourceMgr.enumArray count];
 	NSInteger maxOffset = maxWidth - MA_ART_WIDTH - (bounds.size.width - MA_ART_WIDTH);
-//	NSLog(@"calculated offset = %d", maxOffset);
-
+	//	NSLog(@"calculated offset = %d", maxOffset);
+	
 	if (view.contentOffset.x < 0 ||view.contentOffset.x >= maxOffset )	// skip setContentOffset when unnecessary;
 		return;
-
+	
     [view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
-//	NSLog(@"%@", @"scrollViewDidEndDecelerating");
+	//	NSLog(@"%@", @"scrollViewDidEndDecelerating");
 }
 
 
@@ -226,9 +258,10 @@
 {
 	if (!decelerate) {
 		[view setContentOffset:[self calculateScrollingOffset:view] animated:YES];
-//		NSLog(@"%@", @"scrollViewDidEndDragging");
-
+		//		NSLog(@"%@", @"scrollViewDidEndDragging");
+		
     }
 }
+
 
 @end

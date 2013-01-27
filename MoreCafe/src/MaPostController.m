@@ -50,7 +50,7 @@
 
 
         UINavigationBar* navBar = self.navigationController.navigationBar;
-        [navBar setBackgroundImage:[UIImage imageNamed: @"navBackground"] forBarMetrics:UIBarMetricsDefault];
+        [navBar setBackgroundImage:[UIImage imageNamed: @"toobarBackground"] forBarMetrics:UIBarMetricsDefault];
 
         // init textView
         _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, 0)];

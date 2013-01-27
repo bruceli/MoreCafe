@@ -80,27 +80,32 @@
 -(void)setLoginView
 {
 	self.view = _loginView;
+	self.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)removeLoginView
 {
 	self.view = _timeLineView;
+	UIImage* image = [UIImage imageNamed:@"composeButtom"];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(composeWeibo) buttomImage:image];
+
 }
 
 -(void)initLoginView
 {
 	_loginView = [[UIView alloc] initWithFrame:self.view.frame];
 	
-	UIImage* image = [UIImage imageNamed:@"weiboLoginButtom"];
-	UIImage* imageDown = [UIImage imageNamed:@"weiboLoginButtomDown"];
-
-	UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+	UIImage* backgroundImg = [UIImage imageNamed:@"weiboLoginBackground"];
+	UIImageView* backgroundView = [[UIImageView alloc] initWithImage:backgroundImg];
+	backgroundView.image = backgroundImg;
 	
-	UIButton * buttom = [[UIButton alloc]initWithFrame:CGRectMake(100, 230, imageView.frame.size.width, imageView.frame.size.height)];
+	UIImage* image = [UIImage imageNamed:@"weiboLoginButtom"];
+	UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+	UIButton * buttom = [[UIButton alloc]initWithFrame:CGRectMake(100, 270, imageView.frame.size.width, imageView.frame.size.height)];
 	[buttom setImage:image forState:UIControlStateNormal];
-	[buttom setImage:imageDown forState:UIControlStateHighlighted];
 	[buttom addTarget:self action:@selector(loginWeibo) forControlEvents:UIControlEventTouchUpInside]; 
 
+	[_loginView addSubview:backgroundView];
 	[_loginView addSubview:buttom];
 }
 
@@ -135,6 +140,8 @@
 {		
     MaPostController* postViewController = [[MaPostController alloc] init];
     UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"toobarBackground"] forBarMetrics:UIBarMetricsDefault];
+
 	[self presentViewController: postNavController animated: YES completion:nil];
 }
 

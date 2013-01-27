@@ -10,6 +10,9 @@
 #import "UIBarButtonItem+StyledButton.h"
 #import "MaUtility.h"
 #import "MaPostController.h"
+#import "SinaWeibo.h"
+#import "MoreCafeAppDelegate.h"
+
 
 @interface MaDetailViewController ()
 
@@ -40,8 +43,10 @@
 	UIImage *backImg = [UIImage imageNamed:@"backButtom"];
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(dismissViewController) buttomImage:backImg];
 	
-	UIImage *shareImg = [UIImage imageNamed:@"actionButtom"];
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(weiboShare) buttomImage:shareImg];	
+	if ([self isLoggedIn]) {
+		UIImage *shareImg = [UIImage imageNamed:@"actionButtom"];
+		self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(weiboShare) buttomImage:shareImg];	
+	}
 	
 	
 	CGRect frame = CGRectMake(20, 20, 280, 280);
@@ -54,7 +59,7 @@
 	_nameLable.textColor = [UIColor whiteColor];
 	_nameLable.opaque = NO;
 	
-
+	
 	_detailTextView = [[DTAttributedTextView alloc]initWithFrame:CGRectMake(frame.origin.x,frame.origin.y+frame.size.height +5,frame.size.width,300 )];
 	_detailTextView.textDelegate = self;
 	_detailTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -79,6 +84,8 @@
 	MaPostController* postViewController = [[MaPostController alloc] init];
 	[postViewController setText:[_dict objectForKey:@"discription"] image: _imgView.image];
 	UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
+	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
+	
 	[self presentViewController: postNavController animated: YES completion:nil];
 }
 
@@ -112,6 +119,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(BOOL)isLoggedIn
+{
+	MoreCafeAppDelegate *app = (MoreCafeAppDelegate *)[UIApplication sharedApplication].delegate;
+
+//	SinaWeibo *sinaweibo = [app sinaweibo];
+	return  [app.sinaweibo isLoggedIn];
 }
 
 @end

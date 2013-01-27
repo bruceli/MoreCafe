@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MaDefine.h"
 #import "MaScaleImageView.h"
 
 #define IMAGE_ICON_INDEX 0
