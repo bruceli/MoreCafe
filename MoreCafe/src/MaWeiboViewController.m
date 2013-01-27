@@ -81,6 +81,7 @@
 {
 	self.view = _loginView;
 	self.navigationItem.rightBarButtonItem = nil;
+	[_messages removeAllObjects];
 }
 
 -(void)removeLoginView

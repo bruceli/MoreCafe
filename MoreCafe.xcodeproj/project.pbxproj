@@ -1037,6 +1037,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MoreCafe/MoreCafe-Prefix.pch";
 				INFOPLIST_FILE = "MoreCafe/MoreCafe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1053,6 +1054,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MoreCafe/MoreCafe-Prefix.pch";
 				INFOPLIST_FILE = "MoreCafe/MoreCafe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
