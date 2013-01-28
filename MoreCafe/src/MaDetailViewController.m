@@ -84,7 +84,7 @@
 	MaPostController* postViewController = [[MaPostController alloc] init];
 	[postViewController setText:[_dict objectForKey:@"discription"] image: _imgView.image];
 	UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
-	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
+	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"share"] forBarMetrics:UIBarMetricsDefault];
 	
 	[self presentViewController: postNavController animated: YES completion:nil];
 }

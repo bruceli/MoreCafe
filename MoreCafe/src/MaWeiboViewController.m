@@ -141,7 +141,7 @@
 {		
     MaPostController* postViewController = [[MaPostController alloc] init];
     UINavigationController *postNavController = [[UINavigationController alloc] initWithRootViewController:postViewController];
-	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"toobarBackground"] forBarMetrics:UIBarMetricsDefault];
+	[postNavController.navigationBar setBackgroundImage:[UIImage imageNamed: @"share"] forBarMetrics:UIBarMetricsDefault];
 
 	[self presentViewController: postNavController animated: YES completion:nil];
 }

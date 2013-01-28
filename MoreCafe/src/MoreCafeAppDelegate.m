@@ -31,7 +31,7 @@ static int _networkActivityIndicatorCounter = 0;
 	MaRootViewController* controller =[[MaRootViewController alloc] init];
 
 	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
-    [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navbar"] forBarMetrics:UIBarMetricsDefault];
+    [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navBar"] forBarMetrics:UIBarMetricsDefault];
 
 	self.window.rootViewController = theController;
 

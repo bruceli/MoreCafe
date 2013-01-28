@@ -95,6 +95,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	
+	UINavigationBar* navBar = self.navigationController.navigationBar;
+	[navBar setBackgroundImage:[UIImage imageNamed: @"navBar"] forBarMetrics:UIBarMetricsDefault];
+
 //	_proverbViewHelperThread = [[NSThread alloc] initWithTarget:self selector:@selector(refreshProverb) object:nil];
 //	[_proverbViewHelperThread start];
 }
@@ -197,6 +201,7 @@
 	
 	MO_CAFE_TYPE type = gestureRecognizer.view.tag - Ma_VIEW_INDEX;
 	if (type == MOCAFE_WEIBO) {
+		[self setNavBarImage:type];
 		[self.navigationController pushViewController: app.weiboViewController animated:YES];
 	}
 	else if (type == MOCAFE_ABOUT)
@@ -204,6 +209,8 @@
 		MaAboutViewController* controller = [[MaAboutViewController alloc] init];
 		[_dataSourceMgr updateDataSourceArrayByViewType:type];
 		controller.dict = [_dataSourceMgr itemInfoByViewType:type];
+		[self setNavBarImage:type];
+
 		[self.navigationController pushViewController: controller animated:YES];
 	}
 	else
@@ -211,8 +218,17 @@
 		MaListViewController* viewController = [[MaListViewController alloc]init];
 		[_dataSourceMgr updateDataSourceArrayByViewType:type];
 		viewController.dataArray = _dataSourceMgr.dataSource;
+		[self setNavBarImage:type];
 		[self.navigationController pushViewController: viewController animated:YES];
 	}
+}
+
+-(void)setNavBarImage:(MO_CAFE_TYPE)type
+{
+	NSDictionary* dict = [_dataSourceMgr itemInfoByViewType:type];
+
+	UINavigationBar* navBar = self.navigationController.navigationBar;
+	[navBar setBackgroundImage:[UIImage imageNamed: [dict objectForKey:@"icon"]] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(CGPoint)calculateScrollingOffset:(UIScrollView*)view

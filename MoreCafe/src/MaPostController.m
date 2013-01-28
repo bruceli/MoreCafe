@@ -49,8 +49,8 @@
 		self.navigationItem.rightBarButtonItem = [UIBarButtonItem styledBackBarImgButtonItemWithTarget:self selector:@selector(post) buttomImage:image];
 
 
-        UINavigationBar* navBar = self.navigationController.navigationBar;
-        [navBar setBackgroundImage:[UIImage imageNamed: @"toobarBackground"] forBarMetrics:UIBarMetricsDefault];
+ //       UINavigationBar* navBar = self.navigationController.navigationBar;
+   //     [navBar setBackgroundImage:[UIImage imageNamed: @"share"] forBarMetrics:UIBarMetricsDefault];
 
         // init textView
         _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width, 0)];
