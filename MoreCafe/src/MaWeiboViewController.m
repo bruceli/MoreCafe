@@ -95,8 +95,14 @@
 -(void)initLoginView
 {
 	_loginView = [[UIView alloc] initWithFrame:self.view.frame];
-	
-	UIImage* backgroundImg = [UIImage imageNamed:@"weiboLoginBackground"];
+	UIImage* backgroundImg;
+	if ([MaUtility hasFourInchDisplay]) {	
+		backgroundImg = [UIImage imageNamed:@"weiboLoginBackground-568h"];	
+	}
+	else
+	{
+		backgroundImg = [UIImage imageNamed:@"weiboLoginBackground"];	
+	}
 	UIImageView* backgroundView = [[UIImageView alloc] initWithImage:backgroundImg];
 	backgroundView.image = backgroundImg;
 	

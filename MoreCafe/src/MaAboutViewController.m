@@ -203,7 +203,6 @@
 	 //replaceCharactersInRange:(NSRange)range withString:(NSString *)aString;
 	 [MaUtility fillText:[MaUtility encodeingText:string] to:_weiboStatusView];
 	 [self.view addSubview:_weiboStatusView];
-	 
 	 */	
 	
 	
