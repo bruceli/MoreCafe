@@ -83,7 +83,6 @@
 	[self updateProverb];
 	[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
-	
 }
 
 -(void)viewWillDisappear:(BOOL)animated
