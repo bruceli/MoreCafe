@@ -251,6 +251,7 @@
 		_logoutLable.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:0.5 ];
 		_logoutLable.text = NSLocalizedString(@"WeiboNotConnect",nil);
 		[_logoutLable removeGestureRecognizer:_weiboButtomTap];
+		[_checkThread cancel];
 	}
 }
 

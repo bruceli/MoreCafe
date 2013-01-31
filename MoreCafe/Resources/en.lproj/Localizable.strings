@@ -70,4 +70,37 @@
 
 "Loading..." = "Loading...";
 
+"WeiboTag" = "#MoreCafe#";
+
+"WeiboLongMessage" = "Sharing long weibo via MoreCafé";
+
+"WeiboLongMessageTextCount" = "Long weibo";
+
+"WeiboCancel" = "Cancel";
+
+"WeiboChooseFromLib" = "Choose from library";
+
+"WeiboTakeFromCam" = "Take a picture";
+
+"WeiboRemovePict" = "Delete picture";
+
+"WeiboViewPict" = "View picture";
+
+"WeiboShareImage" = "Sharing picutre on the MoreCafé";
+
+"WeiboLoadSuccess"= "Load success.";
+
+"WeiboSendSuccess"="Send";
+
+"WeiboLoadFailed" = "Load Failed";
+
+"WeiboSendFailed" = "Send Failed";
+
+"checkMap" = "Map";
+
+"WeiboDisconnect" = "Disconnect weibo account";
+
+"WeiboDisconnecting" = "Disconnecting...";
+
+"WeiboNotConnect" = "Unconnect weibo account";
 
