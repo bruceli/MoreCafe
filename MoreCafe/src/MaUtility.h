@@ -14,4 +14,5 @@
 + (void)fillText:(NSString*)inString to:(DTAttributedTextView*)view;
 + (CGFloat) estimateHeightBy:(NSString*)text image:(NSString*)imageURL;
 + (BOOL)hasFourInchDisplay;
++ (BOOL)isFileExist:(NSString*) filePath;
 @end

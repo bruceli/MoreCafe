@@ -7,6 +7,7 @@
 //
 
 #import "MaListCell.h"
+#import "MaUtility.h"
 
 @implementation MaListCell
 
@@ -44,6 +45,7 @@
 	CGRect innerFrame = CGRectMake(MA_LIST_CELL_INNER_GAP,MA_LIST_CELL_INNER_GAP, MA_LIST_CELL_INNER_WIDTH, MA_LIST_CELL_INNER_HEIGHT);
 
 	_imgView = [[AsyncImageView alloc] initWithFrame:innerFrame];
+	_imgView.crossfadeDuration = 0.2;
 	// _imgView.backgroundColor = [UIColor colorWithRed:(arc4random()%100)/(float)100 green:(arc4random()%100)/(float)100 blue:(arc4random()%100)/(float)100 alpha:0.3];
 
 	
@@ -83,11 +85,10 @@
 
 -(void)fillCellDataWith:(NSDictionary*)dict
 {
-	NSString* imgName = [dict objectForKey:@"imagePrefix"];
-	if ([imgName length]>0) {
-		NSMutableString* imgPath = [NSMutableString stringWithString:imgName];
-		[imgPath appendString:@".jpg"];
-		[_imgView setImageByString:imgPath];
+	NSString* imgPrefix = [dict objectForKey:@"imagePrefix"];
+
+	if ([imgPrefix length]>0 && [MaUtility isFileExist:imgPrefix]) {
+		[_imgView setImageByString:imgPrefix];
 	}
 	else
 	{

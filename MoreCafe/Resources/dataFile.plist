@@ -18,27 +18,7 @@
 				<key>detail</key>
 				<string>下午茶开始啦：每日下午一点至六点，任意风味拿铁一杯加任意一杯热果饮，配核桃派或苹果派只要66元。各位亲在等什么，快来尝鲜吧！</string>
 				<key>imagePrefix</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string></string>
-				<key>discription</key>
-				<string></string>
-				<key>detail</key>
-				<string></string>
-				<key>imagePrefix</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string></string>
-				<key>discription</key>
-				<string></string>
-				<key>detail</key>
-				<string></string>
-				<key>imagePrefix</key>
-				<string></string>
+				<string>products/new/冬日饮好茶.jpg</string>
 			</dict>
 		</array>
 	</dict>
@@ -58,7 +38,7 @@
 				<key>detail</key>
 				<string>在意大利原文中，Espresso是迅速、快速流动的意思，Espresso被誉为“咖啡之魂”，意大利人发明了它，并将它带到全世界，Espresso不仅仅是一杯浓缩咖啡，也是一种咖啡名称，是一种烘焙方法，更是一种生活方式，一杯完美的Espresso，应该有浓厚的油脂，强烈美妙的烟熏味，夹杂一丝焦糖的香甜，有着丰富并且持续的口感，Espresso又分为单份和双份，单份30毫升，双份60毫升，需要一口饮尽，才能享受其美妙的味道。</string>
 				<key>imagePrefix</key>
-				<string>cafe0</string>
+				<string>products/cafe/浓缩咖啡.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -68,7 +48,7 @@
 				<key>detail</key>
 				<string>美式咖啡(英文：Americano，意大利语：Caffè Americano)咖啡的一种，是最普通的咖啡。是使用滴滤式咖啡壶、虹吸壶、法压壶之类的器具所制作出的黑咖啡，又或者是意式浓缩中加入大量的水制成。口味比较淡。因为萃取时间长，所以咖啡因含量高。可以在纯粹的黑咖啡里加糖和奶，也可以像非洲和阿拉伯地区那样在咖啡中加入肉桂等香料，甚至加入果汁。</string>
 				<key>imagePrefix</key>
-				<string>cafe1</string>
+				<string>products/cafe/美式咖啡.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -78,7 +58,7 @@
 				<key>detail</key>
 				<string>拿铁咖啡是意大利浓缩咖啡与牛奶的经典混合，意大利人也很喜欢把拿铁作为早餐的饮料。喝拿铁的意大利人，与其说他们喜欢意大利浓缩咖啡，不如说他们喜欢牛奶，也只有espresso才能给普普通通的牛奶带来让人难以忘怀的味道。本店特推黑糖拿铁，这一季的时令混搭，暖胃舒心的黑糖拿铁温暖来袭，冬日提神暖身，难敌拿铁的芳美滋味。</string>
 				<key>imagePrefix</key>
-				<string>cafe2</string>
+				<string>products/cafe/拿铁.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -88,7 +68,17 @@
 				<key>detail</key>
 				<string>摩卡咖啡(CafeMocha)是一种最古老的咖啡，它是由意大利浓缩咖啡、巧克力酱、鲜奶油和牛奶混合而成，其历史要追溯到咖啡的起源。本店特推的榛果摩卡，由香浓巧克力与榛果糖浆完美结合，为冬天带来丝丝暖意。就在今天，无需等待，放下一切烦恼，让味蕾尽情享受吧。</string>
 				<key>imagePrefix</key>
-				<string>cafe3</string>
+				<string>products/cafe/摩卡.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>卡布奇诺</string>
+				<key>discription</key>
+				<string>卡布奇诺是一种加入以同量的意大利特浓咖啡和蒸汽泡沫牛奶相混合的意大利咖啡。</string>
+				<key>detail</key>
+				<string>20世纪初期，意大利人阿奇布夏发明蒸汽压力咖啡机的同时，也发展出了卡布奇诺咖啡。卡布奇诺是一种加入以同量的意大利特浓咖啡和蒸汽泡沫牛奶相混合的意大利咖啡。此时咖啡的颜色，就像卡布奇诺教会的修士在深褐色的外衣上覆上一条头巾一样，咖啡因此得名。传统的卡布奇诺咖啡是三分之一浓缩咖啡，三分之一蒸汽牛奶和三分之一泡沫牛奶。</string>
+				<key>imagePrefix</key>
+				<string>products/cafe/卡布奇诺.jpg</string>
 			</dict>
 		</array>
 	</dict>
@@ -102,13 +92,23 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>柚子/芒果冰沙</string>
+				<key>discription</key>
+				<string>由纯天然水果和冰块为原料，用沙冰机将混合的水果与冰块打成细细的冰沙，凉爽甘甜，果味纯厚，口感细腻。</string>
+				<key>detail</key>
+				<string>由纯天然水果和冰块为原料，用沙冰机将混合的水果与冰块打成细细的冰沙，入口即化。</string>
+				<key>imagePrefix</key>
+				<string>products/tea/柚子冰沙.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>焦糖玛奇朵</string>
 				<key>discription</key>
 				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品。</string>
 				<key>detail</key>
 				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品，特点是在一杯饮品里可以喝到几种不同的口味，玛奇朵上洒上焦糖就成了焦糖玛奇朵：Machiato在那意大利文的意思便是[烙印]焦糖玛琪朵是加了焦糖的Machiato，代表“甜蜜的印记”。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/焦糖玛奇朵.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -118,7 +118,7 @@
 				<key>detail</key>
 				<string>作为我们最火爆的饮品，很多客人都好奇我们的熏香拿铁是如何调制，也有顾客误把它当作咖啡来点，其实它是我们用茉莉花茶新鲜萃取出来的茶原液搭以牛奶精心调配出来的，因此会有淡淡的花香，口感清爽绵柔，唇齿留香。如果你害怕咖啡的浓烈，不如来杯熏香拿铁吧！</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/熏香拿铁.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -128,7 +128,7 @@
 				<key>detail</key>
 				<string>将红茶与新鲜蒸奶和细致奶泡充分融合，层次丰富，绵密顺滑，充分展现奶茶的完美感受。独具特色的红茶拿铁混合着红茶、牛奶和咖啡各自独特的香味，混搭的感觉，让浓郁的咖啡多了份茶的清香。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/红茶拿铁.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -138,7 +138,7 @@
 				<key>detail</key>
 				<string>冰爽的红茶，浇上一层细腻的奶泡，一半温暖，一半寒冷，当两温度在嘴里融合，水果的甜美和茶香令人精神一振，被加速的味觉体验让人欲罢不能。很多人之所以喜欢玛奇朵咖啡，是因为它的香甜感，她不同于摩卡咖啡的厚重，它是轻柔的，细腻的奶沫与焦糖结合后，如浮云般细腻润滑。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/果茶玛奇朵.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -148,7 +148,7 @@
 				<key>detail</key>
 				<string>清爽的绿茶，细腻的奶泡覆盖在顶端，一半温暖，一半寒冷，当两种温度在嘴里融合，被加速的味觉体验让人欲罢不能。花香玛奇朵的出众之处是从花茶中萃取了天然味道。很多人之所以喜欢玛奇朵咖啡，是因为它的香甜感，她不同于摩卡咖啡的厚重，它是轻柔的，细腻的奶沫与焦糖结合后，如浮云般细腻润滑。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/花香玛奇朵.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -158,7 +158,7 @@
 				<key>detail</key>
 				<string>普洱降脂肪减压，原叶茶最大程度的保留了茶叶本身的活性，以及更多的茶多酚，更完好的保留了茶叶原味。普洱茶中含有丰富的矿质元素和有机物。它们作为营养成分和药理成分作用于人体，这些物质对提高人体免疫系统功能有着极为重要的作用，这些对养生健体、延年益寿功效优于其他任何茶类。饮用普洱茶有益缓和肠道紧张度，加强小肠运动，提高胆汁、肠液的分泌。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/普洱黑茶.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -168,7 +168,7 @@
 				<key>detail</key>
 				<string>原叶清茶降火提神，帮助消化，最大程度的保留了茶叶本身的活性，以及更多的茶多酚，有益人体健康，更完好的保留了茶叶原味。它介乎于红茶和绿茶之间，它既有红茶甘甜香醇的特色，又有绿茶鲜美浓郁的味道它属于&quot;性和不寒&quot;的茶叶。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/高山青茶.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -178,7 +178,7 @@
 				<key>detail</key>
 				<string>两千多年前，玛雅人做出了第一杯巧克力饮料。他们把可可豆碾成酱，与水、玉米粉和辣椒混合好，用杯子和罐子来回倾倒，直到出现厚厚一层泡。两千多年后，这种需要适应的味道，变成全世界通用的爱的信号。柔滑的可可脂，一杯温暖的热巧，在这个寒冷冬天感到无比幸福。本店冬季特推黑糖热巧，暖身暖心。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/热巧.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -188,7 +188,7 @@
 				<key>detail</key>
 				<string>鲜果制成，果汁中保留有水果中相当一部分营养成分，如维生素、矿物质、糖分和膳食纤维中的果胶等，有很强的抗氧化作用，对促进肌肤的新陈代谢、延缓衰老及抑制色素沉着等都十分有效。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/热果饮.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -198,7 +198,7 @@
 				<key>detail</key>
 				<string>在这个寒冷的季节，有什么比一杯散发着芳香的柚子暖茶更让你感到温暖的呢？柚子富含维生素C，内含的果胶可以有效控制脂肪增长，并且增强人体对铁的吸收，舒缓疲劳，是很好的健康养生茶哦。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/柚子暖茶.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -208,7 +208,7 @@
 				<key>detail</key>
 				<string>红枣历来有补血养气的功能，桂圆的营养价值也极高，含有葡萄糖、蔗糖、维生素A、维生素B及酒石酸等物质，营养很丰富。工作压力大用脑紧张过度、记忆力不佳、记忆力衰退者，可用桂圆增进脑力。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/桂圆红枣茶.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -218,7 +218,7 @@
 				<key>detail</key>
 				<string>红茶搭配水果，富含维生素C及果胶元素，可以补充营养，缓解疲劳，改善工作压力大、用脑紧张、记忆力不佳，增强脑力，加速新陈代谢，温暖甜蜜，在寒冷冬天喝上一杯，暖人心脾，回味悠长。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/tea/水果暖茶.jpg</string>
 			</dict>
 		</array>
 	</dict>
@@ -238,7 +238,7 @@
 				<key>detail</key>
 				<string>华夫饼，又叫窝夫、格子饼、格仔饼、压花蛋饼，是一种烤饼，源于比利时，用专用的烤盘烤制。本店提供原味华夫/水果华夫/巧克力华夫/培根华夫几种口味。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/华夫饼.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -248,7 +248,7 @@
 				<key>detail</key>
 				<string>黑森林蛋糕(Schwarzwaelder Kirschtorte)是德国著名甜点，在德文里全名&quot;Schwarzwaelder&quot; 即为黑森林。它融合了樱桃的酸、奶油的甜、巧克力的苦、樱桃酒的醇香。完美的黑森林蛋糕经得起各种口味的挑剔。黑森林蛋糕被称作黑森林的特产之一，德文原意为“黑森林樱桃奶油蛋糕”。正宗的黑森林蛋糕一点也不黑，不含黑色的巧克力。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/黑森林蛋糕.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -258,7 +258,7 @@
 				<key>detail</key>
 				<string>苹果派(apple pie)的流行使美国成了世界上最大的苹果生产国。苹果派有着各式不同的形状，大小和口味，包括自由式，标准两层式，焦糖苹果派，法国苹果派，面包屑苹果派，酸奶油苹果派。苹果派制作方便，所需的原料价格便宜，是美国人生活中比较常见的一种甜点，算得上美国食品的一个代表。苹果派还属于一种甜食，既简单，又有营养。在国外，许多家庭都把它当做主食，既可以填饱肚子，又可以省下很多钱。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/苹果派.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -268,17 +268,7 @@
 				<key>detail</key>
 				<string>派是美国人生活中比较常见的一种甜点，算得上美国食品的一个代表。“LIKE APPLE PIES”这个短语就是缘于美国战后，由于物资缺乏，勤劳的母亲们为了让家里的孩子还能幸福地吃甜品，就做出苹果派，后来成为流行美国的食品。</string>
 				<key>imagePrefix</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>巧克力慕斯</string>
-				<key>discription</key>
-				<string>慕斯与布丁一样属于甜点的一种，其比布丁更柔软，入口即化。</string>
-				<key>detail</key>
-				<string>慕斯蛋糕最早出现在美食之都法国巴黎，最初大师们在奶油中加入起稳定作用和改善结构，口感和风味的各种辅料，使之外型，色泽，结构，口味变化丰富，更加自然纯正，冷冻后食用其味无穷，成为蛋糕中的极品。1996年美国十大西点师之一Eric Perez带领美国国家队参加在法国里昂举行的西点世界杯大赛，获得银牌。由于他的名望，97年特邀为美国总统克林顿的夫人希拉里50岁生日制作慕斯蛋糕，并邀请在白宫现场展示技艺，在当时轰动烘焙界。</string>
-				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/核桃派.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -288,7 +278,7 @@
 				<key>detail</key>
 				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。这种面包的发源地是维也纳，所以在现在的其他产地，人们称之为维也纳面包。一般认为像现在这种掺入油脂类型的丹麦包的普及同牛角包普及是同一时期，即1900年。丹麦面包中可以加入丹麦的上等材料，使面包更加美味。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/杏肉丹麦包.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -298,17 +288,48 @@
 				<key>detail</key>
 				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。这种面包的发源地是维也纳，所以在现在的其他产地，人们称之为维也纳面包。一般认为像现在这种掺入油脂类型的丹麦包的普及同牛角包普及是同一时期，即1900年。丹麦面包中可以加入丹麦的上等材料，使面包更加美味。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/樱桃丹麦包.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>柚子/芒果冰沙</string>
+				<string>巧克力/百香果/芒果慕斯</string>
 				<key>discription</key>
-				<string>由纯天然水果和冰块为原料，用沙冰机将混合的水果与冰块打成细细的冰沙，凉爽甘甜，果味纯厚，口感细腻。</string>
+				<string>慕斯与布丁一样属于甜点的一种，其比布丁更柔软，入口即化。</string>
 				<key>detail</key>
-				<string>由纯天然水果和冰块为原料，用沙冰机将混合的水果与冰块打成细细的冰沙，入口即化。色泽鲜美，味道凉爽甘甜，果味纯厚，口感细腻。</string>
+				<string>慕斯蛋糕最早出现在美食之都法国巴黎，最初大师们在奶油中加入起稳定作用和改善结构，口感和风味的各种辅料，使之外型，色泽，结构，口味变化丰富，更加自然纯正，冷冻后食用其味无穷，成为蛋糕中的极品。1996年美国十大西点师之一Eric Perez带领美国国家队参加在法国里昂举行的西点世界杯大赛，获得银牌。由于他的名望，97年特邀为美国总统克林顿的夫人希拉里50岁生日制作慕斯蛋糕，并邀请在白宫现场展示技艺，在当时轰动烘焙界。</string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/food/慕斯.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>歌剧院蛋糕</string>
+				<key>discription</key>
+				<string>歌剧院蛋糕-欧培拉 (Opera Cake) 它的食谱出现在20世纪,但在这之前的古老年代便可寻见它的踪迹。</string>
+				<key>detail</key>
+				<string>歌剧院蛋糕-欧培拉( Opera Cake) 它的食谱出现在20世纪,但在这之前的古老年代便可寻见它的踪迹。这种夹着坚果、酒味、糖液的多层蛋糕最初起起源于中东，罗马人将它学会并于征战欧洲时将它带到欧洲。它的造型灵感来自法国歌剧院——方方正正的形状，表面薄薄的黑色巧克力，像极了歌剧院里大舞台，而蛋糕表面也会缀上一片金箔，象征着歌剧院。</string>
+				<key>imagePrefix</key>
+				<string>products/food/歌剧院蛋糕.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>烤芝士蛋糕</string>
+				<key>discription</key>
+				<string>就工艺而言，芝士是发酵的牛奶；就营养而言，芝士是浓缩的牛奶。</string>
+				<key>detail</key>
+				<string>芝士也叫奶酪，是一种发酵的牛奶制品，其性质与常见的酸牛奶有相似之处，都是通过发酵过程来制作的，也都含有可以保健的乳酸菌，但是奶酪的浓度比酸奶更高，近似固体食物，营养价值也因此更加丰富。每公斤奶酪制品都是由10公斤的牛奶浓缩而成，含有丰富的蛋白质、钙、脂肪、磷和维生素等营养成分，是纯天然的食品。就工艺而言，奶酪是发酵的牛奶；就营养而言，奶酪是浓缩的牛奶。</string>
+				<key>imagePrefix</key>
+				<string>products/food/烤芝士蛋糕.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>巧克力布朗尼</string>
+				<key>discription</key>
+				<string>布朗尼蛋糕是一种切块的小蛋糕，层次丰富，其中加入了大量的黑巧克力烘培而成属于重油蛋糕的一种。</string>
+				<key>detail</key>
+				<string>布朗尼蛋糕是一种切块的小蛋糕，层次丰富，其中加入了大量的黑巧克力烘培而成属于重油蛋糕的一种，但它和一般重油蛋糕的区别在于通常较薄且较结实，不像普通蛋糕那样松松的， 而且一定是巧克力口味，上面还会放杏仁或核桃作装饰及调味，通常比较甜。
+色泽鲜美，味道凉爽甘甜，果味纯厚，口感细腻。</string>
+				<key>imagePrefix</key>
+				<string>products/food/巧克力布朗尼.jpg</string>
 			</dict>
 		</array>
 	</dict>
@@ -329,7 +350,7 @@
 				<string>1月18日19:00，由More Cafe和@豆艺术空间 联合举办的《遇见》——蒋雨&amp;董建作品展正式开幕。当两个色系中的纯粹与自信在此相遇，又会带给我们什么样的感受？关注@MoreCafe_Bar 并发微博参与#遇见展#作品评论，我们将会选出最接近艺术家想法的评论赠送惊喜礼物一份。029-87365855
 </string>
 				<key>imagePrefix</key>
-				<string></string>
+				<string>products/activities/遇见蒋雨董建作品展.jpg</string>
 			</dict>
 		</array>
 	</dict>

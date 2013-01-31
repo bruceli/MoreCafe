@@ -91,17 +91,16 @@
 
 -(void)fillData
 {
-	NSString* imgName = [_dict objectForKey:@"imagePrefix"];
-	if ([imgName length]>0) {
-		NSMutableString* imgPath = [NSMutableString stringWithString:imgName];
-		[imgPath appendString:@".jpg"];
-		[_imgView setImageByString:imgPath];
+	NSString* imgPrefix = [_dict objectForKey:@"imagePrefix"];
+	
+	if ([imgPrefix length]>0  && [MaUtility isFileExist:imgPrefix]) {
+		[_imgView setImageByString:imgPrefix];
 	}
 	else
 	{
 		[_imgView setImageByString:@"emptyImg.jpg"];
 	}
-	
+
 	_nameLable.text = [_dict objectForKey:@"name"];
 	
 	NSString* string = [MaUtility encodeingText:[_dict objectForKey:@"detail"]]; 

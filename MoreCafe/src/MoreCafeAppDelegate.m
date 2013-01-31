@@ -24,6 +24,7 @@ static int _networkActivityIndicatorCounter = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	[AsyncImageLoader sharedLoader];	
@@ -36,6 +37,8 @@ static int _networkActivityIndicatorCounter = 0;
 	self.window.rootViewController = theController;
 
     self.window.backgroundColor = [UIColor blackColor];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
     [self.window makeKeyAndVisible];
 	
 	[self initSinaWeibo];
