@@ -130,6 +130,7 @@
 		59FC12A516A66C15006C5224 /* MaListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FC12A416A66C15006C5224 /* MaListCell.m */; };
 		59FC12A916A68C41006C5224 /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FC12A816A68C40006C5224 /* wall@2x.png */; };
 		59FD6B0816BA4DE9008C0A5A /* products in Resources */ = {isa = PBXBuildFile; fileRef = 59FD6B0716BA4DE9008C0A5A /* products */; };
+		59FD6B0A16BA6CDF008C0A5A /* bottomStyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FD6B0916BA6CDF008C0A5A /* bottomStyle@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,6 +358,7 @@
 		59FC12A416A66C15006C5224 /* MaListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaListCell.m; path = src/MaListCell.m; sourceTree = "<group>"; };
 		59FC12A816A68C40006C5224 /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wall@2x.png"; path = "Resources/wall@2x.png"; sourceTree = "<group>"; };
 		59FD6B0716BA4DE9008C0A5A /* products */ = {isa = PBXFileReference; lastKnownFileType = folder; name = products; path = Resources/products; sourceTree = "<group>"; };
+		59FD6B0916BA6CDF008C0A5A /* bottomStyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bottomStyle@2x.png"; path = "Resources/bottomStyle@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -583,6 +585,7 @@
 		599A174616B973E80084A562 /* UIElement */ = {
 			isa = PBXGroup;
 			children = (
+				59FD6B0916BA6CDF008C0A5A /* bottomStyle@2x.png */,
 				599A176516B97C810084A562 /* maps.jpg */,
 				599A176616B97C810084A562 /* maps@2x.jpg */,
 				599F3A0A16900CBF006397CB /* rootbackground.png */,
@@ -923,6 +926,7 @@
 				599A17A216B987360084A562 /* icon114.png in Resources */,
 				599A17A416B9873A0084A562 /* icon57.png in Resources */,
 				59FD6B0816BA4DE9008C0A5A /* products in Resources */,
+				59FD6B0A16BA6CDF008C0A5A /* bottomStyle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

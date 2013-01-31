@@ -108,7 +108,18 @@
 	
 	UIImage* image = [UIImage imageNamed:@"weiboLoginButtom"];
 	UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-	UIButton * buttom = [[UIButton alloc]initWithFrame:CGRectMake(100, 270, imageView.frame.size.width, imageView.frame.size.height)];
+	
+	CGRect buttomFrame ;
+	
+	if ([MaUtility hasFourInchDisplay]) {
+		buttomFrame = CGRectMake(100, 210, imageView.frame.size.width, imageView.frame.size.height);
+	}
+	else
+	{
+		buttomFrame = CGRectMake(100, 190, imageView.frame.size.width, imageView.frame.size.height);
+	}
+	
+	UIButton * buttom = [[UIButton alloc]initWithFrame:buttomFrame];
 	[buttom setImage:image forState:UIControlStateNormal];
 	[buttom addTarget:self action:@selector(loginWeibo) forControlEvents:UIControlEventTouchUpInside]; 
 

@@ -14,6 +14,7 @@
 #import "MaDataSourceManager.h"
 #import "MaAboutViewController.h"
 #import "BBCyclingLabel.h"
+#import "MaUtility.h"
 
 @interface MaRootViewController ()
 @end
@@ -73,13 +74,12 @@
 	_proverbView.numberOfLines = 0;
 	_proverbView.clipsToBounds = YES;
 	
-	if(bounds.size.height == 548)
-	{
-		UIImageView* bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 440, 320, 60)];
+	if ([MaUtility hasFourInchDisplay]) {
+		UIImageView* bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 445, 320, 60)];
 		bottomImageView.image = [UIImage imageNamed:@"bottomStyle"];
-		//[self.view addSubview:bottomImageView];	
+		[self.view addSubview:bottomImageView];	
 	}
-	
+
 	[self updateProverb];
 	[self.view addSubview:_proverbView];
 	[self.view addSubview:_scrollView];
