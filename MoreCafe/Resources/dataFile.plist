@@ -232,13 +232,33 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>华夫饼</string>
+				<string>原味华夫</string>
 				<key>discription</key>
-				<string>原味华夫/水果华夫/巧克力华夫/培根华夫</string>
+				<string>原味华夫</string>
 				<key>detail</key>
 				<string>华夫饼，又叫窝夫、格子饼、格仔饼、压花蛋饼，是一种烤饼，源于比利时，用专用的烤盘烤制。本店提供原味华夫/水果华夫/巧克力华夫/培根华夫几种口味。</string>
 				<key>imagePrefix</key>
-				<string>products/food/华夫饼.jpg</string>
+				<string>products/food/原味华夫.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>巧克力华夫</string>
+				<key>discription</key>
+				<string>巧克力华夫</string>
+				<key>detail</key>
+				<string>华夫饼，又叫窝夫、格子饼、格仔饼、压花蛋饼，是一种烤饼，源于比利时，用专用的烤盘烤制。本店提供原味华夫/水果华夫/巧克力华夫/培根华夫几种口味。</string>
+				<key>imagePrefix</key>
+				<string>products/food/巧克力华夫.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>培根华夫</string>
+				<key>discription</key>
+				<string>培根华夫</string>
+				<key>detail</key>
+				<string>华夫饼，又叫窝夫、格子饼、格仔饼、压花蛋饼，是一种烤饼，源于比利时，用专用的烤盘烤制。本店提供原味华夫/水果华夫/巧克力华夫/培根华夫几种口味。</string>
+				<key>imagePrefix</key>
+				<string>products/food/培根蛋华夫.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -269,26 +289,6 @@
 				<string>派是美国人生活中比较常见的一种甜点，算得上美国食品的一个代表。“LIKE APPLE PIES”这个短语就是缘于美国战后，由于物资缺乏，勤劳的母亲们为了让家里的孩子还能幸福地吃甜品，就做出苹果派，后来成为流行美国的食品。</string>
 				<key>imagePrefix</key>
 				<string>products/food/核桃派.jpg</string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>杏肉丹麦包</string>
-				<key>discription</key>
-				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。加入杏肉，口感良好。</string>
-				<key>detail</key>
-				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。这种面包的发源地是维也纳，所以在现在的其他产地，人们称之为维也纳面包。一般认为像现在这种掺入油脂类型的丹麦包的普及同牛角包普及是同一时期，即1900年。丹麦面包中可以加入丹麦的上等材料，使面包更加美味。</string>
-				<key>imagePrefix</key>
-				<string>products/food/杏肉丹麦包.jpg</string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>樱桃丹麦包</string>
-				<key>discription</key>
-				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。加入樱桃，果香甜美。</string>
-				<key>detail</key>
-				<string>丹麦面包又称起酥起层面包，口感酥软、层次分明、奶香味浓、面包质地松软。这种面包的发源地是维也纳，所以在现在的其他产地，人们称之为维也纳面包。一般认为像现在这种掺入油脂类型的丹麦包的普及同牛角包普及是同一时期，即1900年。丹麦面包中可以加入丹麦的上等材料，使面包更加美味。</string>
-				<key>imagePrefix</key>
-				<string>products/food/樱桃丹麦包.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
