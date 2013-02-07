@@ -88,6 +88,10 @@
 }
 
 + (BOOL)isBundleFileExist:(NSString*) filePath{
+	// Return YES if address is a URL 
+	if ([filePath hasPrefix:@"http://"])
+		return YES;
+	
 	NSString* theFilePathString = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
 	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:theFilePathString];
 	return fileExists;
