@@ -64,6 +64,8 @@ static int _networkActivityIndicatorCounter = 0;
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+	//	NSLog(@"%@", @"Application will enterForeground");
+
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
@@ -76,7 +78,7 @@ static int _networkActivityIndicatorCounter = 0;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-	NSLog(@"%@", @"Application will enterForeground");
+//	NSLog(@"%@", @"Application will enterForeground");
 
 	Reachability *r = [Reachability reachabilityWithHostname:@"www.imagicapp.com"];
 	NetworkStatus internetStatus = [r currentReachabilityStatus];
@@ -103,14 +105,14 @@ static int _networkActivityIndicatorCounter = 0;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-	NSLog(@"%@",url.absoluteString);
+//	NSLog(@"%@",url.absoluteString);
 	
     return [self.sinaweibo handleOpenURL:url];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {	
-	NSLog(@"%@",url.absoluteString);
+//	NSLog(@"%@",url.absoluteString);
 	
     return [self.sinaweibo handleOpenURL:url];
 }

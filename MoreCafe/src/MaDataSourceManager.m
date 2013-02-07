@@ -27,7 +27,7 @@
 		//	3.2 if latest.plist doesn't exist load dictionary from boundle "dataFile.plist"
 	
     if (self) {
-        NSLog(@"%@", @"Init DataSourceMgr");		
+//        NSLog(@"%@", @"Init DataSourceMgr");		
 		Reachability *r = [Reachability reachabilityWithHostname:@"www.imagicapp.com"];
 		NetworkStatus internetStatus = [r currentReachabilityStatus];
 
@@ -48,7 +48,7 @@
 	NSString *latestFilePath = [path stringByAppendingPathComponent:@"latest.plist"];
 	
 	if ([MaUtility isFileExist:latestFilePath]) {
-		NSLog(@"%@",@"load from latest.plist");
+	//	NSLog(@"%@",@"load from latest.plist");
 		_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:latestFilePath];
 		_enumArray = [_rootDictonary objectForKey:@"enumArray"];
 		_currentActivityArray = [[NSMutableArray alloc] init];
@@ -56,7 +56,7 @@
 	}
 	else
 	{
-		NSLog(@"%@",@"load from dataFile.plist");
+	//	NSLog(@"%@",@"load from dataFile.plist");
 		NSString* path = [[NSBundle mainBundle] pathForResource:@"dataFile" ofType:@"plist"];        
 		_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:path];
 		_enumArray = [_rootDictonary objectForKey:@"enumArray"];
@@ -72,7 +72,7 @@
 	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	NSString *finalPath = [path stringByAppendingPathComponent:@"latest.plist"];
 
-	NSLog(@"%@",finalPath);
+//	NSLog(@"%@",finalPath);
 	[serverDict writeToFile:finalPath atomically:YES];
 }
 
