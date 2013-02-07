@@ -15,6 +15,7 @@
 #import "WBErrorNoticeView.h"
 #import "WBSuccessNoticeView.h"
 #import "MaUtility.h"
+#import "Reachability.h"
 
 @implementation MoreCafeAppDelegate
 @synthesize sinaweibo = _sinaweibo;
@@ -29,9 +30,9 @@ static int _networkActivityIndicatorCounter = 0;
     // Override point for customization after application launch.
 	[AsyncImageLoader sharedLoader];	
 	[self preloadDTTextView];
-	MaRootViewController* controller =[[MaRootViewController alloc] init];
+	_rootViewController =[[MaRootViewController alloc] init];
 
-	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:controller];
+	UINavigationController* theController = [[UINavigationController alloc] initWithRootViewController:_rootViewController];
     [theController.navigationBar setBackgroundImage:[UIImage imageNamed: @"navBar"] forBarMetrics:UIBarMetricsDefault];
 
 	self.window.rootViewController = theController;
@@ -75,6 +76,18 @@ static int _networkActivityIndicatorCounter = 0;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+	NSLog(@"%@", @"Application will enterForeground");
+
+	Reachability *r = [Reachability reachabilityWithHostname:@"www.imagicapp.com"];
+	NetworkStatus internetStatus = [r currentReachabilityStatus];
+	
+	// update from server 
+	if ((internetStatus == ReachableViaWiFi) || (internetStatus == ReachableViaWWAN))
+		[_rootViewController.dataSourceMgr loadDataFileFromServer];
+
+	// reload datasource
+	[_rootViewController.dataSourceMgr loadDataSource];
+
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

@@ -23,5 +23,6 @@
 
 -(void)updateDataSourceArrayByViewType:(MO_CAFE_TYPE)type;
 -(NSDictionary*)itemInfoByViewType:(MO_CAFE_TYPE)type;
-
+-(void)loadDataSource;
+-(void)loadDataFileFromServer;
 @end

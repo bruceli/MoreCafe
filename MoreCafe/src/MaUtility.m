@@ -87,11 +87,18 @@
     return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568.0);
 }
 
-+ (BOOL)isFileExist:(NSString*) filePath{
++ (BOOL)isBundleFileExist:(NSString*) filePath{
 	NSString* theFilePathString = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
 	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:theFilePathString];
 	return fileExists;
 }
+
++ (BOOL)isFileExist:(NSString*) filePath{
+	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+	return fileExists;
+}
+
+
 
 
 @end

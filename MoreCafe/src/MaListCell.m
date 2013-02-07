@@ -87,7 +87,7 @@
 {
 	NSString* imgPrefix = [dict objectForKey:@"imagePrefix"];
 
-	if ([imgPrefix length]>0 && [MaUtility isFileExist:imgPrefix]) {
+	if ([imgPrefix length]>0 && [MaUtility isBundleFileExist:imgPrefix]) {
 		[_imgView setImageByString:imgPrefix];
 	}
 	else

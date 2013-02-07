@@ -19,5 +19,7 @@
 	NSArray* _proverbArray;
 //	NSThread* _proverbViewHelperThread;
 }
+@property (nonatomic, retain) MaDataSourceManager* dataSourceMgr;
+
 
 @end

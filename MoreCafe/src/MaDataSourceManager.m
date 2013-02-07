@@ -35,27 +35,34 @@
 		{
 			[self loadDataFileFromServer];
 		}
-		
-		NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-		NSString *latestFilePath = [path stringByAppendingPathComponent:@"latest.plist"];
+		[self loadDataSource];
 
-		if ([MaUtility isFileExist:latestFilePath]) {
-			_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:latestFilePath];
-			_enumArray = [_rootDictonary objectForKey:@"enumArray"];
-			_currentActivityArray = [[NSMutableArray alloc] init];
-			_dataSource = [[NSMutableArray alloc] init];
-		}
-		else
-		{
-			NSString* path = [[NSBundle mainBundle] pathForResource:@"dataFile" ofType:@"plist"];        
-			_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:path];
-			_enumArray = [_rootDictonary objectForKey:@"enumArray"];
-			_currentActivityArray = [[NSMutableArray alloc] init];
-			_dataSource = [[NSMutableArray alloc] init];
-		}
 //        [self loadImageIndex];
     }
     return self;
+}
+
+-(void)loadDataSource
+{
+	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *latestFilePath = [path stringByAppendingPathComponent:@"latest.plist"];
+	
+	if ([MaUtility isFileExist:latestFilePath]) {
+		NSLog(@"%@",@"load from latest.plist");
+		_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:latestFilePath];
+		_enumArray = [_rootDictonary objectForKey:@"enumArray"];
+		_currentActivityArray = [[NSMutableArray alloc] init];
+		_dataSource = [[NSMutableArray alloc] init];
+	}
+	else
+	{
+		NSLog(@"%@",@"load from dataFile.plist");
+		NSString* path = [[NSBundle mainBundle] pathForResource:@"dataFile" ofType:@"plist"];        
+		_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:path];
+		_enumArray = [_rootDictonary objectForKey:@"enumArray"];
+		_currentActivityArray = [[NSMutableArray alloc] init];
+		_dataSource = [[NSMutableArray alloc] init];
+	}
 }
 
 -(void)loadDataFileFromServer
