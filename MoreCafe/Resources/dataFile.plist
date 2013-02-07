@@ -80,6 +80,16 @@
 				<key>imagePrefix</key>
 				<string>products/cafe/卡布奇诺.jpg</string>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>焦糖玛奇朵</string>
+				<key>discription</key>
+				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品。</string>
+				<key>detail</key>
+				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品，特点是在一杯饮品里可以喝到几种不同的口味，玛奇朵上洒上焦糖就成了焦糖玛奇朵：Machiato在那意大利文的意思便是[烙印]焦糖玛琪朵是加了焦糖的Machiato，代表“甜蜜的印记”。</string>
+				<key>imagePrefix</key>
+				<string>products/tea/焦糖玛奇朵.jpg</string>
+			</dict>
 		</array>
 	</dict>
 	<key>tea</key>
@@ -99,16 +109,6 @@
 				<string>由纯天然水果和冰块为原料，用沙冰机将混合的水果与冰块打成细细的冰沙，入口即化。</string>
 				<key>imagePrefix</key>
 				<string>products/tea/柚子冰沙.jpg</string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>焦糖玛奇朵</string>
-				<key>discription</key>
-				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品。</string>
-				<key>detail</key>
-				<string>焦糖玛琪朵(英文：Caramel Macchiato)是一种在香浓热牛奶上加入浓缩咖啡、香草，最后淋上纯正焦糖而制成的饮品，特点是在一杯饮品里可以喝到几种不同的口味，玛奇朵上洒上焦糖就成了焦糖玛奇朵：Machiato在那意大利文的意思便是[烙印]焦糖玛琪朵是加了焦糖的Machiato，代表“甜蜜的印记”。</string>
-				<key>imagePrefix</key>
-				<string>products/tea/焦糖玛奇朵.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -132,23 +132,13 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>果茶玛奇朵</string>
+				<string>果茶/花香玛奇朵</string>
 				<key>discription</key>
-				<string>冰爽的红茶，浇上一层细腻的奶泡，水果的甜美和茶香令人精神一振，被加速的味觉体验让人欲罢不能。</string>
+				<string>冰爽的水果和红茶，浇上一层细腻的奶泡，水果的甜美和茶香令人精神一振，被加速的味觉体验让人欲罢不能。</string>
 				<key>detail</key>
 				<string>冰爽的红茶，浇上一层细腻的奶泡，一半温暖，一半寒冷，当两温度在嘴里融合，水果的甜美和茶香令人精神一振，被加速的味觉体验让人欲罢不能。很多人之所以喜欢玛奇朵咖啡，是因为它的香甜感，她不同于摩卡咖啡的厚重，它是轻柔的，细腻的奶沫与焦糖结合后，如浮云般细腻润滑。</string>
 				<key>imagePrefix</key>
 				<string>products/tea/果茶玛奇朵.jpg</string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>花香玛奇朵</string>
-				<key>discription</key>
-				<string>清爽的绿茶，细腻的奶泡覆盖在顶端，被加速的味觉体验让人欲罢不能。花香玛奇朵的出众之处是从花茶中萃取了天然味道。</string>
-				<key>detail</key>
-				<string>清爽的绿茶，细腻的奶泡覆盖在顶端，一半温暖，一半寒冷，当两种温度在嘴里融合，被加速的味觉体验让人欲罢不能。花香玛奇朵的出众之处是从花茶中萃取了天然味道。很多人之所以喜欢玛奇朵咖啡，是因为它的香甜感，她不同于摩卡咖啡的厚重，它是轻柔的，细腻的奶沫与焦糖结合后，如浮云般细腻润滑。</string>
-				<key>imagePrefix</key>
-				<string>products/tea/花香玛奇朵.jpg</string>
 			</dict>
 			<dict>
 				<key>name</key>
