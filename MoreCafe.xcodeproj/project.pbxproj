@@ -27,6 +27,8 @@
 		5939109C16A98E70002A36F8 /* MaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5939109B16A98E70002A36F8 /* MaDetailViewController.m */; };
 		593910AA16A9B9E5002A36F8 /* emptyImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 593910A916A9B9E5002A36F8 /* emptyImg.jpg */; };
 		593F58B616A473980005A82E /* MaScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593F58B516A473980005A82E /* MaScaleImageView.m */; };
+		5944009D16C3BF430008C796 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5944009C16C3BF430008C796 /* Reachability.m */; };
+		594400A616C3BFF60008C796 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594400A516C3BFF60008C796 /* SystemConfiguration.framework */; };
 		597A6E0C16AD24B000C4414B /* MaPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597A6E0B16AD24B000C4414B /* MaPostController.m */; };
 		597A6E1016AD257300C4414B /* RDActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 597A6E0F16AD257300C4414B /* RDActionSheet.m */; };
 		597A6E2116AD257F00C4414B /* SheetBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 597A6E1116AD257F00C4414B /* SheetBackground.png */; };
@@ -224,6 +226,9 @@
 		593910A916A9B9E5002A36F8 /* emptyImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = emptyImg.jpg; path = Resources/emptyImg.jpg; sourceTree = "<group>"; };
 		593F58B416A473980005A82E /* MaScaleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaScaleImageView.h; path = src/MaScaleImageView.h; sourceTree = "<group>"; };
 		593F58B516A473980005A82E /* MaScaleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaScaleImageView.m; path = src/MaScaleImageView.m; sourceTree = "<group>"; };
+		5944009B16C3BF430008C796 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = src/3rd/Reachability/Reachability.h; sourceTree = "<group>"; };
+		5944009C16C3BF430008C796 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = src/3rd/Reachability/Reachability.m; sourceTree = "<group>"; };
+		594400A516C3BFF60008C796 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		597A6E0A16AD24B000C4414B /* MaPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaPostController.h; path = src/MaPostController.h; sourceTree = "<group>"; };
 		597A6E0B16AD24B000C4414B /* MaPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaPostController.m; path = src/MaPostController.m; sourceTree = "<group>"; };
 		597A6E0E16AD257300C4414B /* RDActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDActionSheet.h; path = src/3rd/RDActionSheet/RDActionSheet.h; sourceTree = "<group>"; };
@@ -376,6 +381,7 @@
 				59AC4AA2169A8FB20034919E /* ImageIO.framework in Frameworks */,
 				59AC4AA4169A8FD80034919E /* MobileCoreServices.framework in Frameworks */,
 				59AC4B38169B5E540034919E /* Accounts.framework in Frameworks */,
+				594400A616C3BFF60008C796 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +412,7 @@
 		263DFB231689346300C02B37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				594400A516C3BFF60008C796 /* SystemConfiguration.framework */,
 				59AC4B37169B5E540034919E /* Accounts.framework */,
 				59AC4A9F169A8E470034919E /* libxml2.dylib */,
 				59AC4AA3169A8FD80034919E /* MobileCoreServices.framework */,
@@ -687,6 +694,8 @@
 		59F24A9F1699DB970068035E /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				5944009B16C3BF430008C796 /* Reachability.h */,
+				5944009C16C3BF430008C796 /* Reachability.m */,
 				599E13CE16AFBEC100866BF1 /* BBCyclingLabel.h */,
 				599E13CF16AFBEC100866BF1 /* BBCyclingLabel.m */,
 				597E01CE16AE67A7003785C9 /* Notifacation */,
@@ -972,6 +981,7 @@
 				597E022116AE7FF0003785C9 /* WBSuccessNoticeView.m in Sources */,
 				599E13D016AFBEC100866BF1 /* BBCyclingLabel.m in Sources */,
 				598017CF16B12D9D00AD3D1C /* MaAboutViewController.m in Sources */,
+				5944009D16C3BF430008C796 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,9 @@
 //
 
 #import "MaDataSourceManager.h"
+#import "Reachability.h"
+#import "MaUtility.h"
+
 
 @implementation MaDataSourceManager
 
@@ -16,17 +19,54 @@
 -(id)init
 {
     self = [super init];
-    
+		//1. check if has connection
+		//2. if has connection download plist file from server
+		//	2.1 write plist file to sandbox as "latest.plist"
+		//3. all connection was down,
+		//	3.1 check if latest.plist exist.
+		//	3.2 if latest.plist doesn't exist load dictionary from boundle "dataFile.plist"
+	
     if (self) {
         NSLog(@"%@", @"Init DataSourceMgr");		
-        NSString* path = [[NSBundle mainBundle] pathForResource:@"dataFile" ofType:@"plist"];        
-        _rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:path];
-        _enumArray = [_rootDictonary objectForKey:@"enumArray"];
-        _currentActivityArray = [[NSMutableArray alloc] init];
-        _dataSource = [[NSMutableArray alloc] init];
+		Reachability *r = [Reachability reachabilityWithHostname:@"www.imagicapp.com"];
+		NetworkStatus internetStatus = [r currentReachabilityStatus];
+
+		if ((internetStatus == ReachableViaWiFi) || (internetStatus == ReachableViaWWAN))
+		{
+			[self loadDataFileFromServer];
+		}
+		
+		NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+		NSString *latestFilePath = [path stringByAppendingPathComponent:@"latest.plist"];
+
+		if ([MaUtility isFileExist:latestFilePath]) {
+			_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:latestFilePath];
+			_enumArray = [_rootDictonary objectForKey:@"enumArray"];
+			_currentActivityArray = [[NSMutableArray alloc] init];
+			_dataSource = [[NSMutableArray alloc] init];
+		}
+		else
+		{
+			NSString* path = [[NSBundle mainBundle] pathForResource:@"dataFile" ofType:@"plist"];        
+			_rootDictonary = [[NSDictionary alloc] initWithContentsOfFile:path];
+			_enumArray = [_rootDictonary objectForKey:@"enumArray"];
+			_currentActivityArray = [[NSMutableArray alloc] init];
+			_dataSource = [[NSMutableArray alloc] init];
+		}
 //        [self loadImageIndex];
     }
     return self;
+}
+
+-(void)loadDataFileFromServer
+{
+	NSURL *theFileURL = [NSURL URLWithString:@"http://imagicapp.com/wp-content/uploads/2013/02/dataFile.plist_.txt"];
+    NSDictionary *serverDict = [[NSDictionary alloc] initWithContentsOfURL:theFileURL];
+	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *finalPath = [path stringByAppendingPathComponent:@"latest.plist"];
+
+	NSLog(@"%@",finalPath);
+	[serverDict writeToFile:finalPath atomically:YES];
 }
 
 -(void)updateDataSourceArrayByViewType:(MO_CAFE_TYPE)type
