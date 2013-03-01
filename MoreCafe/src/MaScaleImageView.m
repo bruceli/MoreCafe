@@ -22,7 +22,7 @@
 		_imageView = [[AsyncImageView alloc] initWithFrame:screenFrame];
 		_imageView.contentMode = UIViewContentModeScaleAspectFit;
 		_imageView.clipsToBounds = YES;
-		_imageView.showActivityIndicator = YES;
+		_imageView.showProgressBar = YES;
 		_imageView.delegate = self;
 		_imageView.backgroundColor = [UIColor clearColor];
 
@@ -34,7 +34,7 @@
 		[self setZoomScale:MA_MIN_ZOOM_RATE];
 
 		[_imageView setTag:ZOOM_VIEW_TAG];
-		_imageView.showActivityIndicator = YES;
+		_imageView.showProgressBar = YES;
 		_imageView.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
 		[[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_imageView];
 		[self addSubview:_imageView];

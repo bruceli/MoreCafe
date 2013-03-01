@@ -25,7 +25,7 @@
 {
 	_userIconView = [[AsyncImageView alloc]initWithFrame:CGRectMake(MA_CELL_GAP, MA_CELL_GAP, MA_CELL_IMG_SIZE, MA_CELL_IMG_SIZE)];
 	_userIconView.crossfadeImages = NO;
-	
+	_userIconView.showProgressBar = NO;
 	_userNameView = [[UILabel alloc] initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, MA_CELL_GAP, MA_CELL_NAME_WIDTH, MA_CELL_NAME_HEIGHT)];
 	_userNameView.backgroundColor = [UIColor clearColor];
 	_userNameView.textColor = [UIColor darkGrayColor];
@@ -49,6 +49,7 @@
 	_messagePictView = [[AsyncImageView alloc]initWithFrame:CGRectMake(_userIconView.frame.origin.x + _userIconView.frame.size.width + MA_CELL_GAP, _messageTextView.frame.origin.y + 60 + MA_CELL_GAP,  MA_CELL_MESSAGE_PICT_SIZE, MA_CELL_MESSAGE_PICT_SIZE)];
 	_messagePictView.contentMode = UIViewContentModeScaleAspectFit;
 	_messagePictView.crossfadeImages = NO;
+	_messagePictView.showProgressBar = NO;
 //	_messagePictView.backgroundColor = [UIColor orangeColor];
 	
 	_sourceView = [[UILabel alloc]initWithFrame:CGRectZero];

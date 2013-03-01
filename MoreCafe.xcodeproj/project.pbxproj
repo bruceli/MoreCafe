@@ -18,6 +18,11 @@
 		591179DF169C19FA0043858B /* NSDate+MaDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 591179DE169C19FA0043858B /* NSDate+MaDate.m */; };
 		59117A1E169C21D20043858B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59117A20169C21D20043858B /* Localizable.strings */; };
 		59117A24169C233F0043858B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59117A26169C233F0043858B /* InfoPlist.strings */; };
+		591B42F816E08AF400B277EE /* MCProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B42F716E08AF400B277EE /* MCProgressBarView.m */; };
+		591B430416E08C2200B277EE /* progress-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B430016E08C2200B277EE /* progress-bg.png */; };
+		591B430516E08C2200B277EE /* progress-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B430116E08C2200B277EE /* progress-bg@2x.png */; };
+		591B430616E08C2200B277EE /* progress-fg.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B430216E08C2200B277EE /* progress-fg.png */; };
+		591B430716E08C2200B277EE /* progress-fg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B430316E08C2200B277EE /* progress-fg@2x.png */; };
 		591CC63216B5077300B19197 /* weiboLoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 591CC63116B5077200B19197 /* weiboLoginBackground@2x.png */; };
 		592D897D16ADBEBA00137A1B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 592D897B16ADBEB900137A1B /* camera.png */; };
 		592D897E16ADBEBA00137A1B /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592D897C16ADBEB900137A1B /* camera@2x.png */; };
@@ -214,6 +219,12 @@
 		59117A21169C21D50043858B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		59117A25169C233F0043858B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		59117A27169C23450043858B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		591B42F616E08AF400B277EE /* MCProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCProgressBarView.h; path = src/3rd/AsyncImageView/MCProgressBarView.h; sourceTree = "<group>"; };
+		591B42F716E08AF400B277EE /* MCProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCProgressBarView.m; path = src/3rd/AsyncImageView/MCProgressBarView.m; sourceTree = "<group>"; };
+		591B430016E08C2200B277EE /* progress-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "progress-bg.png"; path = "src/3rd/AsyncImageView/progress-bg.png"; sourceTree = "<group>"; };
+		591B430116E08C2200B277EE /* progress-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "progress-bg@2x.png"; path = "src/3rd/AsyncImageView/progress-bg@2x.png"; sourceTree = "<group>"; };
+		591B430216E08C2200B277EE /* progress-fg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "progress-fg.png"; path = "src/3rd/AsyncImageView/progress-fg.png"; sourceTree = "<group>"; };
+		591B430316E08C2200B277EE /* progress-fg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "progress-fg@2x.png"; path = "src/3rd/AsyncImageView/progress-fg@2x.png"; sourceTree = "<group>"; };
 		591CC63116B5077200B19197 /* weiboLoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weiboLoginBackground@2x.png"; path = "Resources/weiboLoginBackground@2x.png"; sourceTree = "<group>"; };
 		592D897B16ADBEB900137A1B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = Resources/camera.png; sourceTree = "<group>"; };
 		592D897C16ADBEB900137A1B /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera@2x.png"; path = "Resources/camera@2x.png"; sourceTree = "<group>"; };
@@ -725,6 +736,12 @@
 		59F24AD4169A01860068035E /* AsyncImageView */ = {
 			isa = PBXGroup;
 			children = (
+				591B430016E08C2200B277EE /* progress-bg.png */,
+				591B430116E08C2200B277EE /* progress-bg@2x.png */,
+				591B430216E08C2200B277EE /* progress-fg.png */,
+				591B430316E08C2200B277EE /* progress-fg@2x.png */,
+				591B42F616E08AF400B277EE /* MCProgressBarView.h */,
+				591B42F716E08AF400B277EE /* MCProgressBarView.m */,
 				59F24AA01699DBB60068035E /* AsyncImageView.h */,
 				59F24AA11699DBB60068035E /* AsyncImageView.m */,
 			);
@@ -936,6 +953,10 @@
 				599A17A416B9873A0084A562 /* icon57.png in Resources */,
 				59FD6B0816BA4DE9008C0A5A /* products in Resources */,
 				59FD6B0A16BA6CDF008C0A5A /* bottomStyle@2x.png in Resources */,
+				591B430416E08C2200B277EE /* progress-bg.png in Resources */,
+				591B430516E08C2200B277EE /* progress-bg@2x.png in Resources */,
+				591B430616E08C2200B277EE /* progress-fg.png in Resources */,
+				591B430716E08C2200B277EE /* progress-fg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +1003,7 @@
 				599E13D016AFBEC100866BF1 /* BBCyclingLabel.m in Sources */,
 				598017CF16B12D9D00AD3D1C /* MaAboutViewController.m in Sources */,
 				5944009D16C3BF430008C796 /* Reachability.m in Sources */,
+				591B42F816E08AF400B277EE /* MCProgressBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -107,8 +107,9 @@ extern NSString *const AsyncImageErrorKey;
 
 @interface AsyncImageView : UIImageView
 - (void)setImageByString:(NSString*)imageAddress;
+- (void)updateProgressbarValue:(NSNotification *)notification;
 - (CGSize)imageScale;
-@property (nonatomic, assign) BOOL showActivityIndicator;
+@property (nonatomic, assign) BOOL showProgressBar;
 @property (nonatomic, assign) UIActivityIndicatorViewStyle activityIndicatorStyle;
 @property (nonatomic, assign) BOOL crossfadeImages;
 @property (nonatomic, assign) NSTimeInterval crossfadeDuration;
