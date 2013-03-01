@@ -19,6 +19,8 @@
 		self.backgroundColor = [UIColor blackColor];
 		CGRect screenFrame = [[UIScreen mainScreen] bounds];
 
+		_isImageReady = NO;
+		
 		_imageView = [[AsyncImageView alloc] initWithFrame:screenFrame];
 		_imageView.contentMode = UIViewContentModeScaleAspectFit;
 		_imageView.clipsToBounds = YES;
@@ -29,10 +31,13 @@
 		self.delegate = self;
 		self.showsVerticalScrollIndicator = NO;
 		self.showsHorizontalScrollIndicator = NO;
+		
 		[self setMinimumZoomScale:MA_MIN_ZOOM_RATE];
 		[self setMaximumZoomScale:MA_MAX_ZOOM_RATE];
 		[self setZoomScale:MA_MIN_ZOOM_RATE];
 
+		[self lockZoom];
+		
 		[_imageView setTag:ZOOM_VIEW_TAG];
 		_imageView.showProgressBar = YES;
 		_imageView.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
@@ -44,6 +49,21 @@
     return self;
 }
 
+
+-(void)lockZoom
+{
+    _maxZoomRate = self.maximumZoomScale;
+    _minZoomRate = self.minimumZoomScale;
+	
+    self.maximumZoomScale = 1.0;
+    self.minimumZoomScale = 1.0;
+}
+
+-(void)unlockZoom
+{
+    self.maximumZoomScale = _maxZoomRate;
+    self.minimumZoomScale = _minZoomRate;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -78,6 +98,8 @@
 
 -(void)imageIsReadyNotify:(UIView*)view
 {	
+	[self unlockZoom];
+	_isImageReady = YES;
 }
 
 -(void)addTapGestureRecognizer
@@ -106,6 +128,9 @@
 }
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+	if (!_isImageReady) {
+		return;
+	}
 //	NSLog(@"zoomScale is %f", [self zoomScale]);
 	CGSize newContentSize;
 	CGRect zoomRect;

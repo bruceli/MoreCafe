@@ -17,6 +17,10 @@
 {
 	AsyncImageView* _imageView;
 	CGRect _imageViewFrame;
+	float _minZoomRate;
+	float _maxZoomRate;
+	
+	BOOL _isImageReady;
 }
 
 -(void)loadImageFrom:(NSString*)imgPath;
