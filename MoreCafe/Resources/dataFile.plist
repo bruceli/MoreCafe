@@ -12,6 +12,16 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>女人节</string>
+				<key>discription</key>
+				<string>N个理由爱自己！More Cafe缤纷女人节三月华丽登场</string>
+				<key>detail</key>
+				<string>N个理由爱自己！More Cafe缤纷女人节三月华丽登场：单笔消费满108送买一赠一券+特别礼物！三月的第二个周末（3月8日-10日），就在这里，延续三天的专享快乐，敬请期待！</string>
+				<key>imagePrefix</key>
+				<string>http://pic.yupoo.com/magicapp/CGyy2V6b/13Vnur.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>冬日饮好茶，暖暖更惬意喔！</string>
 				<key>discription</key>
 				<string>冬日饮好茶，暖暖更惬意喔！</string>
@@ -333,6 +343,16 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>《春天里》画展</string>
+				<key>discription</key>
+				<string>More Cafe 和 DOU艺术中心 联合举办</string>
+				<key>detail</key>
+				<string>是什么精彩了这个春天？3月1日—4月15日，More Cafe与DOU艺术中心为这个春天带来联合画展——《春天里》现场展出高昊、贾明、强世军、秦一朝、石珩伯、苏丹彧、武小川、谢菲、张英、钟国昌等青年艺术家作品，让艺术唤醒沉睡的生活。</string>
+				<key>imagePrefix</key>
+				<string>http://pic.yupoo.com/magicapp/CGyy2V6b/13Vnur.jpg </string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>《遇见》蒋雨&amp;董建作品展</string>
 				<key>discription</key>
 				<string>More Cafe 和 @豆艺术空间 联合举办</string>
@@ -341,6 +361,16 @@
 </string>
 				<key>imagePrefix</key>
 				<string>products/activities/遇见蒋雨董建作品展.jpg</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>村上隆建作品展</string>
+				<key>discription</key>
+				<string>2012年12月18日 MoreCafe 邀您共赏村上隆版画展</string>
+				<key>detail</key>
+				<string>村上隆，男，1962年2月1日出生，上世纪60年代以后出生的日本艺术家中极具影响力的一位，在日本不仅是一位受到广泛的喜爱的艺术家，也是日本新一代年轻人的偶像。</string>
+				<key>imagePrefix</key>
+				<string>http://pic.yupoo.com/magicapp/CGyy4BrG/aWKBB.jpg</string>
 			</dict>
 		</array>
 	</dict>
